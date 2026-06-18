@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 01 – Introduction to IXP | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation">
+    <a href="../index.html">← All Modules</a>
+  </nav>
+</header>
+
+<div class="course-layout">
+
+  <!-- Sidebar -->
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01" class="active">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar" aria-label="Course progress">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="course-content" id="main-content">
+
+    <header class="module-header">
+      <div class="module-header__number">Module 01 of 07</div>
+      <h1>Introduction to UiPath Intelligent Extraction Processing (IXP)</h1>
+      <div class="module-header__meta">
+        <span>⏱ 30 minutes</span>
+        <span>📖 Theory</span>
+        <span>🎯 Beginner</span>
+      </div>
+    </header>
+
+    <!-- Learning Objectives -->
+    <div class="objectives-box" role="region" aria-label="Learning objectives">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what UiPath IXP is and where it fits in the UiPath platform</li>
+        <li>Identify the three capabilities within IXP: Document Understanding, Generative Extraction, and Communications Mining</li>
+        <li>Describe the different document types IXP can process</li>
+        <li>Know which IXP capability to use for a given use case</li>
+        <li>Get an overview of IXP demos and key features</li>
+      </ul>
+    </div>
+
+    <!-- Lesson 1 -->
+    <section class="lesson" aria-label="Lesson 1">
+      <h2 class="lesson-title"><span class="lesson-num">L1</span> What is UiPath IXP?</h2>
+
+      <p>UiPath <strong>Intelligent Extraction Processing (IXP)</strong> is UiPath's unified intelligent document processing (IDP) platform. It enables organizations to extract, classify, and process data from virtually any type of document at enterprise scale — using a combination of traditional ML, specialized AI, and generative AI.</p>
+
+      <div class="info-card">
+        <h4>IXP = Three Capabilities in One Platform</h4>
+        <p>IXP brings together three major capabilities under a single product in Automation Cloud:</p>
+        <ul>
+          <li><strong>Document Understanding (DU)</strong> — Extract data from structured &amp; semi-structured documents (forms, invoices, purchase orders, etc.)</li>
+          <li><strong>Generative Extraction for Unstructured &amp; Complex Documents</strong> — Use generative AI to extract data from high-complexity, varied-structure documents (contracts, reports, lease agreements)</li>
+          <li><strong>Communications Mining (CM)</strong> — Extract intent, sentiment, and context from emails, tickets, and messages</li>
+        </ul>
+      </div>
+
+      <table class="comparison-table" aria-label="IXP capabilities comparison">
+        <thead>
+          <tr><th>Capability</th><th>Best For</th><th>Example Documents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Document Understanding</strong></td><td>Structured &amp; semi-structured docs</td><td>Forms, invoices, purchase orders, applications</td></tr>
+          <tr><td><strong>IXP Unstructured &amp; Complex Docs</strong></td><td>High-complexity, varying-layout docs (&lt;150 pages)</td><td>Contracts, reports, lease agreements, brokerage statements</td></tr>
+          <tr><td><strong>Communications Mining</strong></td><td>Email &amp; short-form communications (50k+ messages)</td><td>Emails, workflow tickets, messages</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Lesson 2 -->
+    <section class="lesson" aria-label="Lesson 2">
+      <h2 class="lesson-title"><span class="lesson-num">L2</span> IXP Capabilities Deep Dive</h2>
+
+      <h3 style="margin-bottom:.75rem;">Document Understanding (DU)</h3>
+      <p>Document Understanding enables you to extract relevant data from <strong>structured and semi-structured documents</strong> — documents that follow a consistent layout or format. DU is available as a standalone capability in Automation Cloud, Automation Suite, and Standalone deployments.</p>
+      <ul>
+        <li>Supports OCR (UiPath, Google, Microsoft, ABBYY engines)</li>
+        <li>Classification: keyword-based, ML-based, or intelligent hybrid</li>
+        <li>Extraction: rule-based (RegEx, Form Extractor), ML-based (out-of-the-box and custom)</li>
+        <li>Human-in-the-loop validation via Action Center</li>
+        <li>Modern experience with Active Learning for fast model training</li>
+      </ul>
+
+      <h3 style="margin:1.25rem 0 .75rem;">IXP for Complex &amp; Unstructured Documents</h3>
+      <p>This capability uses <strong>Generative AI</strong> to extract data from documents that have complex tables, free-form text, varying layouts, or inferred values not explicitly present. It is particularly powerful for:</p>
+      <div class="tag-list">
+        <span class="tag tag--orange">Contracts</span>
+        <span class="tag tag--orange">Lease Agreements</span>
+        <span class="tag tag--orange">Legal Documents</span>
+        <span class="tag tag--orange">Brokerage Statements</span>
+        <span class="tag tag--orange">Insurance Policies</span>
+        <span class="tag tag--orange">Medical Reports</span>
+        <span class="tag tag--orange">Engineering Specs</span>
+      </div>
+      <p style="margin-top:.75rem;">Key differentiators of IXP for Complex Docs:</p>
+      <ul>
+        <li>Generative AI with prompt-based extraction (no large labeled datasets needed to start)</li>
+        <li>Rapid prototyping — see predictions immediately without training</li>
+        <li>Built-in ground truth annotation for model evaluation</li>
+        <li>Model versioning, performance comparison, and deployment management</li>
+        <li>Supports documents up to 150 pages</li>
+      </ul>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>DU vs IXP for Complex Docs:</strong> Use Document Understanding for structured/semi-structured docs (invoices, forms). Use IXP Complex Docs for documents with &lt;150 pages that have complex tables, graphics, free-form text, inferred values, or 'packet' documents with multiple document types.</div>
+      </div>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Communications Mining (CM)</h3>
+      <p>Communications Mining extracts key intent, sentiment, and context data from messages and communications. Best suited for high-volume email and ticket processing (50k+ messages for best UX &amp; ROI). It provides:</p>
+      <ul>
+        <li>Annotation &amp; Validation UI with confidence scores</li>
+        <li>Retraining for continuous improvement</li>
+        <li>Analytics and insights dashboards</li>
+      </ul>
+    </section>
+
+    <!-- Lesson 3 -->
+    <section class="lesson" aria-label="Lesson 3">
+      <h2 class="lesson-title"><span class="lesson-num">L3</span> Choosing the Right IXP Capability</h2>
+
+      <p>Understanding which IXP capability to use for your use case is critical for success. Here is a decision guide:</p>
+
+      <table class="comparison-table" aria-label="Decision guide for IXP capability selection">
+        <thead>
+          <tr><th>Use Case</th><th>Recommended Capability</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Invoice processing</td><td>DU – Out-of-the-box ML Extractor</td><td>Pre-trained, no setup needed</td></tr>
+          <tr><td>Tax forms (1040, W2)</td><td>DU – Form Extractor</td><td>Fixed layout, rule-based</td></tr>
+          <tr><td>Custom semi-structured docs</td><td>DU – Modern Project (Active Learning)</td><td>Custom ML with fast training</td></tr>
+          <tr><td>Contracts / Lease agreements</td><td>IXP Complex Docs</td><td>Complex tables, free-form, varying layouts</td></tr>
+          <tr><td>Insurance policies &lt;150 pages</td><td>IXP Complex Docs</td><td>Complex &amp; unstructured</td></tr>
+          <tr><td>Reports / Contracts &gt;150 pages</td><td>DU Generative Extraction (RAG)</td><td>Built-in RAG for long docs</td></tr>
+          <tr><td>Email classification &amp; intent</td><td>Communications Mining</td><td>Optimized for high-volume comms</td></tr>
+          <tr><td>Legacy/structured, high volume</td><td>DU Classic (Workflow)</td><td>Low AI tolerance, rule-based control</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--note">
+        <span class="callout-icon">📌</span>
+        <div><strong>IXP is the umbrella:</strong> When someone says "IXP," they are referring to the full platform. Document Understanding and Communications Mining are components within IXP. In day-to-day usage, "IXP for complex documents" usually refers to the generative extraction capability for unstructured docs.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 4 -->
+    <section class="lesson" aria-label="Lesson 4">
+      <h2 class="lesson-title"><span class="lesson-num">L4</span> IXP Use Cases Across Industries</h2>
+
+      <div class="info-card">
+        <h4>Typical Use Cases by Industry</h4>
+        <table class="comparison-table" style="margin:0;">
+          <thead><tr><th>Industry</th><th>Document Types</th></tr></thead>
+          <tbody>
+            <tr><td>Legal / Law Firms</td><td>Employment Agreements, Operating Agreements, Investment Agreements</td></tr>
+            <tr><td>Healthcare</td><td>Physician Statements, ER Reports, Patient Referrals</td></tr>
+            <tr><td>Finance / Banking</td><td>Brokerage Statements, Loan Applications, Credit Reports</td></tr>
+            <tr><td>Insurance</td><td>Insurance Policies, Claims, Coverage Denial Letters</td></tr>
+            <tr><td>Real Estate</td><td>Leases, Mortgages, Property Appraisal Reports</td></tr>
+            <tr><td>Retail</td><td>Refund Requests, Customer Complaints, Product Catalogues</td></tr>
+            <tr><td>Manufacturing</td><td>Change Orders, Product Specifications, Supply Orders</td></tr>
+            <tr><td>Technology</td><td>Service Agreements, Software Licenses, Incident Reports</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Knowledge Check -->
+    <section class="quiz-section" id="quiz-01" aria-label="Knowledge check">
+      <h3>✅ Knowledge Check</h3>
+
+      <div class="quiz-question" data-correct="b" data-explanation="IXP (Intelligent Extraction Processing) is UiPath's unified IDP platform that includes Document Understanding, Generative Extraction for complex docs, and Communications Mining.">
+        <p>1. What is UiPath IXP?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> A single OCR engine for scanning documents</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> UiPath's unified intelligent document processing platform combining DU, generative extraction, and communications mining</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> A robotic process automation framework for data entry</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> A UiPath Studio plugin for reading PDFs</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="c" data-explanation="IXP Complex Docs is designed for documents under 150 pages with complex tables, free-form text, and varying layouts. For 150+ pages, use DU with built-in RAG.">
+        <p>2. Which IXP capability should you use for a 50-page insurance policy with complex tables and free-form text?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> DU Out-of-the-box ML Extractor</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> Communications Mining</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> IXP for Unstructured &amp; Complex Documents</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> Form Extractor</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="d" data-explanation="Communications Mining is optimized for email and ticket processing, especially at high volumes (50k+ messages).">
+        <p>3. Which IXP capability is best suited for processing thousands of customer support emails to extract intent and sentiment?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q3" value="a" /> IXP Complex Documents</label></li>
+          <li><label data-value="b"><input type="radio" name="q3" value="b" /> Document Understanding Classic</label></li>
+          <li><label data-value="c"><input type="radio" name="q3" value="c" /> Form Extractor</label></li>
+          <li><label data-value="d"><input type="radio" name="q3" value="d" /> Communications Mining</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn" aria-label="Submit answers">Submit Answers</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <!-- Module Navigation -->
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="../index.html" class="btn btn-outline">← Back to Home</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn" aria-label="Mark module as complete">Mark as Complete</button>
+      </div>
+      <a href="module-02-document-understanding.html" class="btn btn-primary">Next: Document Understanding →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-01');</script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 03 – Structured Documents (DIY) | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03" class="active">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <header class="module-header">
+      <div class="module-header__number">Module 03 of 07</div>
+      <h1>Exercise 1: Extracting Data from Structured Documents</h1>
+      <div class="module-header__meta">
+        <span>⏱ ~3 hours</span><span>🔨 Hands-On DIY</span><span>🎯 Intermediate</span>
+      </div>
+    </header>
+
+    <div class="objectives-box">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what structured documents are and how to process them</li>
+        <li>Use the Intelligent OCR activities package in UiPath Studio</li>
+        <li>Build a workflow to extract data from a fixed-layout form (Form 1040X) using Form Extractor</li>
+        <li>Build a workflow to extract data from a Vehicle Damage Report using RegEx Extractor</li>
+        <li>Configure taxonomy and test your extraction results</li>
+      </ul>
+    </div>
+
+    <!-- Lesson 1 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L1</span> Intelligent OCR Activities Package</h2>
+
+      <p>The <strong>UiPath.IntelligentOCR.Activities</strong> package is the core package for building Document Understanding automations. It provides activities for the complete DU pipeline.</p>
+
+      <div class="info-card">
+        <h4>Key Activities in the Package</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Step</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Process Design: Taxonomy Manager</td><td>Define document types and fields in the DU project taxonomy</td></tr>
+            <tr><td>Pre-Processing: Load Taxonomy and input files</td><td>Load the taxonomy and input files into the workflow at runtime</td></tr>
+            <tr><td>Digitization: Digitize Document settings, OCR engine selection, OCR settings</td><td>Configure digitize settings, select OCR engine, and apply OCR settings to produce the DOM</td></tr>
+            <tr><td>Classification: Intelligent Keyword Classifier, initial training</td><td>Classify the document into a document type; perform initial classifier training</td></tr>
+            <tr><td>Classification Validation: Classification Station</td><td>Human-in-the-loop review and correction of classification results</td></tr>
+            <tr><td>Classifier Training: Train Classifiers Scope</td><td>Send corrected classification feedback for model retraining</td></tr>
+            <tr><td>Extraction: Form Extractor and RegEx Based Extractor</td><td>Extract field data from the document using layout-based or pattern-based extractors</td></tr>
+            <tr><td>Validation: Validation Station</td><td>Human-in-the-loop review and correction of extracted field values</td></tr>
+            <tr><td>Data Export: Export of validated results</td><td>Export validated results to DataTable/Excel/downstream system</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>Installing the Package:</strong> In UiPath Studio, go to Manage Packages → search for <code>UiPath.IntelligentOCR.Activities</code> → Install.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 2 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L2</span> Exercise Overview: What You'll Build</h2>
+
+      <p>In this module, you'll learn how to extract data from 2 different forms.</p>
+
+      <ul>
+        <li>Form 1040X — using <strong>Form Extractor</strong></li>
+        <li>Vehicle Damage Report — using <strong>RegEx Based Extractor</strong></li>
+      </ul>
+    </section>
+
+    <!-- Lesson 3 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L3</span> Complete Workflow Structure</h2>
+
+      <h3 class="step-group-title">Exercise 1 – Part 1: UiPath Extraction Process Setup( Till Classification step )</h3>
+
+      <video controls style="width:100%;border-radius:8px;margin-bottom:1.5rem;">
+        <source src="../Exercise 1/Exercise 1 - Part1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <p>Below are the step by step instructions on how to create the workflow in UiPath Studio.</p>
+
+      <!-- Step 1 -->
+      <div class="info-card">
+        <h4>Step 1: Install the Required Package</h4>
+        <ul>
+          <li>Open UiPath Studio and create a new Blank Project named <strong>"Extraction Process"</strong>.</li>
+          <li>Click <strong>Manage Packages</strong> in the top toolbar.</li>
+          <li>Locate <code>UiPath.IntelligentOCR.Activities</code> and install it.</li>
+        </ul>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="info-card">
+        <h4>Step 2: Create the Data Folder Structure</h4>
+        <ul>
+          <li>Open File Explorer and navigate to your project directory: <code>Documents &gt; UiPath &gt; Extraction Process</code>.</li>
+          <li>Inside the project folder, create a new folder named <strong>Data</strong>.</li>
+          <li>Inside the Data folder, create two subfolders: <strong>Inputs</strong> and <strong>Outputs</strong>.</li>
+          <li>Place all input documents (PDFs to be processed) into the Inputs folder.</li>
+        </ul>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="info-card">
+        <h4>Step 3: Configure the Taxonomy Using Taxonomy Manager</h4>
+        <ul>
+          <li>In UiPath Studio, click <strong>Taxonomy Manager</strong> in the top toolbar.</li>
+          <li>Create a new <strong>Group</strong> and name it <strong>IRS</strong>.</li>
+          <li>Under the IRS group, add a <strong>Category</strong> named <strong>Forms</strong>.</li>
+          <li>Under the Forms category, add a <strong>Document Type</strong> named <strong>Form1040X</strong>.</li>
+          <li>Under Form1040X, add the following Fields:
+            <ul>
+              <li><code>FirstName</code> — type: Text</li>
+              <li><code>LastName</code> — type: Text</li>
+              <li><code>SocialSecurityNumber</code> — type: Text</li>
+              <li><code>Address Line 1</code> — type: Text</li>
+              <li><code>Apartment Number</code> — type: Text</li>
+              <li><code>City Town Zip</code> — type: Text</li>
+              <li><code>Return_2019</code>, <code>Return_2018</code>, <code>Return_2017</code>, <code>Return_2016</code> — type: Boolean (one entry per year)</li>
+              <li><code>Dependents</code> — type: Table. Inside the Dependents table field, add columns:
+                <ul>
+                  <li><code>F_Name</code> (type: Text)</li>
+                  <li><code>SSN_Number</code> (type: Text)</li>
+                </ul>
+              </li>
+              <li><code>Signature</code> — type: Boolean</li>
+              <li><code>Date</code> — type: Date</li>
+            </ul>
+          </li>
+          <li>Create a second Document Type named <strong>VehicleRegistrationForm</strong> under a new Group called <strong>Automobiles</strong>, Category <strong>Forms</strong>. Add the following fields:
+            <ul>
+              <li><code>Registration-number</code> — type: Text</li>
+              <li><code>Inspector-name</code> — type: Name</li>
+              <li><code>Vehicle-license-number</code> — type: Text</li>
+              <li><code>Driving-license-number</code> — type: Text</li>
+              <li><code>Cost-of-Damage</code> — type: Number</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="info-card">
+        <h4>Step 4: Set Up the Main Sequence in Main.xaml</h4>
+        <ul>
+          <li>In UiPath Studio, open <strong>Main.xaml</strong>.</li>
+          <li>Add a <strong>Multiple Assign</strong> activity as the first activity in the Main Sequence.</li>
+          <li>Configure the following variable assignments:
+            <ul>
+              <li><code>InputsFolder = ".\Data\Inputs"</code></li>
+              <li><code>OutputsFolder = ".\Data\Outputs"</code></li>
+              <li><code>AllFiles = Directory.GetFiles(InputsFolder)</code></li>
+            </ul>
+          </li>
+          <li>In the Variables panel (Data Manager tab), confirm the following variables are created:
+            <ul>
+              <li><code>AllFiles</code> — type: String[], scope: Main</li>
+              <li><code>OutputsFolder</code> — type: String, scope: Main</li>
+              <li><code>InputsFolder</code> — type: String, scope: Main</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="info-card">
+        <h4>Step 5: Add the Load Taxonomy Activity</h4>
+        <ul>
+          <li>Below the Multiple Assign, add a <strong>Taxonomy</strong> container (scope activity).</li>
+          <li>Inside the Taxonomy scope, add a <strong>Log Message</strong> activity with message: <code>"** Load Taxonomy **"</code>, Log Level: Info.</li>
+          <li>Below the Log Message, add a <strong>Load Taxonomy</strong> activity.
+            <ul>
+              <li>In the Output field, assign the result to a new variable: <code>DocTaxonomy</code> (type: DocumentTaxonomy, scope: Main).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="info-card">
+        <h4>Step 6: Add a For Each Loop to Iterate Over All Files</h4>
+        <ul>
+          <li>Below the Taxonomy scope, add a <strong>For Each</strong> activity.
+            <ul>
+              <li>Set <strong>In</strong> to <code>AllFiles</code>.</li>
+              <li>In the Properties panel, set Argument type to <strong>String</strong>.</li>
+            </ul>
+          </li>
+          <li>Inside the For Each Body, add a <strong>Log Message</strong> with the message expression: <code>"Processing File : " + currentText</code>, Log Level: Info.</li>
+        </ul>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="info-card">
+        <h4>Step 7: Add the Digitize Document Activity</h4>
+        <ul>
+          <li>Inside the For Each Body, after the Log Message, add a <strong>Digitize Document</strong> activity (from Activities panel under App Integration &gt; Document Understanding).
+            <ul>
+              <li>Set <strong>Document Path</strong> to <code>currentText</code>.</li>
+              <li>Set <strong>OCR Engine</strong> to <strong>UiPath Document OCR</strong>.</li>
+              <li>In Output, assign:
+                <ul>
+                  <li>Document Text → new variable <code>DocText</code> (type: String, scope: For Each currentText)</li>
+                  <li>Document Object Model → new variable <code>DocDOM</code> (type: Document, scope: For Each currentText)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="info-card">
+        <h4>Step 8: Add the Classify Document Scope</h4>
+        <ul>
+          <li>After the Digitize Document activity, add a <strong>Log Message</strong> with message <code>"** Classification **"</code>.</li>
+          <li>Then add a <strong>Classify Document Scope</strong> activity.
+            <ul>
+              <li>Set <strong>Document Path</strong> to <code>currentText</code>.</li>
+              <li>Set <strong>Document Text</strong> to <code>DocText</code>.</li>
+              <li>Set <strong>Document Object Model</strong> to <code>DocDOM</code>.</li>
+              <li>Set <strong>Taxonomy</strong> to <code>DocTaxonomy</code>.</li>
+              <li>In Output, assign Classification Results to a new variable <code>DocClassificationResults</code> (type: ClassificationResult[], scope: For Each currentText).</li>
+            </ul>
+          </li>
+          <li>Inside the Classify Document Scope, drop in an <strong>Intelligent Keyword Classifier</strong> from the Classifiers section of the Activities panel.</li>
+        </ul>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="info-card">
+        <h4>Step 9: Configure the Intelligent Keyword Classifier – Manage Learning</h4>
+        <ul>
+          <li>Click on the <strong>Intelligent Keyword Classifier</strong> activity in the canvas.
+            <ul>
+              <li>In Properties, set <strong>LearningFilePath</strong>: point to a file in the DocumentProcessing folder (e.g., <code>"DocumentProcessing\LearningFilePath"</code>) — save this file via the file browser dialog.</li>
+            </ul>
+          </li>
+          <li class="callout-inline"><strong>Note:</strong> Create a blank new file <code>LearningFilePath.json</code> in the DocumentProcessing folder.</li>
+          <li>Click <strong>Manage Learning</strong> inside the activity.
+            <ul>
+              <li>In the Manage Learning dialog, you will see Document Types: <strong>Form1040X</strong> and <strong>VehicleRegistrationForm</strong>, each showing "No training for this document type."</li>
+            </ul>
+          </li>
+          <li>For <strong>Form1040X</strong>, click <strong>Start Training…</strong>:
+            <ul>
+              <li>Select 3–4 PDF files from <code>Data\Inputs</code>.</li>
+              <li>OCR Engine is pre-populated: UiPath Document OCR, with the endpoint and API key already set.</li>
+              <li>Click <strong>Start Training</strong> and wait for the digitization and training progress bar to complete (100%).</li>
+            </ul>
+          </li>
+          <li>For <strong>VehicleRegistrationForm</strong>, click <strong>Start Training…</strong>:
+            <ul>
+              <li>Select 3–4 PDF files from <code>Data\Inputs</code>.</li>
+              <li>Click <strong>Start Training</strong> and wait for completion.</li>
+            </ul>
+          </li>
+          <li>After training completes, both document types will show their trained word vectors in the Manage Learning dialog.</li>
+          <li>Click <strong>Save</strong> and close the Manage Learning dialog.</li>
+        </ul>
+      </div>
+
+      <!-- Step 10 -->
+      <div class="info-card">
+        <h4>Step 10: Add the Present Classification Station</h4>
+        <ul>
+          <li>After the Classify Document Scope, add a <strong>Log Message</strong> with message <code>"** Classification Validation **"</code>.</li>
+          <li>Add a <strong>Present Classification Station</strong> activity.
+            <ul>
+              <li>Set <strong>Document Path</strong> to <code>currentText</code>.</li>
+              <li>Set <strong>Document Text</strong> to <code>DocText</code>.</li>
+              <li>Set <strong>Document Object Model</strong> to <code>DocDOM</code>.</li>
+              <li>Set <strong>Taxonomy</strong> to <code>DocTaxonomy</code>.</li>
+              <li>Set <strong>Automatic Classification Results</strong> to <code>DocClassificationResults</code>.</li>
+              <li>In Output, assign Validated Classification Results to a new variable <code>DocClassificationResults_H</code> (type: ClassificationResult[]).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 11 -->
+      <div class="info-card">
+        <h4>Step 11: Add the Train Classifiers Scope</h4>
+        <ul>
+          <li>After the Present Classification Station, add a <strong>Log Message</strong> with message <code>"** Classification Trainer **"</code>.</li>
+          <li>Add a <strong>Train Classifiers Scope</strong> activity.
+            <ul>
+              <li>Set <strong>Document Path</strong> to <code>currentText</code>.</li>
+              <li>Set <strong>Document Text</strong> to <code>DocText</code>.</li>
+              <li>Set <strong>Document Object Model</strong> to <code>DocDOM</code>.</li>
+              <li>Set <strong>Taxonomy</strong> to <code>DocTaxonomy</code>.</li>
+              <li>Set <strong>Human Validated Classification Data</strong> to <code>DocClassificationResults_H</code>.</li>
+            </ul>
+          </li>
+          <li>Inside the Train Classifiers Scope, drop in the <strong>Intelligent Keyword Classifier Trainer</strong> activity.
+            <ul>
+              <li>Set <strong>Learning File Path</strong> to <code>"DocumentProcessing\..."</code> (same path used in Step 9).</li>
+              <li>Click <strong>Configure Classifiers</strong> to verify the classifier is bound correctly.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 12 -->
+      <div class="info-card">
+        <h4>Step 12: Run and Validate the Process</h4>
+        <ul>
+          <li>Click <strong>Debug</strong> (or Run) in the top toolbar to execute the automation.</li>
+          <li>Monitor the Output panel to verify the process logs:
+            <ul>
+              <li><code>** Load Taxonomy **</code></li>
+              <li><code>Processing File : .\Data\Inputs\&lt;filename&gt;</code></li>
+              <li><code>** Classification **</code></li>
+              <li><code>** Classification Validation **</code></li>
+              <li><code>** Classification Trainer **</code></li>
+            </ul>
+          </li>
+          <li>Confirm that each file in the Inputs folder is processed through Digitize → Classify → Validate → Train in sequence.</li>
+          <li>The automation processes all files in AllFiles (Form1040X PDFs and VehicleDamageReport PDFs) iteratively, training the classifier incrementally with human-validated results.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Lesson 4 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L4</span> Complete Workflow Structure</h2>
+
+      <h3 class="step-group-title">Exercise 1 – Part 2: UiPath Extraction Process – Data Extraction, Validation &amp; Export</h3>
+
+      <video controls style="width:100%;border-radius:8px;margin-bottom:1.5rem;">
+        <source src="../Exercise 1/Exercise 1 - Part2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <p>Continued from previous exercise…</p>
+
+      <p>Below are the step by step instructions on how to create the workflow in UiPath Studio.</p>
+
+      <!-- Step 1 -->
+      <div class="info-card">
+        <h4>Step 1: Add a For Each Loop for Classification Results</h4>
+        <ul>
+          <li>After the Train Classifiers Scope activity in Main.xaml, add a <strong>For Each</strong> activity.
+            <ul>
+              <li>Set <strong>In</strong> to <code>DocClassificationResults_H</code>.</li>
+              <li>Rename the iterator variable to <code>currentClassificationResult</code>.</li>
+              <li>In the Properties panel, set Item name to <code>currentClassificationResult</code> and Argument type to <code>UiPath.DocumentProcessing.Contracts.Results.ClassificationResult</code>.</li>
+            </ul>
+          </li>
+          <li>In the Variables panel, confirm a new variable <code>Counter</code> is created (type: Int32, scope: For Each currentText).</li>
+        </ul>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="info-card">
+        <h4>Step 2: Add the Data Extraction Scope</h4>
+        <ul>
+          <li>Inside the For Each currentClassificationResult Body, add a <strong>Log Message</strong> with the message <code>"** Extract Data from Document **"</code>, Log Level: Info.</li>
+          <li>Below it, add a <strong>Data Extraction Scope</strong> activity (from Activities &gt; App Integration &gt; Document Understanding).
+            <ul>
+              <li>Configure the following inputs in the Properties panel:
+                <ul>
+                  <li><strong>ClassificationResult:</strong> <code>currentClassificationResult</code></li>
+                  <li><strong>DocumentObjectModel:</strong> <code>DocDOM</code></li>
+                  <li><strong>DocumentPath:</strong> <code>currentText</code></li>
+                  <li><strong>DocumentText:</strong> <code>DocText</code></li>
+                  <li><strong>Taxonomy:</strong> <code>DocTaxonomy</code></li>
+                </ul>
+              </li>
+              <li>In Output, assign Extraction Results to a new variable <code>DocExtractionResults</code> (type: ExtractionResult, scope: For Each currentClassificationResult).</li>
+            </ul>
+          </li>
+          <li>Inside the Data Extraction Scope, drop in a <strong>Form Extractor</strong> activity (from Activities &gt; Extractors).</li>
+        </ul>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="info-card">
+        <h4>Step 3: Configure the Form Extractor Template (Template Manager)</h4>
+        <ul>
+          <li>Click on the <strong>Form Extractor</strong> activity, then click <strong>Manage Templates</strong> (or open Template Manager from the activity).</li>
+          <li>In the Template Manager dialog, click <strong>Create Template</strong>.</li>
+          <li>In the Create a new template dialog:
+            <ul>
+              <li>Set <strong>Document Type</strong> to <strong>Form1040X</strong>.</li>
+              <li>Set <strong>Template name</strong> to <strong>Template_1040X</strong>.</li>
+              <li>Select one file from <code>Data\Inputs</code> folder (preferably a native document).</li>
+              <li>Set <strong>OCR Engine</strong> to <strong>UiPath Document OCR</strong>.</li>
+              <li>Pre-fill Endpoint, Api Key, and Timeout fields with the same credentials used previously.</li>
+              <li>Leave <strong>Apply OCR on PDF</strong> as <strong>Auto</strong>.</li>
+              <li>Click <strong>Configure</strong> — the system digitizes the document and opens the Template Editor.</li>
+            </ul>
+          </li>
+          <li>In the Template Editor, the document opens showing the Form 1040-X (two pages). Map the fields as described in the video.</li>
+          <li>After all fields are mapped, click <strong>Submit</strong> to save the template.</li>
+        </ul>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="info-card">
+        <h4>Step 4: Configure the Regex Based Extractor</h4>
+        <ul>
+          <li>In the Data Extraction Scope, also drop in a <strong>Regex Based Extractor</strong> activity (from Activities &gt; Extractors).</li>
+          <li>Click <strong>Configure Regular Expressions</strong> inside the activity.</li>
+        </ul>
+        <table class="comparison-table" style="margin:.75rem 0 0;">
+          <thead><tr><th>Field</th><th>Regex</th></tr></thead>
+          <tbody>
+            <tr><td>Registration Number</td><td><code>registration\s+number:\D*(\d{2})(-)(\d{7})</code></td></tr>
+            <tr><td>Inspector Name</td><td><code>report\s+prepared\s+by:\s*(.+?)\s*designation</code></td></tr>
+            <tr><td>Vehicle License Number</td><td><code>vehicle\s+license\s+number:\s*(.+?)\s*drive</code></td></tr>
+            <tr><td>Driving License Number</td><td><code>driving\s+license\s+number:\s*(?&lt;dlicense&gt;.+?)\s*brief|nature</code></td></tr>
+            <tr><td>Cost Of Damage</td><td><code>cost\s+of\s+damage.+?(\d+)</code></td></tr>
+          </tbody>
+        </table>
+        <ul style="margin-top:.75rem;">
+          <li>Click <strong>Save</strong> in the Configure Regular Expressions dialog.</li>
+        </ul>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="info-card">
+        <h4>Step 5: Configure Extractors via Configure Extractors Dialog</h4>
+        <ul>
+          <li>Inside the Data Extraction Scope, click <strong>Configure Extractors</strong>.</li>
+          <li>In the Configure Extractors dialog:
+            <ul>
+              <li>For <strong>Form1040X</strong>: check the <strong>Form Extractor</strong> checkbox (blue check) to activate it.</li>
+              <li>For <strong>VehicleRegistrationForm</strong>: leave Form Extractor unchecked; check <strong>Regex Based Extractor</strong>.</li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="info-card">
+        <h4>Step 6: Add the Present Validation Station</h4>
+        <ul>
+          <li>After the Data Extraction Scope, add a <strong>Log Message</strong> with the message <code>"** Validate Extracted Data from Document **"</code>, Log Level: Info.</li>
+          <li>Below it, add a <strong>Present Validation Station</strong> activity.
+            <ul>
+              <li>Configure inputs:
+                <ul>
+                  <li><strong>Document Path:</strong> <code>currentText</code></li>
+                  <li><strong>Document Text:</strong> <code>DocText</code></li>
+                  <li><strong>Document Object Model:</strong> <code>DocDOM</code></li>
+                  <li><strong>Taxonomy:</strong> <code>DocTaxonomy</code></li>
+                  <li><strong>Automatic Extraction Results:</strong> <code>DocExtractionResults</code></li>
+                </ul>
+              </li>
+              <li>In Output, assign Validated Extraction Results to a new variable <code>DocExtractionsResults_H</code> (type: ExtractionResult, scope: For Each currentClassificationResult).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="info-card">
+        <h4>Step 7: Build the Results File Path</h4>
+        <ul>
+          <li>After the Present Validation Station, add a <strong>Sequence</strong> container named <strong>Get ResultsFilePath</strong>.</li>
+          <li>Inside the sequence, add a <strong>Log Message</strong> with the message <code>"** Create Path for Results File **"</code>, Log Level: Info.</li>
+          <li>Below it, add a <strong>Multiple Assign</strong> activity with the following assignments:
+            <ul>
+              <li>First row:<br/><code>FileName = Path.GetFileNameWithoutExtension(currentText)</code><br/>Create a new variable <code>FileName</code> (type: String, scope: For Each currentClassificationResult).</li>
+              <li>Second row:<br/><code>ResultsFilePath = Path.Combine(OutputsFolder, FileName + "-" + Counter.ToString("000") + ".xlsx")</code><br/>Create a new variable <code>ResultsFilePath</code> (type: String).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="info-card">
+        <h4>Step 8: Add Export Extraction Results and Output Loop</h4>
+        <ul>
+          <li>After the Get ResultsFilePath sequence, add a <strong>Log Message</strong> with the message <code>"** Extract Data/ Outputs **"</code>, Log Level: Info.</li>
+          <li>Below it, add an <strong>Export Extraction Results</strong> activity.
+            <ul>
+              <li>Set <strong>Extraction Results</strong> input to <code>DocExtractionsResults_H</code>.</li>
+              <li>In Output, assign DataSet to a new variable <code>DocExtrcationResultsDS</code> (type: DataSet).</li>
+            </ul>
+          </li>
+          <li>Below it, add a <strong>For Each</strong> activity named <strong>For Each currentDataTable</strong>:
+            <ul>
+              <li>Set <strong>In</strong> to <code>DocExtrcationResultsDS.Tables</code>.</li>
+              <li>Rename iterator to <code>currentDataTable</code>.</li>
+              <li>Add a <strong>Write Range Workbook</strong> activity:
+                <ul>
+                  <li><code>FilePath = ResultsFilePath</code></li>
+                  <li><code>Table Name = currentDataTable.TableName</code></li>
+                  <li><code>Table = currentDataTable</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="info-card">
+        <h4>Step 9: Save and Verify the Final Workflow</h4>
+        <ul>
+          <li>Press <strong>Ctrl+S</strong> to save Main.xaml.</li>
+          <li>The overall Main Sequence flow is now: <code>Multiple Assign</code> → <code>Taxonomy (Load Taxonomy)</code> → <code>For Each currentText</code> [Digitize → Classify → Present Classification Station → Train Classifiers → <code>For Each currentClassificationResult</code> [Extract → Validate → Build Path → Export]].</li>
+          <li>Click <strong>Debug</strong> to run the full process and confirm all steps execute without errors and the output is stored in an Excel file in the Outputs folder.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Knowledge Check -->
+    <section class="quiz-section" id="quiz-03">
+      <h3>✅ Knowledge Check</h3>
+
+      <div class="quiz-question" data-correct="b" data-explanation="The Form Extractor uses anchor-based positioning to locate field values on fixed-layout forms.">
+        <p>1. Which extractor is best for a government tax form that always has the same layout?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> ML Extractor</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> Form Extractor</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> Generative Extractor</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> Keyword Classifier</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="c" data-explanation="Load Taxonomy is the first step — it loads the document types and field definitions used by classifiers and extractors.">
+        <p>2. Which activity should be the first in a Document Understanding workflow?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> Digitize Document</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> Data Extraction Scope</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> Load Taxonomy</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> Export Extraction Results</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="a" data-explanation="The RegEx Extractor uses pattern matching on the OCR text — it does not use template positions or ML models.">
+        <p>3. How does the RegEx Based Extractor find field values?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q3" value="a" /> By scanning the digitized text for defined pattern matches</label></li>
+          <li><label data-value="b"><input type="radio" name="q3" value="b" /> By referencing a pre-trained ML model</label></li>
+          <li><label data-value="c"><input type="radio" name="q3" value="c" /> By using anchor positions on the document layout</label></li>
+          <li><label data-value="d"><input type="radio" name="q3" value="d" /> By calling the UiPath Document Understanding Cloud API</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn">Submit Answers</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-02-document-understanding.html" class="btn btn-outline">← Previous: DU Overview</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="module-04-semistructured-docs.html" class="btn btn-primary">Next: Semi-Structured Docs →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-03');</script>
+</body>
+</html>

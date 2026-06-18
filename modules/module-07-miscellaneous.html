@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 07 – Miscellaneous Topics | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07" class="active">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <header class="module-header">
+      <div class="module-header__number">Module 07 of 07</div>
+      <h1>Miscellaneous Topics: Licensing, Use Cases &amp; Resources</h1>
+      <div class="module-header__meta">
+        <span>⏱ ~10 minutes</span><span>📖 Reference</span><span>🎯 All Levels</span>
+      </div>
+    </header>
+
+    <div class="objectives-box">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand DU/IXP licensing models and how consumption is measured</li>
+        <li>Identify typical DU use cases across industries</li>
+        <li>Know supported document limits and data constraints</li>
+        <li>Find the right documentation and resources for deeper learning</li>
+      </ul>
+    </div>
+
+    <!-- Lesson 1: Licensing -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L1</span> Licensing Overview</h2>
+
+      <p>Understanding how Document Understanding and IXP are licensed helps you plan your automation projects and avoid unexpected costs.</p>
+
+      <div class="info-card">
+        <h4>DU Licensing Models</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>License Type</th><th>Unit</th><th>Key Limits</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Community Edition</strong></td><td>No unit display on Licenses page</td><td>2 pages/4MB per doc, 50 requests/hour, data stored for QA</td></tr>
+            <tr><td><strong>Enterprise Edition</strong></td><td>Pages (shown on Licenses page)</td><td>20 megapixels/page, 10MB per doc (JSON-Base64), data NOT stored</td></tr>
+            <tr><td><strong>Public Endpoints (all)</strong></td><td>Pages</td><td>Max 30 pages per document via public endpoint; deploy as ML Skill for more</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <h4>What Consumes Licenses?</h4>
+        <ul>
+          <li><strong>Page-based consumption</strong>: Each page processed through DU extraction consumes license units</li>
+          <li><strong>Modern Projects</strong>: Do NOT consume AI units for training or model serving — infrastructure is managed by UiPath</li>
+          <li><strong>Classic Projects / AI Center</strong>: Consume AI units for model training pipelines and ML Skill serving</li>
+          <li><strong>IXP Complex Documents</strong>: Uses a separate consumption model — check your license agreement</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>Cost Optimization Tip:</strong> For high-volume workflows, pre-filter documents before OCR to avoid processing pages you don't need. For example, if you only need page 1 of a 50-page document, split it first.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 2: Use Cases -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L2</span> DU Use Case Examples</h2>
+
+      <div class="info-card">
+        <h4>Finance &amp; Accounts Payable</h4>
+        <ul>
+          <li><strong>Invoice Processing</strong>: Extract vendor, amount, line items from invoices; post to ERP (SAP, Oracle)</li>
+          <li><strong>Purchase Order Matching</strong>: Match POs against invoices for 3-way matching</li>
+          <li><strong>Expense Report Processing</strong>: Extract receipt data for reimbursement workflows</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Human Resources</h4>
+        <ul>
+          <li><strong>Resume Screening</strong>: Extract candidate info from CVs for ATS upload</li>
+          <li><strong>Onboarding Document Processing</strong>: Extract data from employment forms, ID documents</li>
+          <li><strong>Offer Letter Generation</strong>: Extract from templates to generate personalized letters</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Legal &amp; Compliance</h4>
+        <ul>
+          <li><strong>Contract Analysis</strong>: Extract key clauses, dates, parties from contracts</li>
+          <li><strong>Due Diligence</strong>: Process large volumes of legal documents for M&amp;A</li>
+          <li><strong>Regulatory Submissions</strong>: Extract and validate data from regulatory forms</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Healthcare</h4>
+        <ul>
+          <li><strong>Claims Processing</strong>: Extract claim data from insurance forms</li>
+          <li><strong>Patient Record Digitization</strong>: Extract structured data from medical records</li>
+          <li><strong>Prescription Processing</strong>: Extract medication details from prescription forms</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Banking &amp; Insurance</h4>
+        <ul>
+          <li><strong>Loan Application Processing</strong>: Extract applicant data from loan applications</li>
+          <li><strong>KYC Document Processing</strong>: Extract ID, address verification from identity documents</li>
+          <li><strong>Insurance Policy Intake</strong>: Extract coverage details from policy documents</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lesson 3: Supported Models & Limits -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L3</span> Supported Models &amp; Data Limits Summary</h2>
+
+      <div class="info-card">
+        <h4>Document Understanding: Activity Packages</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Package</th><th>Best For</th><th>Deployment</th></tr></thead>
+          <tbody>
+            <tr><td><code>UiPath.DocumentUnderstanding.Activities</code></td><td>Modern Projects (Active Learning)</td><td>Automation Cloud only</td></tr>
+            <tr><td><code>UiPath.IntelligentOCR.Activities</code></td><td>Classic Projects, AI Center, on-prem</td><td>Cloud, Suite, Standalone</td></tr>
+            <tr><td><code>UiPath.DocumentUnderstanding.ML.Activities</code></td><td>ML Extractors, AI Center integration</td><td>Cloud, Suite, Standalone</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <h4>Model Version Reference</h4>
+        <ul>
+          <li><strong>Modern Projects</strong>: Always uses the latest model version (currently 24.4+)</li>
+          <li><strong>Classic Projects</strong>: Supports model version 24.4 and all older versions</li>
+          <li><strong>AI Center-based</strong>: Supports 24.4+ and all older versions; exports supported</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>IXP Complex Documents: Key Limits</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Max document pages</td><td>150 pages</td></tr>
+            <tr><td>Supported formats</td><td>PDF, PNG, JPG/JPEG, TIF/TIFF</td></tr>
+            <tr><td>Deployment</td><td>Automation Cloud (Automation Suite/Standalone: check roadmap)</td></tr>
+            <tr><td>LLM Backend</td><td>Specialized UiPath models + Azure OpenAI (data residency per region)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Lesson 4: Resources -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L4</span> Resources &amp; Further Learning</h2>
+
+      <div class="info-card">
+        <h4>Official Documentation</h4>
+        <ul>
+          <li>📄 <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Document Understanding Docs</a> — Main documentation hub</li>
+          <li>📄 <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/migrating-existing-modern-projects" target="_blank" rel="noopener">Migrating Classic to Modern Projects</a></li>
+          <li>📄 <a href="https://docs.uipath.com/intelligent-extraction-processing" target="_blank" rel="noopener">IXP Documentation</a> — IXP platform docs</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>UiPath Academy</h4>
+        <ul>
+          <li>🎓 Document Understanding Specialist course (Automation Developer track)</li>
+          <li>🎓 UiPath AI Center Deep Dive</li>
+          <li>🎓 Document Understanding Foundation course for business users</li>
+        </ul>
+        <p><a href="https://academy.uipath.com" target="_blank" rel="noopener">academy.uipath.com →</a></p>
+      </div>
+
+      <div class="info-card">
+        <h4>UiPath Marketplace</h4>
+        <ul>
+          <li>DU Framework template (production-ready starting point)</li>
+          <li>Pre-built workflows for common use cases (invoice processing, PO matching)</li>
+        </ul>
+        <p><a href="https://marketplace.uipath.com" target="_blank" rel="noopener">marketplace.uipath.com →</a></p>
+      </div>
+
+      <div class="info-card">
+        <h4>Community &amp; Support</h4>
+        <ul>
+          <li>💬 <a href="https://community.uipath.com" target="_blank" rel="noopener">UiPath Community Forum</a></li>
+          <li>🐛 <a href="https://support.uipath.com" target="_blank" rel="noopener">UiPath Support Portal</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Course Completion -->
+    <section class="quiz-section" id="quiz-07" style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-color: var(--success);">
+      <h3>🎉 Course Summary &amp; Final Check</h3>
+
+      <p>Congratulations on reaching the final module! Let's do a quick recap of what you've learned:</p>
+
+      <div class="info-card" style="margin-top:1rem">
+        <h4>Course Summary</h4>
+        <ul>
+          <li>✅ <strong>Module 01</strong>: IXP = Document Understanding + Complex Docs + Communications Mining</li>
+          <li>✅ <strong>Module 02</strong>: DU pipeline — Digitize → Classify → Extract → Validate → Export</li>
+          <li>✅ <strong>Module 03</strong>: Structured docs — Form Extractor &amp; RegEx Extractor with Intelligent OCR</li>
+          <li>✅ <strong>Module 04</strong>: Semi-structured docs — Active Learning, OOTB models, Build/Measure/Publish</li>
+          <li>✅ <strong>Module 05</strong>: Unstructured/Complex — Generative AI extraction, IXP taxonomy, model lifecycle</li>
+          <li>✅ <strong>Module 06</strong>: DU Framework — architecture, error handling, custom success logic</li>
+          <li>✅ <strong>Module 07</strong>: Licensing, use cases, and resources</li>
+        </ul>
+      </div>
+
+      <div class="quiz-question" data-correct="b" data-explanation="Human validation in DU is handled through UiPath Action Center, where low-confidence extractions are routed for human review. This is part of the human-in-the-loop pattern.">
+        <p>Final Question: How does Document Understanding handle extraction results that fall below the confidence threshold?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> The workflow stops and logs an error</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> They are routed to Action Center for human review and correction (human-in-the-loop)</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> The document is deleted and skipped</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> The robot automatically picks the most likely value</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn">Submit Answer</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-06-du-framework.html" class="btn btn-outline">← Previous: DU Framework</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="../index.html" class="btn btn-primary">🏠 Back to Course Home</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-07');</script>
+</body>
+</html>

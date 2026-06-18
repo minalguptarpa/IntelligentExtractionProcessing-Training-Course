@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 02 – What is Document Understanding? | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02" class="active">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <header class="module-header">
+      <div class="module-header__number">Module 02 of 07</div>
+      <h1>What is UiPath Document Understanding?</h1>
+      <div class="module-header__meta">
+        <span>⏱ 30 minutes</span><span>📖 Theory</span><span>🎯 Beginner–Intermediate</span>
+      </div>
+    </header>
+
+    <div class="objectives-box">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Describe the UiPath Document Understanding overview and product architecture</li>
+        <li>Identify different document types and when to use each processing methodology</li>
+        <li>Explain taxonomy — document types, classification, and field definitions</li>
+        <li>Describe the end-to-end DU processing pipeline: Digitize → Classify → Extract → Validate → Export</li>
+        <li>Understand confidence scores and their role in human-in-the-loop validation</li>
+      </ul>
+    </div>
+
+    <!-- Lesson 1 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L1</span> UiPath Document Understanding Overview</h2>
+
+      <p>UiPath <strong>Document Understanding (DU)</strong> is a product within the IXP platform that enables robots to read, understand, and extract data from business documents — just like a human would — but at scale and speed.</p>
+
+      <div class="info-card">
+        <h4>Key Capabilities of Document Understanding</h4>
+        <ul>
+          <li><strong>Digitization</strong>: Convert physical or image documents to machine-readable text using OCR engines</li>
+          <li><strong>Classification</strong>: Automatically identify what type of document it is (invoice, purchase order, tax form)</li>
+          <li><strong>Data Extraction</strong>: Pull specific fields and values from the document</li>
+          <li><strong>Human Validation</strong>: Route low-confidence results to humans for review via Action Center</li>
+          <li><strong>Continuous Learning</strong>: Use human corrections to retrain and improve models over time</li>
+        </ul>
+      </div>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Document Types</h3>
+      <table class="comparison-table">
+        <thead><tr><th>Type</th><th>Description</th><th>Examples</th><th>Best Approach</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Structured</strong></td><td>Fixed layout, consistent field positions</td><td>Tax forms (1040), government forms, driver's licenses</td><td>Form Extractor, RegEx</td></tr>
+          <tr><td><strong>Semi-Structured</strong></td><td>Same information but different layouts across vendors</td><td>Invoices, receipts, purchase orders</td><td>ML Extractor (OOTB or custom)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Lesson 2 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L2</span> Document Processing Methodologies</h2>
+
+      <p>UiPath DU supports multiple extraction methodologies — each suited to a different document complexity level:</p>
+
+      <div class="info-card">
+        <h4>🔧 Rule-Based (Template-Based) Extraction</h4>
+        <p>Relies on fixed rules, templates, or regular expressions. Best for <strong>structured documents</strong> with consistent layouts.</p>
+        <ul>
+          <li><strong>RegEx Extractor</strong>: Pattern matching for fields like dates, phone numbers, IDs</li>
+          <li><strong>Form Extractor</strong>: Uses anchor-based approach to locate fields relative to known text</li>
+          <li><strong>Forms AI</strong>: Combines ML with form understanding for both structured and some semi-structured</li>
+        </ul>
+        <p><em>Advantages:</em> High accuracy for known documents.</p>
+      </div>
+
+      <div class="info-card">
+        <h4>🤖 Model-Based (ML) Extraction</h4>
+        <p>Uses Machine Learning models trained on labeled document examples. Best for <strong>semi-structured documents</strong>.</p>
+        <ul>
+          <li><strong>Out-of-the-Box ML Extractors</strong>: Pre-trained models for invoices, receipts — ready to use immediately</li>
+          <li><strong>Modern Projects (Active Learning)</strong>: New experience combining annotation, training, and deployment in one UI</li>
+        </ul>
+        <p><em>Key Insight:</em> ML models learn from characteristics of data — position on the page, correlation of text, and the value itself. They are NOT a database of layouts — they truly understand the document.</p>
+      </div>
+
+      <div class="info-card">
+        <h4>⚡ Hybrid Extraction</h4>
+        <p>Combines rule-based and model-based approaches. Best for documents that mix structured sections (tables, checkboxes) with semi-structured content.</p>
+      </div>
+
+      <div class="callout callout--important">
+        <span class="callout-icon">❗</span>
+        <div><strong>Common Misconception:</strong> Many believe ML extractors are "a smart big database of layouts." In reality, ML models learn from characteristics like position, text correlation, and values — making them flexible across new document layouts they've never seen.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 3 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L3</span> Taxonomy in Document Understanding</h2>
+
+      <p><strong>Taxonomy</strong> is the metadata collection that guides the Document Understanding framework throughout its operations. It acts as a single source of truth — defining what documents to expect and exactly what data to extract from them.</p>
+
+      <div class="info-card">
+        <h4>Hierarchical Structure</h4>
+        <p>Taxonomy follows a three-level hierarchy:</p>
+        <ol class="steps-list" style="margin-top:.75rem;">
+          <li><strong>Taxonomy</strong> — The complete metadata collection for the project</li>
+          <li><strong>Document Types</strong> — Logical document categories (e.g., Invoices, Medical Records, Contracts), each with a unique ID. These enable both classification and extraction.</li>
+          <li><strong>Fields</strong> — Individual data points to be extracted from a specific document type (e.g., Invoice Number, Due Date, Total Amount)</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4>Field Types Available</h4>
+        <table class="comparison-table" style="margin:0;">
+          <thead><tr><th>Field Type</th><th>Description</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Number</strong></td><td>Numeric values with up to eight decimals</td><td>Quantity: 5, Unit Price: 12.50</td></tr>
+            <tr><td><strong>MonetaryQuantity</strong></td><td>Currency amounts with currency codes</td><td>Total: USD 1,250.00</td></tr>
+            <tr><td><strong>Date</strong></td><td>Temporal data — day, month, year; supports MSDN-compliant format strings</td><td>Invoice Date: 01/06/2025</td></tr>
+            <tr><td><strong>Name</strong></td><td>Person names — given name, middle name, last name</td><td>Patient Name: John A. Smith</td></tr>
+            <tr><td><strong>Address</strong></td><td>Multi-line addresses with city, state, country, postal code</td><td>Billing Address</td></tr>
+            <tr><td><strong>Set</strong></td><td>Predefined value options (enumeration)</td><td>Status: Paid / Unpaid / Pending</td></tr>
+            <tr><td><strong>Boolean</strong></td><td>Yes / No values</td><td>Signed: Yes</td></tr>
+            <tr><td><strong>Table</strong></td><td>Tabular data with defined columns</td><td>Line Items table</td></tr>
+            <tr><td><strong>FieldGroup</strong></td><td>Related fields organised hierarchically</td><td>Vendor Info (Name + Address + VAT)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <h4>Additional Taxonomy Features</h4>
+        <ul>
+          <li><strong>Exception Handling</strong>: Predefined "Report as Exception" reasons appear in the Validation Station, allowing users to flag documents with specific issues</li>
+          <li><strong>Language Support</strong>: Taxonomies can specify supported languages with language codes, and include an "Undetermined Language" (code <code>und</code>) for edge cases</li>
+          <li><strong>Storage</strong>: Taxonomies are stored as <code>taxonomy.json</code> files in the <em>DocumentProcessing</em> folder within your UiPath Studio project</li>
+          <li><strong>Taxonomy Manager</strong>: Managed through the built-in Taxonomy Manager wizard in Studio and loaded at runtime via the <code>Load Taxonomy</code> activity</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>Best Practice:</strong> Define your taxonomy before building any model. A well-designed taxonomy saves significant rework later. Work with a Subject Matter Expert (SME) who understands both the business process and all edge cases in the documents.</div>
+      </div>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Building a Good Taxonomy</h3>
+      <ol class="steps-list">
+        <li>Identify all document types in your process</li>
+        <li>For each document type, list all data points that need to be extracted</li>
+        <li>Assign the correct field type to each field (Number, Date, Table, etc.)</li>
+        <li>Group related fields using FieldGroup for hierarchical data (e.g., line items)</li>
+        <li>Define exception reasons for documents that cannot be processed</li>
+        <li>Test with sample documents before investing in large-scale labelling</li>
+      </ol>
+    </section>
+
+    <!-- Lesson 4 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L4</span> Classification, Extraction &amp; Validation</h2>
+
+      <h3 style="margin-bottom:.75rem;">Document Classification</h3>
+      <p>Classification is the process of identifying what <em>type</em> of document is being processed. UiPath DU supports:</p>
+      <ul>
+        <li><strong>Keyword-Based Classifier</strong>: Looks for specific keywords to identify document type</li>
+        <li><strong>Intelligent Keyword Classifier</strong>: Enhanced keyword classifier with better handling of variations</li>
+        <li><strong>ML Classifier</strong>: Machine learning-based classification — more robust across varied document layouts</li>
+        <li><strong>Helix Classifier (Modern)</strong>: Next-gen classifier available in Modern projects using AI Center</li>
+      </ul>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Data Extraction</h3>
+      <p>Extraction retrieves specific field values from the classified document. The Data Extraction Scope activity in Studio orchestrates the extraction process using the configured extractors.</p>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Validation &amp; Human-in-the-Loop</h3>
+      <p>Not all extractions will be 100% accurate. UiPath DU uses <strong>confidence scores</strong> to determine when human review is needed.</p>
+
+      <div class="info-card">
+        <h4>How Confidence Scores Work</h4>
+        <ul>
+          <li>Each extracted field gets a confidence score from 0.0 to 1.0 (0% to 100%)</li>
+          <li>You configure <strong>threshold values</strong> — e.g., "automatically accept if confidence &gt; 80%"</li>
+          <li>Fields below threshold are sent to <strong>UiPath Action Center</strong> for human validation</li>
+          <li>Human corrections are fed back to retrain the model (continuous learning)</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--success">
+        <span class="callout-icon">✅</span>
+        <div><strong>Human-in-the-Loop Best Practice:</strong> Start with a lower automatic acceptance threshold (e.g., 90%) to catch more errors early. As the model improves through retraining, gradually raise the threshold to reduce human workload.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 5 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L5</span> End-to-End Processing Pipeline</h2>
+
+      <p>A complete Document Understanding automation follows this logical flow:</p>
+
+      <ol class="steps-list">
+        <li><strong>Pre-digitization Processing</strong>: Any processing before OCR — grayscale conversion, skew correction, noise removal</li>
+        <li><strong>Digitize Document</strong>: Convert document to machine-readable text using the configured OCR engine</li>
+        <li><strong>Classify Document</strong>: Identify the document type using a classifier</li>
+        <li><strong>Classification Validation</strong>: Check if classification confidence meets threshold; send to human if not</li>
+        <li><strong>Pre-extraction Processing</strong>: Document splitting (multi-document PDFs), page selection</li>
+        <li><strong>Data Extraction</strong>: Run configured extractors to pull field values</li>
+        <li><strong>Human Validation</strong>: Route low-confidence extractions to Action Center for review</li>
+        <li><strong>Extractor Feedback (Learning)</strong>: Use corrections to retrain the model</li>
+        <li><strong>Post-extraction Processing</strong>: Data formatting, business rule application</li>
+        <li><strong>Data Export</strong>: Send extracted data to downstream systems (ERP, database, API)</li>
+      </ol>
+
+      <div class="callout callout--note">
+        <span class="callout-icon">📌</span>
+        <div>Not all steps are required for every use case. Simple processes may skip classification, human validation, or feedback steps. Design your flow based on your specific business requirements.</div>
+      </div>
+    </section>
+
+    <!-- Knowledge Check -->
+    <section class="quiz-section" id="quiz-02">
+      <h3>✅ Knowledge Check</h3>
+
+      <div class="quiz-question" data-correct="b" data-explanation="Semi-structured documents like invoices contain the same information but vary in layout across vendors. ML extractors handle this best.">
+        <p>1. A client sends invoices from 50 different vendors. Each invoice has the same fields (vendor name, amount, date) but different layouts. What is the best extraction approach?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> Form Extractor (rule-based)</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> ML Extractor (model-based)</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> RegEx Extractor</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> Communications Mining</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="b" data-explanation="Taxonomy is a three-level hierarchy: Taxonomy → Document Types → Fields. It is stored as taxonomy.json in the Studio project and loaded at runtime via the Load Taxonomy activity.">
+        <p>2. Which of the following correctly describes the three-level hierarchy of a Taxonomy in Document Understanding?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> OCR Engine → Classifier → Extractor</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> Taxonomy → Document Types → Fields</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> Project → Pipeline → Dataset</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> Document Types → Confidence Scores → Thresholds</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="d" data-explanation="Confidence scores range from 0.0 to 1.0 and are used to determine whether extracted fields need human review in Action Center.">
+        <p>3. What do confidence scores represent in Document Understanding?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q3" value="a" /> The percentage of documents processed without errors</label></li>
+          <li><label data-value="b"><input type="radio" name="q3" value="b" /> The accuracy of the OCR engine</label></li>
+          <li><label data-value="c"><input type="radio" name="q3" value="c" /> The training dataset size</label></li>
+          <li><label data-value="d"><input type="radio" name="q3" value="d" /> A score (0.0–1.0) indicating the model's certainty about an extracted field value, used to trigger human validation</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn">Submit Answers</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-01-introduction.html" class="btn btn-outline">← Previous: Introduction</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="module-03-structured-docs.html" class="btn btn-primary">Next: Structured Docs →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-02');</script>
+</body>
+</html>

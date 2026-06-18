@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 04 – Semi-Structured Documents (Invoices) | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04" class="active">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <header class="module-header">
+      <div class="module-header__number">Module 04 of 07</div>
+      <h1>Extracting Data from Semi-Structured Documents: Invoices</h1>
+      <div class="module-header__meta">
+        <span>⏱ ~1 hour (theory) + ILT (hands-on)</span><span>📖 Theory + Exercise</span><span>🎯 Intermediate</span>
+      </div>
+    </header>
+
+    <div class="objectives-box">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Explain the DU service/product platform in Automation Cloud</li>
+        <li>Differentiate between Classic and Modern projects</li>
+        <li>Describe Active Learning and how it speeds up model training</li>
+        <li>Understand annotation workflow in Modern Experience</li>
+        <li>Use out-of-the-box ML Extractors for invoices</li>
+        <li>Understand the Build → Measure → Publish lifecycle</li>
+        <li>Consume a DU Modern Project in a Studio workflow</li>
+        <li>Explain human-in-the-loop validation and how to implement it</li>
+      </ul>
+    </div>
+
+    <!-- Lesson 1 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L1</span> DU Service Platform in Automation Cloud</h2>
+
+      <p>The <strong>Document Understanding service</strong> in UiPath Automation Cloud is your central hub for building, managing, and deploying AI extraction models. It eliminates the need for separate AI Center configuration for most use cases.</p>
+
+      <div class="info-card">
+        <h4>Accessing Document Understanding</h4>
+        <ol>
+          <li>Log into <strong>cloud.uipath.com</strong></li>
+          <li>Select your tenant</li>
+          <li>Navigate to <strong>Document Understanding</strong> service in the left menu</li>
+          <li>You will see your projects — Classic and Modern</li>
+        </ol>
+      </div>
+
+
+      <div class="info-card">
+        <h4>Classic Projects — What You Should Know</h4>
+        <p>Classic DU projects are the traditional framework for UiPath Document Understanding. They offer compatibility with OCR engines and rely on <strong>AI Center</strong> for model hosting.</p>
+        <ul>
+          <li><strong>Cost-effective for OCR-heavy tasks</strong> — free OCR usage that does not consume AI units; first 25 pages per document are processed free.</li>
+          <li><strong>Established capabilities</strong> — well-suited for regex-based extraction and Intelligent Keyword Classifier (IKC) classification.</li>
+          <li><strong>Broader infrastructure support</strong> — works on Automation Cloud, Suite, and Standalone deployments.</li>
+        </ul>
+        <div class="callout callout--important" style="margin-top:.75rem;margin-bottom:0;">
+          <span class="callout-icon">❗</span>
+          <div><strong>Important:</strong> UiPath recommends creating all new projects using <strong>Modern Projects</strong>. Classic activities remain available and supported, but are no longer being enhanced. Transitioning to Modern is strongly encouraged for access to active learning, generative AI pre-annotation, and ongoing feature updates.</div>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>Recommendation:</strong> Use <strong>Modern Projects</strong> for new implementations on Automation Cloud. They offer faster model development (80% faster), no AI Center setup, and guided training experience.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 2 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L2</span> Modern Projects</h2>
+
+      <p><strong>Modern Projects</strong> is the next-generation AI-powered model training experience within UiPath Document Understanding. It uses an iterative process between annotators and an ML model to minimize the amount of labeled data needed.</p>
+
+      <div class="info-card">
+        <h4>Key Benefits of Active Learning</h4>
+        <ul>
+          <li>🚀 <strong>80% faster</strong> model training — from a week down to a day</li>
+          <li>👥 <strong>No ML expertise required</strong> — anyone can train AI models</li>
+          <li>🤝 <strong>Human + AI collaboration</strong> — guidance on model optimization</li>
+          <li>📊 <strong>Built-in performance analytics</strong> — instant model evaluation</li>
+          <li>🔄 <strong>Background training</strong> — model improves as you annotate</li>
+        </ul>
+      </div>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Modern Experience: Build → Measure → Publish → Monitor</h3>
+
+      <div class="info-card">
+        <h4>🔨 Build</h4>
+        <ul>
+          <li>Upload &amp; classify your documents (automatic AI classification)</li>
+          <li>Generative AI pre-annotates fields — you validate/correct</li>
+          <li>Follow recommendations on how many samples to add</li>
+          <li>Model trains in the background as you annotate</li>
+          <li>Minimum recommended: <strong>30 documents per document type</strong></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>📊 Measure</h4>
+        <ul>
+          <li>Evaluate model readiness with performance metrics (F1, precision, recall per field)</li>
+          <li>Field-level performance shows which fields need more attention</li>
+          <li>Distribution of annotated vs unannotated documents</li>
+          <li>Guided recommendations on where to improve</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>🚀 Publish</h4>
+        <ul>
+          <li>Choose the model version to deploy</li>
+          <li>One-click deployment — model becomes available as a service</li>
+          <li>Easy versioning of your entire project</li>
+          <li>Consume from Studio, Studio Web, or via APIs</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>👁 Monitor</h4>
+        <ul>
+          <li>Insights dashboard shows live automation performance</li>
+          <li>Drill down into individual document processing status</li>
+          <li>Visibility into human-in-the-loop events and corrections</li>
+          <li>Search through historical document processing records</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lesson 3 -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L3</span> Out-of-the-Box ML Extractors</h2>
+
+      <p>UiPath provides pre-trained, ready-to-use ML extractors that work immediately — no training required. These are called <strong>out-of-the-box (OOTB) ML extractors</strong>.</p>
+
+      <div class="info-card">
+        <h4>Available Out-of-the-Box Models</h4>
+        <table class="comparison-table" style="margin:0 0 .75rem;">
+          <thead><tr><th>Category</th><th>Model</th></tr></thead>
+          <tbody>
+            <tr><td>Invoices</td><td>Invoices ML Extractor — English, Spanish, Portuguese, German, Romanian (PDF, PNG, JPEG, TIFF)</td></tr>
+            <tr><td>Receipts</td><td>Receipts ML Extractor — English, Spanish, German, French, Norwegian, Finnish, Romanian (PDF, PNG, JPEG, TIFF)</td></tr>
+            <tr><td>Finance / Accounting</td><td>Purchase Orders, Remittance Advices</td></tr>
+            <tr><td>Tax</td><td>IRS Form 1040, Schedule C / D / E, W-2, W-9</td></tr>
+            <tr><td>Insurance</td><td>ACORD 25 / 125 / 126 / 131 / 140, CMS 1500, UB04</td></tr>
+            <tr><td>HR / Onboarding</td><td>I-9, Payslips, W-2, W-9</td></tr>
+            <tr><td>Supply Chain</td><td>Bills of Lading, Packing Lists, Certificates of Origin</td></tr>
+            <tr><td>Know Your Customer (KYC)</td><td>ID Cards, Passports, Bank Statements, Utility Bills</td></tr>
+            <tr><td>Regional Invoice Variants</td><td>Invoices China, Invoices India, Invoices Japan, Invoices Hebrew</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0;">📖 For the full list of all available out-of-the-box models and their supported fields, refer to the <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/out-of-the-box-pre-trained-ml-packages" target="_blank" rel="noopener">UiPath Documentation — Out-of-the-Box Pre-Trained ML Packages →</a></p>
+      </div>
+
+      <h3 style="margin:1.25rem 0 .75rem;">Limitations</h3>
+      <table class="comparison-table">
+        <thead><tr><th>Limit Type</th><th>Community Edition</th><th>Enterprise Edition</th></tr></thead>
+        <tbody>
+          <tr><td>Document size</td><td>Max 2 pages, 4MB</td><td>Max 20 megapixels per page, 10MB in JSON-Base64</td></tr>
+          <tr><td>Rate limit</td><td>50 requests/hour</td><td>Higher limits (license-dependent)</td></tr>
+          <tr><td>Data storage</td><td>Stored by UiPath for QA</td><td>Not stored by UiPath</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--tip">
+        <span class="callout-icon">💡</span>
+        <div><strong>Customization:</strong> You can customize all OOTB ML extractors using transfer learning — add new fields or improve accuracy for your specific use case with as few as 30 labeled documents.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 4: Helix -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L4</span> UiPath Helix — Classifier &amp; Extractor</h2>
+
+      <p>UiPath Helix is UiPath's next-generation LLM-based AI framework for Document Understanding. It includes two distinct models: the <strong>Helix Classifier</strong> (for identifying document types) and the <strong>Helix Extractor</strong> (for extracting field data). Both are available in Modern Projects and significantly reduce the annotation effort needed to build high-accuracy automations.</p>
+
+      <!-- Helix Classifier -->
+      <h3 style="margin:1.5rem 0 .75rem;">Helix Classifier</h3>
+
+      <p>The <strong>Helix Classifier</strong> is an LLM-based document classification model that automatically identifies document types with minimal training data.</p>
+
+      <div class="info-card">
+        <h4>Key Characteristics</h4>
+        <ul>
+          <li>Classifies documents into defined document types using generative AI</li>
+          <li>Requires significantly fewer training samples compared to the Intelligent Keyword Classifier</li>
+          <li>Works within Modern Projects — no separate AI Center configuration needed</li>
+          <li>Background model training as you annotate and validate classification results</li>
+          <li>Supports splitting of multi-document PDFs into individual document types</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Availability</h4>
+        <ul>
+          <li>Available in <strong>Modern Projects</strong> on Automation Cloud</li>
+          <li>US-based tenants (excluding GxP and Government Cloud)</li>
+        </ul>
+      </div>
+
+
+      <!-- Helix Extractor -->
+      <h3 style="margin:1.5rem 0 .75rem;">Helix Extractor</h3>
+
+      <p>The <strong>Helix Extractor 1.0</strong> is an LLM-based data extraction model built into Document Understanding. It leverages a wide variety of training documents to handle common document types with minimal annotation requirements.</p>
+
+      <div class="info-card">
+        <h4>Key Characteristics</h4>
+        <ul>
+          <li>🎯 <strong>~15% fewer false positives</strong> and <strong>~17% fewer false negatives</strong> compared to previous models</li>
+          <li>✏️ <strong>Reduced annotation effort</strong> — only one annotation per document required, not per field instance</li>
+          <li>📊 <strong>Better confidence scores</strong> — stronger correlation between confidence values and actual extraction accuracy</li>
+          <li>Text matching only — does not support summarisation or other types of text analysis</li>
+          <li>Latin script languages only (non-Latin scripts not supported in v1.0)</li>
+          <li>Field names must use natural language and proper grammar for optimal performance</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Supported Document Types</h4>
+        <ul>
+          <li>✅ Invoices, Receipts, Purchase Orders, and semi-structured documents</li>
+          <li>❌ <strong>Not supported:</strong> Financial Statements; Invoices (China, Hebrew, Japan variants)</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Availability</h4>
+        <ul>
+          <li>Modern Projects in <strong>US-based tenants</strong> (excluding GxP and Government Cloud)</li>
+          <li>Public endpoints in <strong>Europe and Japan</strong> for specific invoice and receipt types</li>
+          <li><strong>Helix Extractor 2.0</strong> (Public Preview) — adds multimodal processing, non-Latin script support, and improved table handling. Targeting GA mid-2026.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>How to Activate Helix Extractor for Existing Document Types</h4>
+        <ol>
+          <li>Delete all fields from your sample documents in the project.</li>
+          <li>Re-annotate and confirm those fields.</li>
+          <li>Repeat until training initiates.</li>
+          <li>Check the model version number — <strong>version 24.7 or above</strong> confirms Helix Extractor is active.</li>
+        </ol>
+      </div>
+
+      <div class="callout callout--note">
+        <span class="callout-icon">📌</span>
+        <div>For full details, refer to the <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/uipath-helix-extractor" target="_blank" rel="noopener">UiPath Helix Extractor 1.0 documentation →</a> and <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/using-the-new-uipath-helix-extractor-20" target="_blank" rel="noopener">Helix Extractor 2.0 (Public Preview) →</a></div>
+      </div>
+
+    </section>
+
+    <!-- Lesson 5: Annotation -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L5</span> Annotation in Modern Experience</h2>
+
+      <p>Annotation is the process of labeling document examples to tell the model what to extract. In Modern Experience, annotation is guided and accelerated by Generative AI pre-annotation.</p>
+
+      <ol class="steps-list">
+        <li><strong>Upload documents</strong> to your Modern project (minimum 30 per document type)</li>
+        <li><strong>Automatic classification</strong>: AI assigns document types; review and correct any mistakes</li>
+        <li><strong>AI pre-annotation</strong>: Generative AI suggests field values for each document</li>
+        <li><strong>Validate predictions</strong>: Review each suggestion — accept if correct, correct if wrong</li>
+        <li><strong>Background training</strong>: Model retrains automatically as you validate</li>
+        <li><strong>Check recommendations</strong>: Platform guides you on which documents to annotate next</li>
+      </ol>
+
+      <div class="callout callout--note">
+        <span class="callout-icon">📌</span>
+        <div><strong>Annotation Best Practices:</strong> Annotate a diverse set of document samples covering different vendors, layouts, and edge cases. The more diversity in your training set, the more robust your model will be.</div>
+      </div>
+    </section>
+
+    <!-- Lesson 5: Migrate Dev to Prod -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L6</span> Migrating a Project from Dev to Production</h2>
+
+      <p>When your model is ready, you can migrate it from your development environment to production by exporting the annotated dataset and importing it into the target project. UiPath provides a structured process for this within Modern Projects.</p>
+
+      <div class="info-card">
+        <h4>Step 1: Export Data</h4>
+        <ol>
+          <li>Open your project and navigate to the <strong>Publish</strong> section.</li>
+          <li>Go to the <strong>Export</strong> tab.</li>
+          <li>Select <strong>Export data</strong> (ensure a project version exists first).</li>
+          <li>Choose the desired <strong>document type</strong> from the dropdown menu.</li>
+          <li>Select the <strong>project version</strong> to export from its dropdown.</li>
+          <li>Click <strong>Export</strong> to initiate the process.</li>
+          <li>When ready, a popup appears with a download option. Download immediately or retrieve it later via the three-dot menu.</li>
+        </ol>
+        <div class="callout callout--note" style="margin-top:.75rem;margin-bottom:0;">
+          <span class="callout-icon">📌</span>
+          <div>Only <strong>annotated and confirmed</strong> items (marked with a green shield icon) are exported. Datasets from project versions created prior to <strong>May 2024 (GA date)</strong> are not supported for export.</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4>Step 2: Import Datasets</h4>
+        <ol>
+          <li>Open the <strong>target project</strong> (e.g. your production environment).</li>
+          <li>Select <strong>Add document type</strong> to create a new custom document type.</li>
+          <li>In the newly created document type, select <strong>Upload</strong>.</li>
+          <li>Choose the exported <strong>.zip file</strong> and wait for the upload to complete.</li>
+          <li>Once the upload finishes, <strong>training starts automatically</strong>.</li>
+        </ol>
+        <div class="callout callout--note" style="margin-top:.75rem;margin-bottom:0;">
+          <span class="callout-icon">📌</span>
+          <div>You can only import zip datasets directly into a document type — not at the project level.</div>
+        </div>
+      </div>
+
+      <p style="margin-top:1rem;">📖 For the full migration guide, refer to: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/migrating-existing-modern-projects" target="_blank" rel="noopener">Migrating Existing Modern Projects — docs.uipath.com →</a></p>
+    </section>
+
+    <!-- Lesson 6: Consuming in Studio -->
+    <section class="lesson">
+      <h2 class="lesson-title"><span class="lesson-num">L7</span> Consuming DU Modern Project in Studio</h2>
+
+      <p>Once your model is published, consume it in UiPath Studio using the <code>DocumentUnderstanding.Activities</code> package.</p>
+
+      <div class="info-card">
+        <h4>DU Activities Package vs Intelligent OCR</h4>
+        <table class="comparison-table" style="margin:0 0 .75rem;">
+          <thead><tr><th></th><th>DocumentUnderstanding.Activities</th><th>IntelligentOCR.Activities</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Best for</strong></td><td>Teams starting their DU journey; Modern Projects with generative capabilities</td><td>Complex scenarios requiring high flexibility and full pipeline control</td></tr>
+            <tr><td><strong>Target users</strong></td><td>RPA professionals and citizen developers across Studio Web, StudioX, and Studio Desktop</td><td>RPA developers using Studio Desktop seeking advanced control</td></tr>
+            <tr><td><strong>Configuration</strong></td><td>Single input/output object (<code>DocumentData</code>) — no repeated argument passing; no setup needed for OOTB models</td><td>Requires explicitly passing taxonomy, DOM, text, and classification/extraction results between activities</td></tr>
+            <tr><td><strong>Flexibility</strong></td><td>Simplified, opinionated flow; leverages cloud APIs for faster updates</td><td>Full control — modify taxonomy and extraction results at runtime; supports custom classifiers, extractors, and OCR engines</td></tr>
+            <tr><td><strong>Human in the loop</strong></td><td>Built-in Action Center integration</td><td>Manual Validate Document Action</td></tr>
+            <tr><td><strong>Deployment</strong></td><td>Automation Cloud &amp; Test Cloud, Automation Suite</td><td>Automation Cloud &amp; Test Cloud, Automation Suite and Standalone</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0;">📖 Source: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/automations-in-document-understanding" target="_blank" rel="noopener">Automations in Document Understanding — docs.uipath.com →</a></p>
+      </div>
+
+<div class="callout callout--success">
+        <span class="callout-icon">✅</span>
+        <div><strong>ILT Exercise:</strong> In the instructor-led session, you will: (1) Upload invoices to a Modern Project, (2) Run annotation with AI pre-annotation, (3) Build and publish the model, (4) Create a Studio workflow to process new invoices, (5) Add a phone number field to the extraction schema, and (6) Test end-to-end with human validation.</div>
+      </div>
+    </section>
+
+    <!-- Knowledge Check -->
+    <section class="quiz-section" id="quiz-04">
+      <h3>✅ Knowledge Check</h3>
+
+      <div class="quiz-question" data-correct="b" data-explanation="Active Learning speeds up model training by 80% through iterative human-AI collaboration and automated background training.">
+        <p>1. What is the key advantage of Active Learning in Modern Document Understanding Experience?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> It works without any labeled documents</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> It speeds up model training by 80% and requires no ML expertise</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> It replaces the need for OCR engines</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> It only works with invoice documents</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="c" data-explanation="The minimum recommended number of samples per document type for retraining/customizing an OOTB model is 30 documents.">
+        <p>2. What is the minimum number of labeled documents recommended to customize an out-of-the-box ML extractor?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> 5</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> 10</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> 30</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> 100</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="d" data-explanation="The Measure phase provides model performance metrics including F1/precision/recall per field, helping you understand what needs improvement before publishing.">
+        <p>3. What is the purpose of the 'Measure' phase in the Modern DU experience?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q3" value="a" /> Upload and classify documents</label></li>
+          <li><label data-value="b"><input type="radio" name="q3" value="b" /> Deploy the model to production</label></li>
+          <li><label data-value="c"><input type="radio" name="q3" value="c" /> Monitor live automation performance</label></li>
+          <li><label data-value="d"><input type="radio" name="q3" value="d" /> Evaluate model performance metrics per field to determine readiness</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn">Submit Answers</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-03-structured-docs.html" class="btn btn-outline">← Previous: Structured Docs</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="module-05-unstructured-complex.html" class="btn btn-primary">Next: Unstructured &amp; Complex Docs →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-04');</script>
+</body>
+</html>

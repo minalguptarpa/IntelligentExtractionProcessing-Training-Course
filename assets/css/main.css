@@ -1,0 +1,141 @@
+/* =============================================
+   IXP Self-Learning Course - main.css
+   UiPath Brand: Primary #FA4616, Dark #1A1A2E
+   ============================================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --uipath-orange: #FA4616;
+  --uipath-dark: #1A1A2E;
+  --uipath-orange-light: #FDE8E1;
+  --uipath-orange-dark: #C93A12;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --white: #FFFFFF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --info: #3B82F6;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.12);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--gray-800); background: var(--gray-50); line-height: 1.6; }
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 { line-height: 1.3; color: var(--uipath-dark); }
+h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+h4 { font-size: 1.1rem; }
+p { margin-bottom: 1rem; }
+a { color: var(--uipath-orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.35rem; }
+strong { font-weight: 600; }
+
+/* ---- Top Navigation ---- */
+.site-header {
+  background: var(--uipath-dark);
+  color: var(--white);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.site-header .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.site-header .logo-icon { width: 32px; height: 32px; background: var(--uipath-orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 1rem; }
+.site-header .logo-text { font-size: 1rem; font-weight: 600; color: var(--white); }
+.site-header .logo-text span { color: var(--uipath-orange); }
+.site-header nav a { color: var(--gray-200); font-size: 0.875rem; margin-left: 1.5rem; text-decoration: none; }
+.site-header nav a:hover { color: var(--white); }
+
+/* ---- Hero ---- */
+.hero {
+  background: linear-gradient(135deg, var(--uipath-dark) 0%, #2D1B4E 100%);
+  color: var(--white);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+.hero h1 { color: var(--white); margin-bottom: 1rem; }
+.hero p { font-size: 1.125rem; color: var(--gray-200); max-width: 700px; margin: 0 auto 2rem; }
+.hero-badges { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: var(--white); padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.8rem; }
+
+/* ---- Main Layout ---- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 3rem 0; }
+.section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: var(--uipath-dark); }
+.section-title span { color: var(--uipath-orange); }
+
+/* ---- Module Cards Grid ---- */
+.modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.module-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow .2s, transform .2s;
+  position: relative;
+  overflow: hidden;
+}
+.module-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.module-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--uipath-orange); }
+.module-card.completed::before { background: var(--success); }
+
+.module-card__number { font-size: 0.75rem; font-weight: 700; color: var(--uipath-orange); text-transform: uppercase; letter-spacing: .05em; }
+.module-card__title { font-size: 1.1rem; font-weight: 700; color: var(--uipath-dark); }
+.module-card__desc { font-size: 0.875rem; color: var(--gray-600); flex: 1; }
+.module-card__meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--gray-400); }
+.module-card__meta span { display: flex; align-items: center; gap: 0.3rem; }
+.module-card__footer { display: flex; align-items: center; justify-content: space-between; }
+.module-card__status { font-size: 0.75rem; font-weight: 600; }
+.module-card__status--completed { color: var(--success); }
+.module-card__status--in-progress { color: var(--warning); }
+.module-card__status--not-started { color: var(--gray-400); }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: var(--radius); font-size: 0.875rem; font-weight: 600; cursor: pointer; border: none; transition: background .2s, transform .1s; text-decoration: none; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--uipath-orange); color: var(--white); }
+.btn-primary:hover { background: var(--uipath-orange-dark); text-decoration: none; color: var(--white); }
+.btn-outline { background: transparent; color: var(--uipath-orange); border: 1.5px solid var(--uipath-orange); }
+.btn-outline:hover { background: var(--uipath-orange-light); text-decoration: none; }
+.btn-sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
+
+/* ---- Progress Bar ---- */
+.progress-bar-wrap { background: var(--gray-200); border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--uipath-orange); border-radius: 999px; transition: width .4s ease; }
+.progress-summary { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; }
+.progress-summary h3 { margin-bottom: 0.75rem; }
+.progress-numbers { display: flex; gap: 2rem; margin-top: 0.75rem; }
+.progress-numbers .stat { text-align: center; }
+.progress-numbers .stat .num { font-size: 1.75rem; font-weight: 800; color: var(--uipath-orange); }
+.progress-numbers .stat .label { font-size: 0.75rem; color: var(--gray-600); }
+
+/* ---- Footer ---- */
+.site-footer { background: var(--uipath-dark); color: var(--gray-400); text-align: center; padding: 1.5rem; font-size: 0.875rem; margin-top: 3rem; }
+.site-footer a { color: var(--uipath-orange); }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1rem; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .progress-numbers { gap: 1rem; }
+}
