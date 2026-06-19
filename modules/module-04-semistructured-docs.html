@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 <div class="course-layout">
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
@@ -41,13 +41,15 @@
 
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 04 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 04 · Semi-Structured Docs</span>
+    </nav>
+    <div class="page-header">
       <h1>Extracting Data from Semi-Structured Documents: Invoices</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ ~1 hour (theory) + ILT (hands-on)</span><span>📖 Theory + Exercise</span><span>🎯 Intermediate</span>
       </div>
-    </header>
+    </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
@@ -65,7 +67,7 @@
 
     <!-- Lesson 1 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> DU Service Platform in Automation Cloud</h2>
+      <h2 class="lesson-title">DU Service Platform in Automation Cloud</h2>
 
       <p>The <strong>Document Understanding service</strong> in UiPath Automation Cloud is your central hub for building, managing, and deploying AI extraction models. It eliminates the need for separate AI Center configuration for most use cases.</p>
 
@@ -88,21 +90,21 @@
           <li><strong>Established capabilities</strong> — well-suited for regex-based extraction and Intelligent Keyword Classifier (IKC) classification.</li>
           <li><strong>Broader infrastructure support</strong> — works on Automation Cloud, Suite, and Standalone deployments.</li>
         </ul>
-        <div class="callout callout--important" style="margin-top:.75rem;margin-bottom:0;">
-          <span class="callout-icon">❗</span>
-          <div><strong>Important:</strong> UiPath recommends creating all new projects using <strong>Modern Projects</strong>. Classic activities remain available and supported, but are no longer being enhanced. Transitioning to Modern is strongly encouraged for access to active learning, generative AI pre-annotation, and ongoing feature updates.</div>
+        <div class="admonition admonition--important">
+        <div class="admonition-title">⚠️ Important</div>
+        <div class="admonition-body"><strong>Important:</strong> UiPath recommends creating all new projects using <strong>Modern Projects</strong>. Classic activities remain available and supported, but are no longer being enhanced. Transitioning to Modern is strongly encouraged for access to active learning, generative AI pre-annotation, and ongoing feature updates.</div>
         </div>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Recommendation:</strong> Use <strong>Modern Projects</strong> for new implementations on Automation Cloud. They offer faster model development (80% faster), no AI Center setup, and guided training experience.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Recommendation:</strong> Use <strong>Modern Projects</strong> for new implementations on Automation Cloud. They offer faster model development (80% faster), no AI Center setup, and guided training experience.</div>
       </div>
     </section>
 
     <!-- Lesson 2 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> Modern Projects</h2>
+      <h2 class="lesson-title">Modern Projects</h2>
 
       <p><strong>Modern Projects</strong> is the next-generation AI-powered model training experience within UiPath Document Understanding. It uses an iterative process between annotators and an ML model to minimize the amount of labeled data needed.</p>
 
@@ -163,7 +165,7 @@
 
     <!-- Lesson 3 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Out-of-the-Box ML Extractors</h2>
+      <h2 class="lesson-title">Out-of-the-Box ML Extractors</h2>
 
       <p>UiPath provides pre-trained, ready-to-use ML extractors that work immediately — no training required. These are called <strong>out-of-the-box (OOTB) ML extractors</strong>.</p>
 
@@ -196,15 +198,15 @@
         </tbody>
       </table>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Customization:</strong> You can customize all OOTB ML extractors using transfer learning — add new fields or improve accuracy for your specific use case with as few as 30 labeled documents.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Customization:</strong> You can customize all OOTB ML extractors using transfer learning — add new fields or improve accuracy for your specific use case with as few as 30 labeled documents.</div>
       </div>
     </section>
 
     <!-- Lesson 4: Helix -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> UiPath Helix — Classifier &amp; Extractor</h2>
+      <h2 class="lesson-title">UiPath Helix — Classifier &amp; Extractor</h2>
 
       <p>UiPath Helix is UiPath's next-generation LLM-based AI framework for Document Understanding. It includes two distinct models: the <strong>Helix Classifier</strong> (for identifying document types) and the <strong>Helix Extractor</strong> (for extracting field data). Both are available in Modern Projects and significantly reduce the annotation effort needed to build high-accuracy automations.</p>
 
@@ -277,16 +279,16 @@
         </ol>
       </div>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div>For full details, refer to the <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/uipath-helix-extractor" target="_blank" rel="noopener">UiPath Helix Extractor 1.0 documentation →</a> and <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/using-the-new-uipath-helix-extractor-20" target="_blank" rel="noopener">Helix Extractor 2.0 (Public Preview) →</a></div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body">For full details, refer to the <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/uipath-helix-extractor" target="_blank" rel="noopener">UiPath Helix Extractor 1.0 documentation →</a> and <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/using-the-new-uipath-helix-extractor-20" target="_blank" rel="noopener">Helix Extractor 2.0 (Public Preview) →</a></div>
       </div>
 
     </section>
 
     <!-- Lesson 5: Annotation -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L5</span> Annotation in Modern Experience</h2>
+      <h2 class="lesson-title">Annotation in Modern Experience</h2>
 
       <p>Annotation is the process of labeling document examples to tell the model what to extract. In Modern Experience, annotation is guided and accelerated by Generative AI pre-annotation.</p>
 
@@ -299,15 +301,15 @@
         <li><strong>Check recommendations</strong>: Platform guides you on which documents to annotate next</li>
       </ol>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div><strong>Annotation Best Practices:</strong> Annotate a diverse set of document samples covering different vendors, layouts, and edge cases. The more diversity in your training set, the more robust your model will be.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>Annotation Best Practices:</strong> Annotate a diverse set of document samples covering different vendors, layouts, and edge cases. The more diversity in your training set, the more robust your model will be.</div>
       </div>
     </section>
 
     <!-- Lesson 5: Migrate Dev to Prod -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L6</span> Migrating a Project from Dev to Production</h2>
+      <h2 class="lesson-title">Migrating a Project from Dev to Production</h2>
 
       <p>When your model is ready, you can migrate it from your development environment to production by exporting the annotated dataset and importing it into the target project. UiPath provides a structured process for this within Modern Projects.</p>
 
@@ -322,9 +324,9 @@
           <li>Click <strong>Export</strong> to initiate the process.</li>
           <li>When ready, a popup appears with a download option. Download immediately or retrieve it later via the three-dot menu.</li>
         </ol>
-        <div class="callout callout--note" style="margin-top:.75rem;margin-bottom:0;">
-          <span class="callout-icon">📌</span>
-          <div>Only <strong>annotated and confirmed</strong> items (marked with a green shield icon) are exported. Datasets from project versions created prior to <strong>May 2024 (GA date)</strong> are not supported for export.</div>
+        <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body">Only <strong>annotated and confirmed</strong> items (marked with a green shield icon) are exported. Datasets from project versions created prior to <strong>May 2024 (GA date)</strong> are not supported for export.</div>
         </div>
       </div>
 
@@ -337,9 +339,9 @@
           <li>Choose the exported <strong>.zip file</strong> and wait for the upload to complete.</li>
           <li>Once the upload finishes, <strong>training starts automatically</strong>.</li>
         </ol>
-        <div class="callout callout--note" style="margin-top:.75rem;margin-bottom:0;">
-          <span class="callout-icon">📌</span>
-          <div>You can only import zip datasets directly into a document type — not at the project level.</div>
+        <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body">You can only import zip datasets directly into a document type — not at the project level.</div>
         </div>
       </div>
 
@@ -348,7 +350,7 @@
 
     <!-- Lesson 6: Consuming in Studio -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L7</span> Consuming DU Modern Project in Studio</h2>
+      <h2 class="lesson-title">Consuming DU Modern Project in Studio</h2>
 
       <p>Once your model is published, consume it in UiPath Studio using the <code>DocumentUnderstanding.Activities</code> package.</p>
 
@@ -368,9 +370,9 @@
         <p style="margin:0;">📖 Source: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/automations-in-document-understanding" target="_blank" rel="noopener">Automations in Document Understanding — docs.uipath.com →</a></p>
       </div>
 
-<div class="callout callout--success">
-        <span class="callout-icon">✅</span>
-        <div><strong>ILT Exercise:</strong> In the instructor-led session, you will: (1) Upload invoices to a Modern Project, (2) Run annotation with AI pre-annotation, (3) Build and publish the model, (4) Create a Studio workflow to process new invoices, (5) Add a phone number field to the extraction schema, and (6) Test end-to-end with human validation.</div>
+<div class="admonition admonition--success">
+        <div class="admonition-title">✅ Success</div>
+        <div class="admonition-body"><strong>ILT Exercise:</strong> In the instructor-led session, you will: (1) Upload invoices to a Modern Project, (2) Run annotation with AI pre-annotation, (3) Build and publish the model, (4) Create a Studio workflow to process new invoices, (5) Add a phone number field to the extraction schema, and (6) Test end-to-end with human validation.</div>
       </div>
     </section>
 

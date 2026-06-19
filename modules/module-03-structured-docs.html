@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 <div class="course-layout">
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
@@ -41,13 +41,15 @@
 
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 03 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 03 · Structured Docs</span>
+    </nav>
+    <div class="page-header">
       <h1>Exercise 1: Extracting Data from Structured Documents</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ ~3 hours</span><span>🔨 Hands-On DIY</span><span>🎯 Intermediate</span>
       </div>
-    </header>
+    </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
@@ -62,7 +64,7 @@
 
     <!-- Lesson 1 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> Intelligent OCR Activities Package</h2>
+      <h2 class="lesson-title">Intelligent OCR Activities Package</h2>
 
       <p>The <strong>UiPath.IntelligentOCR.Activities</strong> package is the core package for building Document Understanding automations. It provides activities for the complete DU pipeline.</p>
 
@@ -84,15 +86,15 @@
         </table>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Installing the Package:</strong> In UiPath Studio, go to Manage Packages → search for <code>UiPath.IntelligentOCR.Activities</code> → Install.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Installing the Package:</strong> In UiPath Studio, go to Manage Packages → search for <code>UiPath.IntelligentOCR.Activities</code> → Install.</div>
       </div>
     </section>
 
     <!-- Lesson 2 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> Exercise Overview: What You'll Build</h2>
+      <h2 class="lesson-title">Exercise Overview: What You'll Build</h2>
 
       <p>In this module, you'll learn how to extract data from 2 different forms.</p>
 
@@ -104,7 +106,7 @@
 
     <!-- Lesson 3 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Complete Workflow Structure</h2>
+      <h2 class="lesson-title">Complete Workflow Structure</h2>
 
       <h3 class="step-group-title">Exercise 1 – Part 1: UiPath Extraction Process Setup( Till Classification step )</h3>
 
@@ -360,7 +362,7 @@
 
     <!-- Lesson 4 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> Complete Workflow Structure</h2>
+      <h2 class="lesson-title">Complete Workflow Structure</h2>
 
       <h3 class="step-group-title">Exercise 1 – Part 2: UiPath Extraction Process – Data Extraction, Validation &amp; Export</h3>
 

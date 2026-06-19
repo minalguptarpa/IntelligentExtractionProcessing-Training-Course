@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 <div class="course-layout">
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
@@ -41,13 +41,15 @@
 
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 06 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 06 · DU Framework</span>
+    </nav>
+    <div class="page-header">
       <h1>DU Framework: End-to-End Attended Automation</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ ~45 minutes</span><span>🔨 DIY + Theory</span><span>🎯 Advanced</span>
       </div>
-    </header>
+    </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
@@ -64,7 +66,7 @@
 
     <!-- Lesson 1 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> Introduction to the RPA Framework for Document Understanding</h2>
+      <h2 class="lesson-title">Introduction to the RPA Framework for Document Understanding</h2>
 
       <p>As Document Understanding implementations grew in complexity, UiPath recognized the need for a <strong>dedicated RPA framework</strong> specifically designed for document processing workflows.</p>
 
@@ -95,7 +97,7 @@
 
     <!-- Lesson 2 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> Generic Document Processing Flow</h2>
+      <h2 class="lesson-title">Generic Document Processing Flow</h2>
 
       <p>Understanding the complete logical flow of a DU automation helps you build robust, maintainable workflows. Here's the full pipeline:</p>
 
@@ -114,15 +116,15 @@
         <li><strong>Post-export Processing</strong>: Any cleanup, merging exports, notifications</li>
       </ol>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div>Not all steps are required for every use case. In practice, some steps will be merged or excluded based on your specific process requirements. Design your flow with the minimum necessary steps to avoid unnecessary complexity.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body">Not all steps are required for every use case. In practice, some steps will be merged or excluded based on your specific process requirements. Design your flow with the minimum necessary steps to avoid unnecessary complexity.</div>
       </div>
     </section>
 
     <!-- Lesson 3 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Specific Challenges in DU Automation</h2>
+      <h2 class="lesson-title">Specific Challenges in DU Automation</h2>
 
       <div class="info-card">
         <h4>Challenge 1: Document Quality Variability</h4>
@@ -152,7 +154,7 @@
 
     <!-- Lesson 4: Solution Architecture -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> Solution Architecture</h2>
+      <h2 class="lesson-title">Solution Architecture</h2>
 
       <p>A well-designed DU automation architecture separates concerns into distinct layers:</p>
 
@@ -171,15 +173,15 @@
         </table>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Attended vs Unattended:</strong> The same DU Framework project can be configured for both attended (human triggers, validates in real-time) and unattended (fully automated with Action Center for async validation). The key difference is how the human validation step is triggered.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Attended vs Unattended:</strong> The same DU Framework project can be configured for both attended (human triggers, validates in real-time) and unattended (fully automated with Action Center for async validation). The key difference is how the human validation step is triggered.</div>
       </div>
     </section>
 
     <!-- Lesson 5: Configure & Run -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L5</span> Configure &amp; Run the DU Framework Project</h2>
+      <h2 class="lesson-title">Configure &amp; Run the DU Framework Project</h2>
 
       <ol class="steps-list">
         <li>
@@ -202,15 +204,15 @@
         </li>
       </ol>
 
-      <div class="callout callout--success">
-        <span class="callout-icon">✅</span>
-        <div><strong>DIY Exercise:</strong> Build an attended DU automation that: (1) reads documents from a folder, (2) processes them through the DU pipeline, (3) presents results to the user for review, (4) exports validated data to Excel. Use a mix of document types covered in previous modules.</div>
+      <div class="admonition admonition--success">
+        <div class="admonition-title">✅ Success</div>
+        <div class="admonition-body"><strong>DIY Exercise:</strong> Build an attended DU automation that: (1) reads documents from a folder, (2) processes them through the DU pipeline, (3) presents results to the user for review, (4) exports validated data to Excel. Use a mix of document types covered in previous modules.</div>
       </div>
     </section>
 
     <!-- Lesson 6: Custom Success Logic -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L6</span> Custom Success Logic</h2>
+      <h2 class="lesson-title">Custom Success Logic</h2>
 
       <p>Real business processes rarely have simple success/failure outcomes. The DU Framework allows you to implement custom success logic based on your business rules.</p>
 
@@ -230,7 +232,7 @@
 
     <!-- Lesson 7: Error Handling -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L7</span> Error Handling in DU Workflows</h2>
+      <h2 class="lesson-title">Error Handling in DU Workflows</h2>
 
       <div class="info-card">
         <h4>Error Handling Strategy</h4>

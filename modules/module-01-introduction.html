@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
   <!-- Sidebar -->
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01" class="active">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
@@ -46,15 +46,17 @@
   <!-- Main Content -->
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 01 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 01 · Introduction to IXP</span>
+    </nav>
+    <div class="page-header">
       <h1>Introduction to UiPath Intelligent Extraction Processing (IXP)</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ 30 minutes</span>
         <span>📖 Theory</span>
         <span>🎯 Beginner</span>
       </div>
-    </header>
+    </div>
 
     <!-- Learning Objectives -->
     <div class="objectives-box" role="region" aria-label="Learning objectives">
@@ -70,9 +72,72 @@
 
     <!-- Lesson 1 -->
     <section class="lesson" aria-label="Lesson 1">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> What is UiPath IXP?</h2>
+      <h2 class="lesson-title">What is UiPath IXP?</h2>
 
       <p>UiPath <strong>Intelligent Extraction Processing (IXP)</strong> is UiPath's unified intelligent document processing (IDP) platform. It enables organizations to extract, classify, and process data from virtually any type of document at enterprise scale — using a combination of traditional ML, specialized AI, and generative AI.</p>
+
+      <!-- IXP Slide: Product Capabilities -->
+      <div style="border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;margin:1.25rem 0;">
+
+        <!-- Category row -->
+        <div style="display:grid;grid-template-columns:160px 1fr;">
+          <div style="background:#f5f5f5;padding:.75rem 1rem;font-weight:600;color:#1A1A2E;display:flex;align-items:center;">Category</div>
+          <div style="background:#FA4616;padding:.75rem 1rem;font-weight:700;color:#fff;display:flex;align-items:center;">Intelligent Document Processing (IDP)</div>
+        </div>
+
+        <!-- Product row -->
+        <div style="display:grid;grid-template-columns:160px 1fr;border-top:1px solid #e0e0e0;">
+          <div style="background:#f5f5f5;padding:.75rem 1rem;font-weight:600;color:#1A1A2E;display:flex;align-items:center;">Product</div>
+          <div style="background:#fff;padding:.75rem 1rem;border-left:1px solid #e0e0e0;text-align:center;">
+            <div style="font-weight:700;color:#FA4616;font-size:1.05rem;">UiPath IXP</div>
+            <div style="color:#444;font-size:.9rem;margin-top:.2rem;">Multi-modal data classification and extraction that unlocks enterprise data at speed and scale</div>
+          </div>
+        </div>
+
+        <!-- Capabilities row -->
+        <div style="display:grid;grid-template-columns:160px 1fr 1fr 1fr;border-top:1px solid #e0e0e0;">
+
+          <!-- Row labels -->
+          <div style="background:#f5f5f5;padding:.75rem 1rem;">
+            <div style="font-weight:600;color:#1A1A2E;margin-bottom:2rem;">Product capabilities</div>
+            <div style="color:#444;">Description</div>
+            <div style="color:#444;margin-top:2rem;">Example documents</div>
+          </div>
+
+          <!-- Communications Mining -->
+          <div style="padding:.75rem 1rem;border-left:1px solid #e0e0e0;">
+            <div style="font-weight:700;color:#1A1A2E;margin-bottom:.75rem;min-height:3rem;">Communications Mining</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="color:#444;font-size:.9rem;margin-bottom:1rem;">Extract key intent, sentiment and context data from messages and communications.</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="font-size:.9rem;"><strong>Example documents</strong><br/>Emails, workflow tickets, and messages etc.</div>
+          </div>
+
+          <!-- Document Understanding -->
+          <div style="padding:.75rem 1rem;border-left:1px solid #e0e0e0;">
+            <div style="font-weight:700;color:#1A1A2E;margin-bottom:.75rem;min-height:3rem;">Document Understanding*</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="color:#444;font-size:.9rem;margin-bottom:1rem;">Extract relevant data from structured and semi-structured documents.</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="font-size:.9rem;"><strong>Example documents</strong><br/>Forms, purchase orders, applications, and invoices etc.</div>
+          </div>
+
+          <!-- Generative Extraction -->
+          <div style="padding:.75rem 1rem;border:2px solid #FA4616;border-radius:0 0 6px 0;">
+            <div style="font-weight:700;color:#1A1A2E;margin-bottom:.75rem;min-height:3rem;">Generative extraction for unstructured &amp; complex documents</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="color:#444;font-size:.9rem;margin-bottom:1rem;">Extract relevant data from high complexity, varied structured documents.</div>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:.5rem 0;" />
+            <div style="font-size:.9rem;"><strong>Example documents</strong><br/>Reports, contracts, and lease agreements etc.</div>
+          </div>
+
+        </div>
+
+        <!-- Footnote -->
+        <div style="padding:.5rem 1rem;background:#f9f9f9;border-top:1px solid #e0e0e0;font-size:.8rem;color:#666;font-style:italic;">
+          *Available as a standalone capability in Automation Cloud, Automation Suite &amp; Standalone deployment
+        </div>
+      </div>
 
       <div class="info-card">
         <h4>IXP = Three Capabilities in One Platform</h4>
@@ -98,7 +163,7 @@
 
     <!-- Lesson 2 -->
     <section class="lesson" aria-label="Lesson 2">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> IXP Capabilities Deep Dive</h2>
+      <h2 class="lesson-title">IXP Capabilities Deep Dive</h2>
 
       <h3 style="margin-bottom:.75rem;">Document Understanding (DU)</h3>
       <p>Document Understanding enables you to extract relevant data from <strong>structured and semi-structured documents</strong> — documents that follow a consistent layout or format. DU is available as a standalone capability in Automation Cloud, Automation Suite, and Standalone deployments.</p>
@@ -130,9 +195,9 @@
         <li>Supports documents up to 150 pages</li>
       </ul>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>DU vs IXP for Complex Docs:</strong> Use Document Understanding for structured/semi-structured docs (invoices, forms). Use IXP Complex Docs for documents with &lt;150 pages that have complex tables, graphics, free-form text, inferred values, or 'packet' documents with multiple document types.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>DU vs IXP for Complex Docs:</strong> Use Document Understanding for structured/semi-structured docs (invoices, forms). Use IXP Complex Docs for documents with &lt;150 pages that have complex tables, graphics, free-form text, inferred values, or 'packet' documents with multiple document types.</div>
       </div>
 
       <h3 style="margin:1.25rem 0 .75rem;">Communications Mining (CM)</h3>
@@ -146,7 +211,7 @@
 
     <!-- Lesson 3 -->
     <section class="lesson" aria-label="Lesson 3">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Choosing the Right IXP Capability</h2>
+      <h2 class="lesson-title">Choosing the Right IXP Capability</h2>
 
       <p>Understanding which IXP capability to use for your use case is critical for success. Here is a decision guide:</p>
 
@@ -166,15 +231,15 @@
         </tbody>
       </table>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div><strong>IXP is the umbrella:</strong> When someone says "IXP," they are referring to the full platform. Document Understanding and Communications Mining are components within IXP. In day-to-day usage, "IXP for complex documents" usually refers to the generative extraction capability for unstructured docs.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>IXP is the umbrella:</strong> When someone says "IXP," they are referring to the full platform. Document Understanding and Communications Mining are components within IXP. In day-to-day usage, "IXP for complex documents" usually refers to the generative extraction capability for unstructured docs.</div>
       </div>
     </section>
 
     <!-- Lesson 4 -->
     <section class="lesson" aria-label="Lesson 4">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> IXP Use Cases Across Industries</h2>
+      <h2 class="lesson-title">IXP Use Cases Across Industries</h2>
 
       <div class="info-card">
         <h4>Typical Use Cases by Industry</h4>

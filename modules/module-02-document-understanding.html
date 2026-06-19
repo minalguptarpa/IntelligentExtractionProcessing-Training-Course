@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 <div class="course-layout">
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02" class="active">02 · What is Document Understanding?</a></li>
@@ -41,13 +41,15 @@
 
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 02 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 02 · Document Understanding</span>
+    </nav>
+    <div class="page-header">
       <h1>What is UiPath Document Understanding?</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ 30 minutes</span><span>📖 Theory</span><span>🎯 Beginner–Intermediate</span>
       </div>
-    </header>
+    </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
@@ -62,7 +64,7 @@
 
     <!-- Lesson 1 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> UiPath Document Understanding Overview</h2>
+      <h2 class="lesson-title">UiPath Document Understanding Overview</h2>
 
       <p>UiPath <strong>Document Understanding (DU)</strong> is a product within the IXP platform that enables robots to read, understand, and extract data from business documents — just like a human would — but at scale and speed.</p>
 
@@ -89,7 +91,7 @@
 
     <!-- Lesson 2 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> Document Processing Methodologies</h2>
+      <h2 class="lesson-title">Document Processing Methodologies</h2>
 
       <p>UiPath DU supports multiple extraction methodologies — each suited to a different document complexity level:</p>
 
@@ -119,15 +121,15 @@
         <p>Combines rule-based and model-based approaches. Best for documents that mix structured sections (tables, checkboxes) with semi-structured content.</p>
       </div>
 
-      <div class="callout callout--important">
-        <span class="callout-icon">❗</span>
-        <div><strong>Common Misconception:</strong> Many believe ML extractors are "a smart big database of layouts." In reality, ML models learn from characteristics like position, text correlation, and values — making them flexible across new document layouts they've never seen.</div>
+      <div class="admonition admonition--important">
+        <div class="admonition-title">⚠️ Important</div>
+        <div class="admonition-body"><strong>Common Misconception:</strong> Many believe ML extractors are "a smart big database of layouts." In reality, ML models learn from characteristics like position, text correlation, and values — making them flexible across new document layouts they've never seen.</div>
       </div>
     </section>
 
     <!-- Lesson 3 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Taxonomy in Document Understanding</h2>
+      <h2 class="lesson-title">Taxonomy in Document Understanding</h2>
 
       <p><strong>Taxonomy</strong> is the metadata collection that guides the Document Understanding framework throughout its operations. It acts as a single source of truth — defining what documents to expect and exactly what data to extract from them.</p>
 
@@ -169,9 +171,9 @@
         </ul>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Best Practice:</strong> Define your taxonomy before building any model. A well-designed taxonomy saves significant rework later. Work with a Subject Matter Expert (SME) who understands both the business process and all edge cases in the documents.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Best Practice:</strong> Define your taxonomy before building any model. A well-designed taxonomy saves significant rework later. Work with a Subject Matter Expert (SME) who understands both the business process and all edge cases in the documents.</div>
       </div>
 
       <h3 style="margin:1.25rem 0 .75rem;">Building a Good Taxonomy</h3>
@@ -187,7 +189,7 @@
 
     <!-- Lesson 4 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> Classification, Extraction &amp; Validation</h2>
+      <h2 class="lesson-title">Classification, Extraction &amp; Validation</h2>
 
       <h3 style="margin-bottom:.75rem;">Document Classification</h3>
       <p>Classification is the process of identifying what <em>type</em> of document is being processed. UiPath DU supports:</p>
@@ -214,15 +216,15 @@
         </ul>
       </div>
 
-      <div class="callout callout--success">
-        <span class="callout-icon">✅</span>
-        <div><strong>Human-in-the-Loop Best Practice:</strong> Start with a lower automatic acceptance threshold (e.g., 90%) to catch more errors early. As the model improves through retraining, gradually raise the threshold to reduce human workload.</div>
+      <div class="admonition admonition--success">
+        <div class="admonition-title">✅ Success</div>
+        <div class="admonition-body"><strong>Human-in-the-Loop Best Practice:</strong> Start with a lower automatic acceptance threshold (e.g., 90%) to catch more errors early. As the model improves through retraining, gradually raise the threshold to reduce human workload.</div>
       </div>
     </section>
 
     <!-- Lesson 5 -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L5</span> End-to-End Processing Pipeline</h2>
+      <h2 class="lesson-title">End-to-End Processing Pipeline</h2>
 
       <p>A complete Document Understanding automation follows this logical flow:</p>
 
@@ -239,9 +241,9 @@
         <li><strong>Data Export</strong>: Send extracted data to downstream systems (ERP, database, API)</li>
       </ol>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div>Not all steps are required for every use case. Simple processes may skip classification, human validation, or feedback steps. Design your flow based on your specific business requirements.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body">Not all steps are required for every use case. Simple processes may skip classification, human validation, or feedback steps. Design your flow based on your specific business requirements.</div>
       </div>
     </section>
 

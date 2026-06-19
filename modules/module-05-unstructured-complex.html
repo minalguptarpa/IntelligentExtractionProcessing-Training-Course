@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 <div class="course-layout">
   <aside class="course-sidebar" aria-label="Course navigation">
     <nav class="sidebar-nav" aria-label="Module list">
-      <div class="sidebar-nav__header">📚 Course Modules</div>
+      <div class="sidebar-nav__title">IXP Training Course</div>
       <ul class="sidebar-nav__list">
         <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
@@ -41,13 +41,15 @@
 
   <main class="course-content" id="main-content">
 
-    <header class="module-header">
-      <div class="module-header__number">Module 05 of 07</div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 05 · Unstructured &amp; Complex Docs</span>
+    </nav>
+    <div class="page-header">
       <h1>Generative Extraction — Technical Deep Dive</h1>
-      <div class="module-header__meta">
+      <div class="page-header__meta">
         <span>⏱ ~1 hr 25 min</span><span>📖 Theory + Hands-On</span><span>🎯 Expert</span>
       </div>
-    </header>
+    </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
@@ -64,7 +66,7 @@
 
     <!-- L1: Introduction to Generative Extraction -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L1</span> Introduction to Generative Extraction</h2>
+      <h2 class="lesson-title">Introduction to Generative Extraction</h2>
 
       <p><strong>UiPath Generative Extraction (Intelligent Extraction Processing)</strong> is UiPath's next-generation platform for extracting data from unstructured and complex documents using generative AI. Unlike traditional Document Understanding, Generative Extraction uses prompt-based models powered by Large Language Models (LLMs) — meaning you can start getting predictions <em>immediately</em>, without labelled training data.</p>
 
@@ -104,15 +106,15 @@
         </table>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Key Advantage:</strong> With Generative Extraction you can see AI-generated predictions <em>immediately</em> after uploading documents and defining your schema — before any annotation. This rapid prototyping dramatically reduces time-to-value for new document types.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Key Advantage:</strong> With Generative Extraction you can see AI-generated predictions <em>immediately</em> after uploading documents and defining your schema — before any annotation. This rapid prototyping dramatically reduces time-to-value for new document types.</div>
       </div>
     </section>
 
     <!-- L2: Paystubs Use Case -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L2</span> Use Case Introduction: Paystubs</h2>
+      <h2 class="lesson-title">Use Case Introduction: Paystubs</h2>
 
       <p>The course uses <strong>paystubs</strong> as the primary use-case document. Paystubs are an excellent example of unstructured documents — they vary significantly in layout across employers, payroll systems, and countries, making them difficult to handle with template-based or regex extractors.</p>
 
@@ -141,15 +143,15 @@
         </table>
       </div>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div><strong>Inferred Fields:</strong> Net Pay is often a calculated value (Gross − Deductions). In Generative Extraction, you can instruct the model to extract inferred values by describing the calculation logic in the field instruction.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>Inferred Fields:</strong> Net Pay is often a calculated value (Gross − Deductions). In Generative Extraction, you can instruct the model to extract inferred values by describing the calculation logic in the field instruction.</div>
       </div>
     </section>
 
     <!-- L3: Building the Project -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L3</span> Building the Generative Extraction Project</h2>
+      <h2 class="lesson-title">Building the Generative Extraction Project</h2>
 
       <p>Building a Generative Extraction project follows the same <strong>Build → Measure → Publish</strong> lifecycle as Modern DU projects, but uses generative AI prompts instead of annotated ML training.</p>
 
@@ -182,9 +184,9 @@
           <li>Add individual <strong>Fields</strong> within each group — specify name, data type, and instruction</li>
           <li>For hierarchical data, use <code>&gt;</code> in field group names (e.g., <em>Paystub &gt; Deductions</em>)</li>
         </ol>
-        <div class="callout callout--tip" style="margin-top:.75rem;margin-bottom:0;">
-          <span class="callout-icon">💡</span>
-          <div>Configure your extraction schema upfront before reviewing predictions — this allows you to immediately assess AI-generated output across all your fields.</div>
+        <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body">Configure your extraction schema upfront before reviewing predictions — this allows you to immediately assess AI-generated output across all your fields.</div>
         </div>
       </div>
 
@@ -217,7 +219,7 @@
 
     <!-- L4: Evaluating the Project -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L4</span> Evaluating the Project (Measure Phase)</h2>
+      <h2 class="lesson-title">Evaluating the Project (Measure Phase)</h2>
 
       <p>The <strong>Measure</strong> phase evaluates how well your model is performing before you deploy it to production. It uses your validated annotations as the ground truth.</p>
 
@@ -254,15 +256,15 @@
         </ul>
       </div>
 
-      <div class="callout callout--tip">
-        <span class="callout-icon">💡</span>
-        <div><strong>Performance Benchmarks:</strong> There is no universal threshold — align targets with business requirements. For high-stakes use cases (legal, financial), aim for <strong>90%+</strong> F1. For lower-stakes automation with human-in-the-loop, <strong>75–80%</strong> may be acceptable.</div>
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Performance Benchmarks:</strong> There is no universal threshold — align targets with business requirements. For high-stakes use cases (legal, financial), aim for <strong>90%+</strong> F1. For lower-stakes automation with human-in-the-loop, <strong>75–80%</strong> may be acceptable.</div>
       </div>
     </section>
 
     <!-- L5: Consuming the Project -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L5</span> Consuming the Generative Extraction Project in Studio</h2>
+      <h2 class="lesson-title">Consuming the Generative Extraction Project in Studio</h2>
 
       <p>Once your model meets performance criteria, publish it and integrate it into a UiPath Studio workflow.</p>
 
@@ -302,15 +304,15 @@
         </table>
       </div>
 
-      <div class="callout callout--note">
-        <span class="callout-icon">📌</span>
-        <div><strong>Model Governance:</strong> Generative Extraction maintains full version history. You can roll back to any previous version if a newer model underperforms in production. Always test new versions on a representative validation set before replacing production.</div>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>Model Governance:</strong> Generative Extraction maintains full version history. You can roll back to any previous version if a newer model underperforms in production. Always test new versions on a representative validation set before replacing production.</div>
       </div>
     </section>
 
     <!-- L6: Prompting Best Practices -->
     <section class="lesson">
-      <h2 class="lesson-title"><span class="lesson-num">L6</span> Generative Extraction Prompting Best Practices</h2>
+      <h2 class="lesson-title">Generative Extraction Prompting Best Practices</h2>
 
       <p>The quality of your prompts directly determines extraction accuracy. Well-written instructions unlock the full potential of the generative model.</p>
 
@@ -364,9 +366,9 @@
         </table>
       </div>
 
-      <div class="callout callout--important">
-        <span class="callout-icon">❗</span>
-        <div><strong>Exact vs Inferred Fields:</strong> Generative Extraction can extract both <em>exact</em> fields (values explicitly stated in the document) and <em>inferred</em> fields (values derived or calculated from document content). Always be explicit in your field instruction about which type each field is.</div>
+      <div class="admonition admonition--important">
+        <div class="admonition-title">⚠️ Important</div>
+        <div class="admonition-body"><strong>Exact vs Inferred Fields:</strong> Generative Extraction can extract both <em>exact</em> fields (values explicitly stated in the document) and <em>inferred</em> fields (values derived or calculated from document content). Always be explicit in your field instruction about which type each field is.</div>
       </div>
     </section>
 
