@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 05 Part 2 – Generative Extractor in IXP | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__title">IXP Training Course</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-04-semistructured-docs.html" class="sidebar-nav__sub">↳ Theory</a></li>
+        <li><a href="module-04-practical.html" class="sidebar-nav__sub">↳ Practical Exercise</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-05-part1.html" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
+        <li><a href="module-05-part2.html" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
+        <li><a href="module-05-part2.html#part2-theory" class="sidebar-nav__subsub">· Theory</a></li>
+        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span>
+      <a href="module-05-unstructured-complex.html">Module 05 · Unstructured &amp; Complex Docs</a> <span aria-hidden="true">›</span>
+      <span>Part 2</span>
+    </nav>
+
+    <div class="page-header">
+      <h1>Part 2 : Generative Extractor in IXP</h1>
+      <div class="page-header__meta">
+        <span>⏱ ~55 min</span><span>📖 Theory + Hands-On</span><span>🎯 Expert</span>
+      </div>
+    </div>
+
+    <div class="objectives-box">
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Explain what IXP Generative Extraction is and which document types it is designed for</li>
+        <li>Identify when to use IXP Generative Extraction vs. Document Understanding or Communications Mining</li>
+        <li>Build a Generative Extraction project: create, upload documents, define taxonomy, validate predictions</li>
+        <li>Evaluate model performance using precision, recall, and F1 metrics</li>
+        <li>Publish and consume a Generative Extraction model in a UiPath Studio workflow</li>
+        <li>Apply prompting best practices at project, field group, and field levels</li>
+      </ul>
+    </div>
+
+    <!-- ── THEORY ── -->
+    <div class="subpart-header" id="part2-theory">
+      <h3 class="subpart-header__title"><span class="subpart-header__label">Theory :</span> Understanding IXP Generative Extraction</h3>
+    </div>
+
+    <section class="lesson">
+      <h2 class="lesson-title">What is IXP Generative Extraction?</h2>
+
+      <p>The <strong>Unstructured and Complex Documents</strong> capability in UiPath IXP uses <strong>Generative Extraction</strong> to process documents that are too complex or variable for traditional rule-based or template-based methods. It is an inference-first experience that provides zero-shot and few-shot extraction — meaning it can extract data from documents it has never seen before, guided purely by natural language prompts.</p>
+
+      <p>This capability converts unstructured document content into structured, actionable data for automation and analytics — without requiring ML model training or positional rules.</p>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Examples of documents IXP handles</div>
+        <div class="admonition-body">Contracts, mortgage applications, medical records, paystubs, insurance policies, loan applications, and any document with high layout variability or complex elements.</div>
+      </div>
+
+      <div style="margin:1.5rem 0;">
+        <img src="../assets/images/ixp-complex-document-types.png" alt="Six types of complex documents IXP can handle: complex tables, charts and graphs, handwriting and signatures, packet documents, inferred values, and checkboxes" style="width:100%;border:1px solid #e5e7eb;border-radius:4px;" />
+        <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.4rem;">IXP Generative Extraction handles a wide range of complex document elements</p>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title">When to Use IXP Generative Extraction</h2>
+
+      <p>This capability is ideal for advanced document processing scenarios where data is not consistently formatted. Use it when one or more of the following apply:</p>
+
+      <div class="info-card">
+        <h4>Complex Document Elements</h4>
+        <p>Documents contain paragraphs of free-form text or complex elements such as:</p>
+        <ul>
+          <li><strong>Complex tables</strong> — nested, merged cells, multi-level headers</li>
+          <li><strong>Graphics and Charts</strong> — bar charts, pie charts, embedded images with data</li>
+          <li><strong>Checkboxes and Call-out boxes</strong> — form-style elements with contextual values</li>
+          <li><strong>Signatures, Stamps, and Handwriting</strong> — non-digital content that varies per document</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Inferred Values</h4>
+        <p>You need to extract <strong>inferred values</strong> — information that is not stated directly in the document but must be <em>derived from context</em>. For example, calculating net pay from gross pay and deductions, or determining account type from surrounding text.</p>
+      </div>
+
+      <div class="info-card">
+        <h4>High Layout Variation</h4>
+        <p>There is <strong>high variation in layout or structure</strong> between documents, or within the fields to be extracted. Different employers, vendors, or agencies may use entirely different formats for the same document type.</p>
+      </div>
+
+      <div class="info-card">
+        <h4>Packet Documents</h4>
+        <p>You are dealing with <strong>stacks of multiple document types combined as one file</strong> and need to extract data without splitting them up first. IXP can process these packet documents in a single request.</p>
+      </div>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Zero-shot vs. Few-shot Extraction</div>
+        <div class="admonition-body"><strong>Zero-shot</strong> extraction uses only your field instructions — no annotated examples needed. <strong>Few-shot</strong> adds validated annotation examples alongside instructions to improve accuracy on complex or ambiguous fields.</div>
+      </div>
+    </section>
+
+    <!-- ── PRACTICAL ── -->
+    <div class="subpart-header" id="part2-practical">
+      <h3 class="subpart-header__title"><span class="subpart-header__label">Practical :</span> Building, Evaluating &amp; Consuming</h3>
+    </div>
+
+    <section class="lesson">
+      <h2 class="lesson-title">Building the Generative Extraction Project</h2>
+
+      <p>Building a Generative Extraction project follows the same <strong>Build → Measure → Publish</strong> lifecycle as Modern DU projects, but uses generative AI prompts instead of annotated ML training.</p>
+
+      <div class="info-card">
+        <h4>Step 1: Create a New Generative Extraction Project</h4>
+        <ol>
+          <li>Log into <strong>cloud.uipath.com</strong> and navigate to the <strong>Generative Extraction</strong> service</li>
+          <li>Click <strong>New Project</strong> — choose <strong>Blank Project</strong> or a <strong>Template</strong></li>
+          <li>Give the project a name (e.g., <em>Paystubs Extraction</em>) and description</li>
+          <li>Projects can only be created by an <strong>IXP Service Admin</strong></li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4>Step 2: Upload Sample Documents</h4>
+        <ul>
+          <li>Upload a representative sample of documents covering all layout variations</li>
+          <li>Supported formats: <strong>PDF, PNG, JPG/JPEG, TIF/TIFF</strong></li>
+          <li>You can filter documents by annotated/unannotated status and search by document name</li>
+          <li>No minimum number of documents required to start — predictions appear immediately</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Step 3: Define the Extraction Schema (Taxonomy)</h4>
+        <ol>
+          <li>Go to <strong>Manage Taxonomy</strong></li>
+          <li>Write a <strong>project-level instruction</strong> — describe the document type and industry context</li>
+          <li>Click <strong>New Field Group</strong> — give it a name and instruction (e.g., "Employee Information")</li>
+          <li>Add individual <strong>Fields</strong> within each group — specify name, data type, and instruction</li>
+          <li>For hierarchical data, use <code>&gt;</code> in field group names (e.g., <em>Paystub &gt; Deductions</em>)</li>
+        </ol>
+        <div class="admonition admonition--tip">
+          <div class="admonition-title">💡 Tip</div>
+          <div class="admonition-body">Configure your extraction schema upfront before reviewing predictions — this allows you to immediately assess AI-generated output across all your fields.</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4>Step 4: Review and Validate Predictions</h4>
+        <ol>
+          <li>Once schema is defined, the AI immediately generates predictions for all uploaded documents</li>
+          <li>Review each document — check if predictions are correct</li>
+          <li>Modify prompt instructions and observe the impact on prediction quality</li>
+          <li><strong>Accept</strong> correct predictions or <strong>correct</strong> wrong ones to build ground truth</li>
+          <li>Validated documents become the basis for performance evaluation in the Measure phase</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4>User Roles in Generative Extraction</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>IXP Service Admin</strong></td><td>Manage service settings, create projects, assign all roles</td></tr>
+            <tr><td><strong>IXP Project Admin</strong></td><td>Manage specific project, assign project-level roles</td></tr>
+            <tr><td><strong>IXP Developer</strong></td><td>Build, annotate, train, and publish models</td></tr>
+            <tr><td><strong>IXP Model Trainer</strong></td><td>Annotate documents and validate predictions</td></tr>
+            <tr><td><strong>IXP Analyst</strong></td><td>View project stats and performance metrics</td></tr>
+            <tr><td><strong>IXP Viewer</strong></td><td>View-only access to projects and results</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title">Evaluating the Project (Measure Phase)</h2>
+
+      <p>The <strong>Measure</strong> phase evaluates how well your model is performing before you deploy it to production. It uses your validated annotations as the ground truth.</p>
+
+      <div class="info-card">
+        <h4>Key Performance Metrics</h4>
+        <ul>
+          <li><strong>Project Score</strong> — overall model performance across all fields</li>
+          <li><strong>Precision</strong> — of all values the model extracted, how many were correct</li>
+          <li><strong>Recall</strong> — of all values that should have been extracted, how many did the model find</li>
+          <li><strong>F1 Score</strong> — harmonic mean of precision and recall; best single measure of performance</li>
+          <li><strong>Per-field performance</strong> — identify which specific fields need improvement</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Comparing Model Versions</h4>
+        <p>Every time you change the extraction schema or validate more documents, Generative Extraction creates a new model version. In the Measure phase you can:</p>
+        <ul>
+          <li>Compare model versions side by side</li>
+          <li>See field-level performance differences between versions</li>
+          <li>Identify which fields need more annotation or better prompt instructions</li>
+          <li>Decide which version is best suited for production deployment</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>How to Improve Performance</h4>
+        <ul>
+          <li>Refine field instructions — be more specific about expected format and edge cases</li>
+          <li>Add more validated annotation examples (few-shot)</li>
+          <li>Review low-scoring fields and adjust prompt wording</li>
+          <li>Ensure the project-level instruction accurately describes the document type</li>
+          <li>Annotate more diverse document samples to cover edge cases</li>
+        </ul>
+      </div>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Performance Benchmarks:</strong> There is no universal threshold — align targets with business requirements. For high-stakes use cases (legal, financial), aim for <strong>90%+</strong> F1. For lower-stakes automation with human-in-the-loop, <strong>75–80%</strong> may be acceptable.</div>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title">Consuming the Generative Extraction Project in Studio</h2>
+
+      <p>Once your model meets performance criteria, publish it and integrate it into a UiPath Studio workflow.</p>
+
+      <div class="info-card">
+        <h4>Step 1: Publish the Model</h4>
+        <ol>
+          <li>Go to the <strong>Publish</strong> tab in your Generative Extraction project</li>
+          <li>Select the <strong>model version</strong> to deploy (based on your Measure results)</li>
+          <li>Add <strong>deployment tags</strong> to identify the version (e.g., <em>v1.0-production</em>)</li>
+          <li>Click <strong>Publish</strong> — the model becomes available as an API endpoint</li>
+          <li>Copy the <strong>project ID / endpoint details</strong> for use in Studio</li>
+          <li>To roll back, simply publish a previous model version</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4>Step 2: Integrate in Studio Workflow</h4>
+        <ol>
+          <li>Install <code>UiPath.DocumentUnderstanding.Activities</code> package in Studio</li>
+          <li>Add a <strong>Document Understanding Scope</strong> activity and connect to your Generative Extraction project</li>
+          <li>Add <strong>Extract Document Data</strong> — pass the file path of each document</li>
+          <li>Access extracted fields from the returned <code>DocumentData</code> object</li>
+          <li>Add <strong>Present Validation Station</strong> for human-in-the-loop review if confidence is below threshold</li>
+          <li>Export validated results to Excel, database, or downstream system</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4>Supported Document Limits</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Parameter</th><th>Limit</th></tr></thead>
+          <tbody>
+            <tr><td>Maximum document length</td><td>150 pages (use DU with RAG for longer documents)</td></tr>
+            <tr><td>Supported file formats</td><td>PDF, PNG, JPG/JPEG, TIF/TIFF</td></tr>
+            <tr><td>AI infrastructure</td><td>Specialized UiPath models + Azure OpenAI LLMs (data residency maintained per region)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>Model Governance:</strong> Generative Extraction maintains full version history. You can roll back to any previous version if a newer model underperforms in production. Always test new versions on a representative validation set before replacing production.</div>
+      </div>
+    </section>
+
+    <!-- ── BEST PRACTICES ── -->
+    <div class="subpart-header" id="part2-bestpractices">
+      <h3 class="subpart-header__title"><span class="subpart-header__label">Best Practices :</span> Prompting for Generative Extraction</h3>
+    </div>
+
+    <section class="lesson">
+      <h2 class="lesson-title">Generative Extraction Prompting Best Practices</h2>
+
+      <p>The quality of your prompts directly determines extraction accuracy. Well-written instructions unlock the full potential of the generative model.</p>
+
+      <div class="info-card">
+        <h4>Project-Level Instructions</h4>
+        <ul>
+          <li>Briefly describe the <strong>industry</strong> and <strong>document type</strong> (e.g., "This is a US payroll paystub from the HR/Finance industry")</li>
+          <li>Mention any special characteristics of the document (multi-page, scanned, handwritten sections)</li>
+          <li>If the document may contain multiple instances of the same data, include a <strong>unique identifier field</strong> in every field group</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Field Group-Level Instructions</h4>
+        <ul>
+          <li>Choose <strong>clear, recognizable names</strong> — use the same terminology as in the documents</li>
+          <li>Group <strong>related data points</strong> together logically</li>
+          <li>Explain how the field group contributes to the document's overall meaning</li>
+          <li>Indicate the likely <strong>location or section</strong> in the document (e.g., "Found in the top-right header section")</li>
+          <li>Treat each field group as a <strong>table</strong> — each field is a unique column</li>
+          <li>Use <code>&gt;</code> to create parent-child relationships (e.g., <em>Paystub &gt; Deductions</em>)</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Field-Level Instructions</h4>
+        <ul>
+          <li>Start every instruction with <strong>"Extract…"</strong></li>
+          <li>Specify the exact <strong>format and structure</strong> of the expected output (e.g., "Extract as DD/MM/YYYY")</li>
+          <li>Provide <strong>example inputs and expected outputs</strong> for complex or ambiguous fields</li>
+          <li>Focus on <strong>one piece of data per instruction</strong> — don't overload a single field</li>
+          <li>Select the appropriate <strong>data type</strong>: Text, Number, Date, or Boolean</li>
+          <li>For inferred fields, describe the derivation logic (e.g., "Extract net pay — calculated as Gross Pay minus total deductions")</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>General Prompting Rules</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Rule</th><th>Guidance</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Clarity &amp; Simplicity</strong></td><td>Use clear, direct, unambiguous language. Avoid complex nested sentences.</td></tr>
+            <tr><td><strong>Consistency</strong></td><td>Use the same terminology across project, field group, and field instructions.</td></tr>
+            <tr><td><strong>Provide Context</strong></td><td>Give the model relevant industry and document-type context at the project level.</td></tr>
+            <tr><td><strong>Iterate</strong></td><td>Write → Test → Edit → Save. Repeat until extraction quality is satisfactory.</td></tr>
+            <tr><td><strong>Avoid Negative Instructions</strong></td><td>Instead of "Don't skip sections", say "Ensure all earnings sections are captured".</td></tr>
+            <tr><td><strong>Avoid Repetition</strong></td><td>Repeating instructions across levels causes confusion and reduces accuracy.</td></tr>
+            <tr><td><strong>Avoid Contradictions</strong></td><td>Ensure project, field group, and field instructions do not conflict with each other.</td></tr>
+            <tr><td><strong>Positive Examples</strong></td><td>Include examples of correct responses to guide the model (few-shot).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admonition admonition--important">
+        <div class="admonition-title">⚠️ Important</div>
+        <div class="admonition-body"><strong>Exact vs Inferred Fields:</strong> Generative Extraction can extract both <em>exact</em> fields (values explicitly stated in the document) and <em>inferred</em> fields (values derived or calculated from document content). Always be explicit in your field instruction about which type each field is.</div>
+      </div>
+    </section>
+
+    <!-- Knowledge Check -->
+    <section class="quiz-section" id="quiz-05">
+      <h3>✅ Knowledge Check</h3>
+
+      <div class="quiz-question" data-correct="b" data-explanation="Zero-shot extraction uses only the field instructions with no annotated examples, while few-shot uses validated annotation examples alongside instructions to improve accuracy on complex fields.">
+        <p>1. What is the difference between zero-shot and few-shot extraction in Generative Extraction?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> Zero-shot uses templates; few-shot uses ML models</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> Zero-shot uses instructions only; few-shot adds annotated examples to improve accuracy</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> Zero-shot is for structured docs; few-shot is for unstructured docs</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> Zero-shot requires 30 documents; few-shot requires 100</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="c" data-explanation="Field instructions should always start with 'Extract…' and specify the exact format of the expected output. One data point per instruction keeps instructions clear and unambiguous.">
+        <p>2. Which of the following is a field-level prompting best practice in Generative Extraction?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> Start instructions with "Do not extract…"</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> Combine multiple data points into one field instruction for efficiency</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> Start with "Extract…" and focus on one data point per instruction</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> Repeat the same instruction across project, field group, and field levels</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-question" data-correct="d" data-explanation="After publishing, you integrate the Generative Extraction project in Studio using the UiPath.DocumentUnderstanding.Activities package with a Document Understanding Scope and Extract Document Data activity.">
+        <p>3. How do you consume a published Generative Extraction project in UiPath Studio?</p>
+        <ul class="quiz-options">
+          <li><label data-value="a"><input type="radio" name="q3" value="a" /> Using the UiPath.IntelligentOCR.Activities package with a Load Taxonomy activity</label></li>
+          <li><label data-value="b"><input type="radio" name="q3" value="b" /> By calling the REST API directly from a .NET code activity</label></li>
+          <li><label data-value="c"><input type="radio" name="q3" value="c" /> By exporting results as a CSV and reading with Read CSV activity</label></li>
+          <li><label data-value="d"><input type="radio" name="q3" value="d" /> Using UiPath.DocumentUnderstanding.Activities with Document Understanding Scope and Extract Document Data</label></li>
+        </ul>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <button class="btn btn-primary quiz-submit-btn">Submit Answers</button>
+      <div class="quiz-result" role="status"></div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-05-part1.html" class="btn btn-outline">← Part 1: Generative Classifier and Extractor</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="module-06-du-framework.html" class="btn btn-primary">Next: DU Framework →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>initModulePage('module-05');</script>
+</body>
+</html>

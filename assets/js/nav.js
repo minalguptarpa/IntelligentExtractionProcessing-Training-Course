@@ -71,15 +71,72 @@ function initQuiz(quizId) {
 
 /* ---- Active sidebar link ---- */
 function initActiveSidebarLink() {
-  const current = window.location.pathname.split('/').pop();
+  const current = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.sidebar-nav__list a').forEach(a => {
-    const href = a.getAttribute('href').split('/').pop();
-    if (href === current) a.classList.add('active');
+    const href = a.getAttribute('href').split('#')[0].split('/').pop();
+    if (href && href === current) a.classList.add('active');
   });
+}
+
+/* ---- Sidebar collapse/expand for modules with sub-parts ---- */
+function initSidebarToggle() {
+  const list = document.querySelector('.sidebar-nav__list');
+  if (!list) return;
+
+  const items = Array.from(list.querySelectorAll('li'));
+  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+
+  let i = 0;
+  while (i < items.length) {
+    const mainLink = items[i].querySelector('a[data-module]');
+    if (!mainLink) { i++; continue; }
+
+    // Collect consecutive sub-link items following this module link
+    const subItems = [];
+    let j = i + 1;
+    while (j < items.length) {
+      const a = items[j].querySelector('a');
+      if (a && (a.classList.contains('sidebar-nav__sub') || a.classList.contains('sidebar-nav__subsub'))) {
+        subItems.push(items[j]);
+        j++;
+      } else break;
+    }
+
+    if (subItems.length === 0) { i++; continue; }
+
+    // Check if current page is this module or one of its sub-pages
+    const isActiveModule = subItems.some(si => {
+      const f = si.querySelector('a').getAttribute('href').split('#')[0].split('/').pop();
+      return f && f === currentFile;
+    }) || mainLink.getAttribute('href').split('#')[0].split('/').pop() === currentFile;
+
+    // Inject toggle arrow
+    const toggle = document.createElement('span');
+    toggle.className = 'sidebar-toggle';
+    toggle.setAttribute('aria-hidden', 'true');
+    toggle.textContent = isActiveModule ? ' ▼' : ' ▶';
+    mainLink.appendChild(toggle);
+
+    // Collapse sub-items if not on this module
+    if (!isActiveModule) {
+      subItems.forEach(si => { si.style.display = 'none'; });
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isHidden = subItems[0].style.display === 'none';
+      subItems.forEach(si => { si.style.display = isHidden ? '' : 'none'; });
+      toggle.textContent = isHidden ? ' ▼' : ' ▶';
+    });
+
+    i = j;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   initActiveSidebarLink();
+  initSidebarToggle();
   // auto-init any quizzes on the page
   document.querySelectorAll('[id^="quiz-"]').forEach(q => initQuiz(q.id));
 });

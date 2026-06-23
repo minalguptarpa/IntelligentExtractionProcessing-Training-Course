@@ -70,6 +70,17 @@
 }
 .sidebar-nav__list li a.sidebar-nav__subsub:hover { color: var(--uipath-orange); border-left-color: var(--uipath-orange); }
 
+/* Collapse/expand toggle arrow */
+.sidebar-toggle {
+  font-size: 0.6rem;
+  color: var(--gray-400);
+  margin-left: 0.3rem;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+.sidebar-toggle:hover { color: var(--uipath-orange); }
+
 .sidebar-progress {
   padding: 1rem 1.25rem;
   margin-top: 1rem;
