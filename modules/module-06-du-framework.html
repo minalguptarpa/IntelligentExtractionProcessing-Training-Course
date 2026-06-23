@@ -101,20 +101,25 @@
 
       <p>Understanding the complete logical flow of a DU automation helps you build robust, maintainable workflows. Here's the full pipeline:</p>
 
-      <ol class="steps-list">
-        <li><strong>Pre-digitization Processing</strong>: Preprocessing before OCR — image enhancement, grayscale, skew correction, noise removal</li>
-        <li><strong>Digitize Document</strong>: Run OCR to convert document to machine-readable text and Document Object Model</li>
-        <li><strong>Classify Document</strong>: Identify document type using configured classifiers</li>
-        <li><strong>Classification Business Rule Validation</strong>: Check if classification confidence meets threshold — determine if human review is needed</li>
-        <li><strong>Human Classification/Validation (if needed)</strong>: Route to Action Center for human to review/correct classification</li>
-        <li><strong>Pre-extraction Processing</strong>: Document splitting, page selection, any required preprocessing before extraction</li>
-        <li><strong>Data Extraction</strong>: Run extractors to pull field values from the classified document</li>
-        <li><strong>Human Validation (if needed)</strong>: Route low-confidence fields to Action Center for human review</li>
-        <li><strong>Extractor Feedback (Learning)</strong>: Send validated corrections back to retrain the model</li>
-        <li><strong>Post-extraction Processing</strong>: Data formatting, business rules application, calculated fields</li>
-        <li><strong>Data Export</strong>: Send extracted data to downstream systems (ERP, SAP, database)</li>
-        <li><strong>Post-export Processing</strong>: Any cleanup, merging exports, notifications</li>
-      </ol>
+      <table class="comparison-table" aria-label="Generic Document Processing Flow">
+        <thead>
+          <tr><th style="width:3rem;">#</th><th style="width:30%;">Step</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Pre-digitization Processing</strong></td><td>Preprocessing before OCR — image enhancement, grayscale, skew correction, noise removal</td></tr>
+          <tr><td>2</td><td><strong>Digitize Document</strong></td><td>Run OCR to convert document to machine-readable text and Document Object Model</td></tr>
+          <tr><td>3</td><td><strong>Classify Document</strong></td><td>Identify document type using configured classifiers</td></tr>
+          <tr><td>4</td><td><strong>Classification Business Rule Validation</strong></td><td>Check if classification confidence meets threshold — determine if human review is needed</td></tr>
+          <tr><td>5</td><td><strong>Human Classification / Validation</strong> <em>(if needed)</em></td><td>Route to Action Center for human to review and correct classification</td></tr>
+          <tr><td>6</td><td><strong>Pre-extraction Processing</strong></td><td>Document splitting, page selection, any required preprocessing before extraction</td></tr>
+          <tr><td>7</td><td><strong>Data Extraction</strong></td><td>Run extractors to pull field values from the classified document</td></tr>
+          <tr><td>8</td><td><strong>Human Validation</strong> <em>(if needed)</em></td><td>Route low-confidence fields to Action Center for human review</td></tr>
+          <tr><td>9</td><td><strong>Extractor Feedback (Learning)</strong></td><td>Send validated corrections back to retrain the model</td></tr>
+          <tr><td>10</td><td><strong>Post-extraction Processing</strong></td><td>Data formatting, business rules application, calculated fields</td></tr>
+          <tr><td>11</td><td><strong>Data Export</strong></td><td>Send extracted data to downstream systems (ERP, SAP, database)</td></tr>
+          <tr><td>12</td><td><strong>Post-export Processing</strong></td><td>Any cleanup, merging exports, notifications</td></tr>
+        </tbody>
+      </table>
 
       <div class="admonition admonition--note">
         <div class="admonition-title">📌 Note</div>
@@ -183,26 +188,19 @@
     <section class="lesson">
       <h2 class="lesson-title">Configure &amp; Run the DU Framework Project</h2>
 
-      <ol class="steps-list">
-        <li>
-          <div><strong>Download the DU Framework template</strong> from UiPath Marketplace or use the project template in Studio Web</div>
-        </li>
-        <li>
-          <div><strong>Configure Taxonomy</strong>: Set up the taxonomy in your DU project (Automation Cloud) or locally in the workflow. Reference the taxonomy in your Load Taxonomy activity.</div>
-        </li>
-        <li>
-          <div><strong>Configure Models</strong>: In the taxonomy configuration, select the extractors and classifiers for each document type. For Modern Projects, set the project endpoint URL.</div>
-        </li>
-        <li>
-          <div><strong>Configure Confidence Thresholds</strong>: Set classification and extraction confidence thresholds in the config file or Orchestrator assets.</div>
-        </li>
-        <li>
-          <div><strong>Set Input/Output Paths</strong>: Configure the input document folder and output destination in the config.</div>
-        </li>
-        <li>
-          <div><strong>Run &amp; Test</strong>: Process a batch of test documents, review results, and tune as needed.</div>
-        </li>
-      </ol>
+      <table class="comparison-table" aria-label="Configure and Run the DU Framework Project">
+        <thead>
+          <tr><th style="width:3rem;">#</th><th style="width:30%;">Step</th><th>Details</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Download the DU Framework Template</strong></td><td>Download from UiPath Marketplace or use the project template in Studio Web</td></tr>
+          <tr><td>2</td><td><strong>Configure Taxonomy</strong></td><td>Set up the taxonomy in your DU project (Automation Cloud) or locally in the workflow. Reference the taxonomy in your Load Taxonomy activity</td></tr>
+          <tr><td>3</td><td><strong>Configure Models</strong></td><td>In the taxonomy configuration, select the extractors and classifiers for each document type. For Modern Projects, set the project endpoint URL</td></tr>
+          <tr><td>4</td><td><strong>Configure Confidence Thresholds</strong></td><td>Set classification and extraction confidence thresholds in the config file or Orchestrator assets</td></tr>
+          <tr><td>5</td><td><strong>Set Input / Output Paths</strong></td><td>Configure the input document folder and output destination in the config</td></tr>
+          <tr><td>6</td><td><strong>Run &amp; Test</strong></td><td>Process a batch of test documents, review results, and tune as needed</td></tr>
+        </tbody>
+      </table>
 
       <div class="admonition admonition--success">
         <div class="admonition-title">✅ Success</div>

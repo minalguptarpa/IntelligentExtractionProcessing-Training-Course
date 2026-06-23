@@ -54,14 +54,14 @@
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
       <ul>
-        <li>Explain the DU service/product platform in Automation Cloud</li>
-        <li>Differentiate between Classic and Modern projects</li>
-        <li>Describe Active Learning and how it speeds up model training</li>
-        <li>Understand annotation workflow in Modern Experience</li>
-        <li>Use out-of-the-box ML Extractors for invoices</li>
-        <li>Understand the Build → Measure → Publish lifecycle</li>
-        <li>Consume a DU Modern Project in a Studio workflow</li>
-        <li>Explain human-in-the-loop validation and how to implement it</li>
+        <li>Navigate the Document Understanding service in UiPath Automation Cloud</li>
+        <li>Differentiate between Classic and Modern projects and know when to use each</li>
+        <li>Explain the Active Learning approach and how it speeds up model training by 80%</li>
+        <li>Walk through the full Build → Measure → Publish → Monitor lifecycle in Modern Projects</li>
+        <li>Annotate documents using Generative AI pre-annotation in Modern Experience</li>
+        <li>Identify and use out-of-the-box ML Extractors for invoices and other document types</li>
+        <li>Describe UiPath Helix Classifier and Helix Extractor and their key characteristics</li>
+        <li>Migrate a trained project from a development environment to production</li>
       </ul>
     </div>
 
@@ -77,7 +77,7 @@
           <li>Log into <strong>cloud.uipath.com</strong></li>
           <li>Select your tenant</li>
           <li>Navigate to <strong>Document Understanding</strong> service in the left menu</li>
-          <li>You will see your projects — Classic and Modern</li>
+          <li>Click on Create Project and you will see 2 options - Classic or Modern projects</li>
         </ol>
       </div>
 
@@ -147,7 +147,8 @@
         <ul>
           <li>Choose the model version to deploy</li>
           <li>One-click deployment — model becomes available as a service</li>
-          <li>Easy versioning of your entire project</li>
+          <li>Click the deployed toggle button</li>
+          <li>Edit the published model to add the deployment tag as Production</li>
           <li>Consume from Studio, Studio Web, or via APIs</li>
         </ul>
       </div>
@@ -226,15 +227,6 @@
         </ul>
       </div>
 
-      <div class="info-card">
-        <h4>Availability</h4>
-        <ul>
-          <li>Available in <strong>Modern Projects</strong> on Automation Cloud</li>
-          <li>US-based tenants (excluding GxP and Government Cloud)</li>
-        </ul>
-      </div>
-
-
       <!-- Helix Extractor -->
       <h3 style="margin:1.5rem 0 .75rem;">Helix Extractor</h3>
 
@@ -256,28 +248,9 @@
         <h4>Supported Document Types</h4>
         <ul>
           <li>✅ Invoices, Receipts, Purchase Orders, and semi-structured documents</li>
-          <li>❌ <strong>Not supported:</strong> Financial Statements; Invoices (China, Hebrew, Japan variants)</li>
         </ul>
       </div>
 
-      <div class="info-card">
-        <h4>Availability</h4>
-        <ul>
-          <li>Modern Projects in <strong>US-based tenants</strong> (excluding GxP and Government Cloud)</li>
-          <li>Public endpoints in <strong>Europe and Japan</strong> for specific invoice and receipt types</li>
-          <li><strong>Helix Extractor 2.0</strong> (Public Preview) — adds multimodal processing, non-Latin script support, and improved table handling. Targeting GA mid-2026.</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>How to Activate Helix Extractor for Existing Document Types</h4>
-        <ol>
-          <li>Delete all fields from your sample documents in the project.</li>
-          <li>Re-annotate and confirm those fields.</li>
-          <li>Repeat until training initiates.</li>
-          <li>Check the model version number — <strong>version 24.7 or above</strong> confirms Helix Extractor is active.</li>
-        </ol>
-      </div>
 
       <div class="admonition admonition--note">
         <div class="admonition-title">📌 Note</div>

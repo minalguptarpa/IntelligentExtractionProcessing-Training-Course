@@ -27,6 +27,8 @@
         <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
         <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
         <li><a href="module-05-unstructured-complex.html" data-module="module-05" class="active">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-05-unstructured-complex.html#part1" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
+        <li><a href="module-05-unstructured-complex.html#part2" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
         <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
         <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
       </ul>
@@ -52,102 +54,137 @@
     </div>
 
     <div class="objectives-box">
-      <h3>🎯 Learning Objectives</h3>
+      <h3>📋 Module Overview</h3>
       <ul>
-        <li>Identify what Generative Extraction offers and its role in agentic automation</li>
-        <li>Understand the paystubs use-case and apply it to unstructured documents</li>
-        <li>Create and refine a Generative Extraction project</li>
-        <li>Assess and enhance extraction performance metrics</li>
-        <li>Deploy and publish a Generative Extraction project</li>
-        <li>Integrate a Generative Extraction project into a Studio workflow</li>
-        <li>Apply Generative Extraction prompting best practices</li>
+        <li><strong>Part 1: Generative Classifier and Extractor</strong> — Covers the Generative Classifier, Generative Extractor activity, and prompting best practices</li>
+        <li><strong>Part 2: Generative Extractor in IXP</strong> — Deep dive into building, evaluating, and consuming a Generative Extraction project in IXP</li>
       </ul>
     </div>
 
-    <!-- L1: Introduction to Generative Extraction -->
+    <!-- Part 1 Header -->
+    <div class="part-header" id="part1">
+      <div class="part-header__label">Part 1</div>
+      <h2 class="part-header__title">Generative Classifier and Extractor</h2>
+    </div>
+
+    <!-- Generative Classifier -->
     <section class="lesson">
-      <h2 class="lesson-title">Introduction to Generative Extraction</h2>
+      <h2 class="lesson-title">Generative Classifier</h2>
 
-      <p><strong>UiPath Generative Extraction (Intelligent Extraction Processing)</strong> is UiPath's next-generation platform for extracting data from unstructured and complex documents using generative AI. Unlike traditional Document Understanding, Generative Extraction uses prompt-based models powered by Large Language Models (LLMs) — meaning you can start getting predictions <em>immediately</em>, without labelled training data.</p>
+      <p>The <strong>Generative Classifier</strong> is a classification tool that leverages generative AI to categorize documents using description-driven document type definitions. Instead of training on labeled examples, it classifies documents based on natural language descriptions you provide for each document type.</p>
 
       <div class="info-card">
-        <h4>What Generative Extraction Offers</h4>
-        <ul>
-          <li>Prompt-based extraction — no training data required to start</li>
-          <li>Zero-shot and few-shot extraction capabilities</li>
-          <li>Handles unstructured documents: paystubs, contracts, legal documents, emails</li>
-          <li>Supports documents up to <strong>150 pages</strong></li>
-          <li>Extracts both <strong>exact values</strong> (stated in the document) and <strong>inferred values</strong> (derived from context)</li>
-          <li>Full Build → Measure → Publish lifecycle with version control</li>
-          <li>Studio integration via <code>UiPath.DocumentUnderstanding.Activities</code></li>
-        </ul>
+        <h4>How to Configure the Generative Classifier</h4>
+        <ol>
+          <li>Insert a <strong>Classify Document Scope</strong> activity into your workflow</li>
+          <li>Place the <strong>Generative Classifier</strong> activity within that scope</li>
+          <li>Click <strong>Manage Prompts</strong> and enter clear natural language descriptions for each document type</li>
+        </ol>
       </div>
 
       <div class="info-card">
-        <h4>Generative Extraction's Role in Agentic Automation</h4>
+        <h4>When to Use the Generative Classifier</h4>
         <ul>
-          <li>Generative Extraction acts as the <strong>document intelligence layer</strong> in agentic workflows</li>
-          <li>Agents can call Generative Extraction endpoints to extract data from documents dynamically at runtime</li>
-          <li>Enables end-to-end automation where the agent decides which documents to process and what to extract</li>
-          <li>Supports complex, multi-step document workflows — classify → extract → validate → act</li>
+          <li>Documents are unstructured with varied content</li>
+          <li>You can describe the document types in natural language in a way that allows generative AI to distinguish between them</li>
         </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>Zero-Shot vs Few-Shot Extraction</h4>
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th></th><th>Zero-Shot</th><th>Few-Shot</th></tr></thead>
-          <tbody>
-            <tr><td><strong>What it is</strong></td><td>Model extracts data using only the field instructions — no examples provided</td><td>Model uses annotated examples alongside instructions to improve accuracy</td></tr>
-            <tr><td><strong>When to use</strong></td><td>Prototyping, simple fields, well-defined instructions</td><td>Complex or ambiguous fields, higher accuracy requirements</td></tr>
-            <tr><td><strong>Setup effort</strong></td><td>Low — just write good instructions</td><td>Higher — requires validated annotation examples</td></tr>
-            <tr><td><strong>Performance</strong></td><td>Good baseline out of the box</td><td>Better accuracy, especially for edge cases</td></tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="admonition admonition--tip">
         <div class="admonition-title">💡 Tip</div>
-        <div class="admonition-body"><strong>Key Advantage:</strong> With Generative Extraction you can see AI-generated predictions <em>immediately</em> after uploading documents and defining your schema — before any annotation. This rapid prototyping dramatically reduces time-to-value for new document types.</div>
+        <div class="admonition-body">Success depends on writing descriptions clear enough for the AI to differentiate between classification categories. If two document types have very similar descriptions, the classifier may struggle — make the distinctions explicit.</div>
       </div>
     </section>
 
-    <!-- L2: Paystubs Use Case -->
+    <!-- Generative Extractor Activity -->
     <section class="lesson">
-      <h2 class="lesson-title">Use Case Introduction: Paystubs</h2>
+      <h2 class="lesson-title">Generative Extractor Activity</h2>
 
-      <p>The course uses <strong>paystubs</strong> as the primary use-case document. Paystubs are an excellent example of unstructured documents — they vary significantly in layout across employers, payroll systems, and countries, making them difficult to handle with template-based or regex extractors.</p>
+      <p>The <strong>Generative Extractor</strong> activity enables data extraction from documents using generative machine learning models through UiPath's Document Understanding platform. It uses a prompt-based wizard where you define field names and descriptions to guide the model.</p>
 
       <div class="info-card">
-        <h4>Why Paystubs Are a Good Generative Extraction Use Case</h4>
+        <h4>Key Capabilities</h4>
         <ul>
-          <li>No fixed layout — each employer formats paystubs differently</li>
-          <li>Contains a mix of text, tables, and calculated values</li>
-          <li>Fields may be labelled differently across documents (e.g., "Gross Pay" vs "Total Earnings")</li>
-          <li>Some values are <strong>inferred</strong> (e.g., net pay = gross pay − deductions)</li>
-          <li>High volume in HR, finance, and lending automation use cases</li>
+          <li>Extracts document data using generative models</li>
+          <li>Supports multiple document types with customizable extractor types</li>
+          <li>Three extractor types available:
+            <ul>
+              <li><strong>Long Document Simple Layout Extractor</strong> — for long documents with a straightforward layout</li>
+              <li><strong>Long Document Complex Layout Extractor</strong> <em>(preview)</em> — optimized for long-form documents with complex layouts</li>
+              <li><strong>Short Document Complex Layout Extractor</strong> <em>(preview)</em> — for short documents with complex layouts (maximum 10 pages)</li>
+            </ul>
+          </li>
+          <li>Field descriptions directly influence model extraction accuracy (max 1,000 characters per description)</li>
+          <li>Compatible with Windows Legacy and Windows platforms</li>
         </ul>
       </div>
 
-      <div class="info-card">
-        <h4>Typical Fields to Extract from a Paystub</h4>
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Field Group</th><th>Fields</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Employee Information</strong></td><td>Employee Name, Employee ID, Department, Job Title</td></tr>
-            <tr><td><strong>Pay Period</strong></td><td>Pay Period Start Date, Pay Period End Date, Pay Date</td></tr>
-            <tr><td><strong>Earnings</strong></td><td>Regular Hours, Overtime Hours, Gross Pay, Bonus</td></tr>
-            <tr><td><strong>Deductions</strong></td><td>Federal Tax, State Tax, Social Security, Medicare, Health Insurance, 401K</td></tr>
-            <tr><td><strong>Net Pay</strong></td><td>Net Pay, YTD Gross, YTD Net</td></tr>
-          </tbody>
-        </table>
+
+      <div style="margin:1.25rem 0;">
+        <img src="../assets/images/generative-extractor-prompt.png" alt="Generative Extractor Prompt dialog showing Extractor Details and Document Types" style="width:100%;border:1px solid #e5e7eb;border-radius:4px;" />
+        <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.4rem;">Generative Extractor Prompt — Extractor Details and Document Types configuration in UiPath Studio</p>
       </div>
 
       <div class="admonition admonition--note">
         <div class="admonition-title">📌 Note</div>
-        <div class="admonition-body"><strong>Inferred Fields:</strong> Net Pay is often a calculated value (Gross − Deductions). In Generative Extraction, you can instruct the model to extract inferred values by describing the calculation logic in the field instruction.</div>
+        <div class="admonition-body">The Generative Extractor <strong>does not support table field extraction</strong> defined in Taxonomy Manager. For complex table extraction, use the IXP Generative Extraction capability instead.</div>
       </div>
     </section>
+
+    <!-- Good Practices -->
+    <section class="lesson">
+      <h2 class="lesson-title">Generative Extractor — Good Practices</h2>
+
+      <div class="info-card">
+        <h4>Key Limits to Keep in Mind</h4>
+        <ul>
+          <li>Maximum <strong>50 prompts</strong> per extractor</li>
+          <li>Extraction result (Completion) has a maximum word limit of <strong>700 words</strong></li>
+        </ul>
+      </div>
+
+      <table class="comparison-table" aria-label="Generative Extractor Good Practices">
+        <thead>
+          <tr><th style="width:28%;">Practice</th><th>Guidance</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Use Precise Language</strong></td>
+            <td>Use clear, unambiguous phrasing. Imagine multiple people answering your question — if responses would differ significantly, refine the language.</td>
+          </tr>
+          <tr>
+            <td><strong>Standardize Output Format</strong></td>
+            <td>Specify the desired output structure explicitly — e.g. "return date in yyyy-mm-dd format" or "return numbers in ##,###.## format".</td>
+          </tr>
+          <tr>
+            <td><strong>List Expected Options</strong></td>
+            <td>When answers are limited to known choices, list them explicitly — e.g. "Possible answers: Married, Unmarried, Separated, Divorced, Widowed, Other."</td>
+          </tr>
+          <tr>
+            <td><strong>Use a Step-by-Step Approach</strong></td>
+            <td>Break complex queries into sequential steps. Programming-style formatting (JSON or XML) improves accuracy by leveraging the model's code-interpretation capabilities.</td>
+          </tr>
+          <tr>
+            <td><strong>Avoid Arithmetic &amp; Logic Operations</strong></td>
+            <td>Do not ask the extractor to perform sums, multiplication, subtraction, or comparisons — handle these in your workflow with standard activities instead.</td>
+          </tr>
+          <tr>
+            <td><strong>Avoid Complex Table Extraction</strong></td>
+            <td>The Generative Extractor struggles with two-dimensional table data. Use the IXP capability for complex table extraction.</td>
+          </tr>
+          <tr>
+            <td><strong>Assess Confidence Carefully</strong></td>
+            <td>Rather than relying solely on confidence scores, pose the same question multiple ways. Convergent answers indicate reliability; divergent responses suggest human review is needed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Part 2 Header -->
+    <div class="part-header" id="part2">
+      <div class="part-header__label">Part 2</div>
+      <h2 class="part-header__title">Generative Extractor in IXP</h2>
+    </div>
 
     <!-- L3: Building the Project -->
     <section class="lesson">

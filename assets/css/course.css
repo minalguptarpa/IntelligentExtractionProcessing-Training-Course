@@ -55,6 +55,13 @@
   font-weight: 600;
 }
 .sidebar-nav__list li a .check { color: var(--success); font-size: 0.7rem; margin-left: 0.4rem; }
+.sidebar-nav__list li a.sidebar-nav__sub {
+  padding-left: 2rem;
+  font-size: 0.78rem;
+  color: var(--gray-600);
+  border-left-color: transparent;
+}
+.sidebar-nav__list li a.sidebar-nav__sub:hover { color: var(--uipath-orange); border-left-color: var(--uipath-orange); }
 
 .sidebar-progress {
   padding: 1rem 1.25rem;
@@ -225,6 +232,27 @@
 .mark-complete-btn:hover { background: #059669; }
 .mark-complete-btn.completed { background: var(--gray-400); cursor: default; }
 .mark-complete-btn.completed::before { content: '✓ '; }
+
+/* ---- Part Headers ---- */
+.part-header {
+  border-top: 2px solid var(--uipath-orange);
+  margin: 2.5rem 0 1.75rem;
+  padding-top: 1.25rem;
+}
+.part-header__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--uipath-orange);
+  margin-bottom: 0.3rem;
+}
+.part-header__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--uipath-dark);
+  margin: 0;
+}
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
