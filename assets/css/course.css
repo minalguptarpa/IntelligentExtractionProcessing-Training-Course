@@ -239,19 +239,17 @@
   margin: 2.5rem 0 1.75rem;
   padding-top: 1.25rem;
 }
-.part-header__label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  color: var(--uipath-orange);
-  margin-bottom: 0.3rem;
-}
 .part-header__title {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--uipath-dark);
   margin: 0;
+}
+.part-header__label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--uipath-orange);
+  margin-right: 0.25rem;
 }
 
 /* ---- Responsive ---- */

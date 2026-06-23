@@ -63,9 +63,10 @@
 
     <!-- Part 1 Header -->
     <div class="part-header" id="part1">
-      <div class="part-header__label">Part 1</div>
-      <h2 class="part-header__title">Generative Classifier and Extractor</h2>
+      <h2 class="part-header__title"><span class="part-header__label">Part 1 :</span> Generative Classifier and Extractor</h2>
     </div>
+
+    <p style="margin-bottom:1.5rem;">In UiPath Document Understanding, <strong>generative</strong> refers to the use of Large Language Models (LLMs) and Generative AI (like GPT-4) to process, classify, and extract data from documents. Instead of rigid templates or extensive training, it uses plain-language prompts to understand unstructured information — making it possible to handle a wide variety of document types with minimal setup.</p>
 
     <!-- Generative Classifier -->
     <section class="lesson">
@@ -182,9 +183,97 @@
 
     <!-- Part 2 Header -->
     <div class="part-header" id="part2">
-      <div class="part-header__label">Part 2</div>
-      <h2 class="part-header__title">Generative Extractor in IXP</h2>
+      <h2 class="part-header__title"><span class="part-header__label">Part 2 :</span> Generative Extractor in IXP</h2>
     </div>
+
+    <!-- L1: What is UiPath IXP -->
+    <section class="lesson">
+      <h2 class="lesson-title">What is UiPath IXP?</h2>
+
+      <p><strong>IXP</strong> (Intelligent Xtraction &amp; Processing) is UiPath's multi-modal data extraction capability. It converts data from unstructured documents and messages into structured data for automation and analytics. It is built to unify and simplify how enterprises extract structured information from unstructured inputs — including documents, emails, tickets, and other business communications.</p>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 IXP Generative Extraction</div>
+        <div class="admonition-body">IXP Generative Extraction is an inference-first experience that provides <strong>zero-shot and few-shot extraction</strong> for the most complex and unstructured documents — such as contracts, mortgage applications, medical documents, and paystubs.</div>
+      </div>
+
+      <div class="info-card">
+        <h4>What Documents Can IXP Handle?</h4>
+        <ul>
+          <li>Free-form paragraphs, narratives, or unstructured text</li>
+          <li>Complex elements: nested tables, charts, graphics, checkboxes, call-out boxes, signatures, handwriting</li>
+          <li>Inferred values — data not explicitly shown, but deduced from document context</li>
+          <li>Highly variable layouts and formats across document instances</li>
+          <li>Multiple document types stacked in a single file (packet documents)</li>
+          <li>Documents with fewer than 150 pages <em>(current limit)</em></li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>When to Use IXP Generative Extraction vs. Other Tools</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Tool</th><th>Best For</th></tr></thead>
+          <tbody>
+            <tr><td><strong>IXP Generative Extraction</strong></td><td>Unstructured / complex documents with high layout variability, inferred values, or complex elements (tables, handwriting)</td></tr>
+            <tr><td><strong>Document Understanding</strong></td><td>Structured or semi-structured documents with no complex elements, or where an existing pre-trained OOB model is applicable</td></tr>
+            <tr><td><strong>Communications Mining</strong></td><td>Unstructured communications: emails, support tickets, chats, conversational content</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- L2: IXP in Agentic Automation -->
+    <section class="lesson">
+      <h2 class="lesson-title">How IXP Fits in Agentic Automation</h2>
+
+      <p>UiPath Agents are AI-powered, task-executing entities capable of autonomous decision-making. While <strong>IXP excels at understanding complex documents and providing reliable structured data</strong>, <strong>Agents excel at contextual decision-making and multi-step automation orchestration</strong>. Together, they enable end-to-end automation of document-centric processes.</p>
+
+      <div class="info-card">
+        <h4>Three Collaboration Patterns</h4>
+
+        <p><strong>Pattern A — Agent receives IXP output as input</strong></p>
+        <ul>
+          <li>IXP processes incoming documents and extracts structured data</li>
+          <li>The extracted data is passed to the Agent, which applies additional business rules or post-processing logic</li>
+          <li>Based on this, the Agent may: approve/reject a document, generate a report, upload data, or trigger escalations</li>
+          <li><em>Use case fit:</em> Repeatable document processing tasks that require agentic reasoning</li>
+        </ul>
+
+        <p><strong>Pattern B — Agent uses IXP as a tool during execution</strong></p>
+        <ul>
+          <li>The Agent decides mid-task to invoke an IXP model</li>
+          <li>IXP acts like a callable tool: extract structured data → return it → continue the task logic</li>
+          <li><em>Use case fit:</em> Dynamic or context-dependent extraction tasks</li>
+        </ul>
+
+        <p><strong>Pattern C — Agent queries IXP as a repository or index</strong></p>
+        <ul>
+          <li>The Agent searches and queries previously processed documents within IXP</li>
+          <li>Supports retrospective and analytical questions (e.g., "How many claims over $10K did we process last month?")</li>
+          <li><em>Use case fit:</em> Auditing, reporting, data analytics, compliance validation</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Benefits of IXP + Agents Collaboration</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Capability</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>User Experience</strong></td><td>Document-focused view showing the document, predicted values, ground truth, and references all in one place</td></tr>
+            <tr><td><strong>Templates</strong></td><td>Out-of-the-box templates to get started quickly with common document types across industries</td></tr>
+            <tr><td><strong>Taxonomy Manager</strong></td><td>Built-in taxonomy manager to map model requirements to business requirements</td></tr>
+            <tr><td><strong>Performance Metrics</strong></td><td>Out-of-the-box performance metrics to understand model performance at each level of your taxonomy</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Current Capabilities</div>
+        <div class="admonition-body">
+          IXP Generative Extraction currently works well for: repeatable extraction tasks with well-defined taxonomies, single PDF or image as input, and documents with 150 pages or less. Support for dynamic taxonomies, multi-file requests, and documents over 150 pages is on the roadmap.
+        </div>
+      </div>
+    </section>
 
     <!-- L3: Building the Project -->
     <section class="lesson">
