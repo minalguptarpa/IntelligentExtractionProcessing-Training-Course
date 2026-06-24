@@ -78,97 +78,152 @@
     <section class="lesson">
       <h2 class="lesson-title">UiPath Document Understanding (Modern Projects) — Step-by-Step</h2>
 
-      <div class="info-card">
-        <h4>Step 1 : Create a New Document Understanding Project</h4>
-        <ol class="steps-list">
-          <li>Open the <strong>UiPath Document Understanding</strong> service in Automation Cloud.</li>
-          <li>Select <strong>Create Project</strong>.</li>
-          <li>Give the project the name <code>Training_Modern</code> and click <strong>Save</strong>.</li>
-          <li>Add the document type — choose <strong>Invoices</strong> and click <strong>Add</strong>.</li>
-        </ol>
+      <!-- Phase: Setup -->
+      <div class="admonition admonition--note" style="margin-bottom:1.5rem;">
+        <div class="admonition-title">📋 Overview</div>
+        <div class="admonition-body">This exercise walks you through the full Modern Project lifecycle: <strong>Create → Configure → Upload → Annotate → Validate → Measure → Publish → Automate</strong>.</div>
       </div>
 
-      <div class="info-card">
-        <h4>Step 2 : Configure Extraction Fields</h4>
-        <ol class="steps-list">
-          <li>Click the <strong>3 dots (⋮)</strong> menu and select <strong>Document Type Manager</strong>.</li>
-          <li>Click on the <strong>Extraction Fields</strong> tab.</li>
-          <li>Keep only the required fields and <strong>remove all others</strong>.</li>
-          <li>Add a new extraction field named <strong>ShipToPartyPhoneNumber</strong> of type <strong>String</strong>.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 3 : Upload Sample Documents</h4>
-        <ol class="steps-list">
-          <li>Navigate to the <strong>Build</strong> section.</li>
-          <li>Upload your sample invoice documents.</li>
-          <li>Wait for the documents to be processed.</li>
-          <li>Verify that all uploaded files are available for annotation.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 4 : Annotate Documents</h4>
-        <ol class="steps-list">
-          <li>Open a sample invoice.</li>
-          <li>Select a field from the <strong>Extraction Fields</strong> panel.</li>
-          <li>Highlight the corresponding value on the invoice.</li>
-          <li>Map the following fields:
-            <ul>
-              <li>ShipToPartyPhoneNumber</li>
-              <li>Vendor Name</li>
-              <li>Invoice Number</li>
-              <li>Total Amount</li>
-            </ul>
-          </li>
-          <li>Annotate table columns for line-item extraction if applicable.</li>
-          <li>Repeat for all required fields across all documents.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 5 : Validate Annotations</h4>
-        <ol class="steps-list">
-          <li>Review all highlighted fields.</li>
-          <li>Ensure each field is mapped correctly.</li>
-          <li>Check confidence scores and extraction quality.</li>
-          <li>Save the annotations.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 6 : Check the Measure Section</h4>
-        <ol class="steps-list">
-          <li>Go to the <strong>Metrics</strong> tab in the Measure section.</li>
-          <li>Ensure you have a satisfactory accuracy percentage for each field.</li>
-        </ol>
-        <div class="admonition admonition--tip" style="margin-top:0.75rem;">
-          <div class="admonition-title">💡 Tip</div>
-          <div class="admonition-body">For high-stakes use cases aim for <strong>90%+ F1</strong>. For workflows with human-in-the-loop validation, <strong>75–80%</strong> is acceptable.</div>
+      <!-- Step 1 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">1</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Create a New Document Understanding Project</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Open the <strong>UiPath Document Understanding</strong> service in Automation Cloud.</li>
+              <li>Select <strong>Create Project</strong>.</li>
+              <li>Give the project the name <code>Training_Modern</code> and click <strong>Save</strong>.</li>
+              <li>Add the document type — choose <strong>Invoices</strong> and click <strong>Add</strong>.</li>
+            </ol>
+          </div>
         </div>
       </div>
 
-      <div class="info-card">
-        <h4>Step 7 : Publish the Extraction Model</h4>
-        <ol class="steps-list">
-          <li>Navigate to the <strong>Publish</strong> tab.</li>
-          <li>Click <strong>Create Project Version</strong>, choose document type <strong>Invoices</strong>, give it a name, and click <strong>Create</strong>.</li>
-          <li>Toggle the <strong>Deployed</strong> button to make the model live.</li>
-        </ol>
+      <!-- Step 2 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">2</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Configure Extraction Fields</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Click the <strong>3 dots (⋮)</strong> menu and select <strong>Document Type Manager</strong>.</li>
+              <li>Click on the <strong>Extraction Fields</strong> tab.</li>
+              <li>Keep only the required fields and <strong>remove all others</strong>.</li>
+              <li>Add a new extraction field named <strong>ShipToPartyPhoneNumber</strong> of type <strong>String</strong>.</li>
+            </ol>
+          </div>
+        </div>
       </div>
 
-      <div class="info-card">
-        <h4>Step 8 : Create a Studio Automation</h4>
-        <ol class="steps-list">
-          <li>Open <strong>UiPath Studio</strong>.</li>
-          <li>Create a new automation project.</li>
-          <li>Run the Studio Web workflow and test it.</li>
-          <li>Observe the execution logs.</li>
-          <li>Verify extraction results.</li>
-          <li>Confirm that invoice data is extracted successfully.</li>
-        </ol>
+      <!-- Step 3 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">3</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Upload Sample Documents</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Navigate to the <strong>Build</strong> section.</li>
+              <li>Upload your sample invoice documents.</li>
+              <li>Wait for the documents to be processed.</li>
+              <li>Verify that all uploaded files are available for annotation.</li>
+            </ol>
+          </div>
+        </div>
       </div>
+
+      <!-- Step 4 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">4</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Annotate Documents</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Open a sample invoice.</li>
+              <li>Select a field from the <strong>Extraction Fields</strong> panel.</li>
+              <li>Highlight the corresponding value on the invoice.</li>
+              <li>Map the following fields:
+                <ul style="margin-top:0.4rem;">
+                  <li><code>ShipToPartyPhoneNumber</code></li>
+                  <li><code>Vendor Name</code></li>
+                  <li><code>Invoice Number</code></li>
+                  <li><code>Total Amount</code></li>
+                </ul>
+              </li>
+              <li>Annotate table columns for line-item extraction if applicable.</li>
+              <li>Repeat for all required fields across all documents.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">5</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Validate Annotations</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Review all highlighted fields.</li>
+              <li>Ensure each field is mapped correctly.</li>
+              <li>Check confidence scores and extraction quality.</li>
+              <li>Save the annotations.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">6</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Check the Measure Section</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Go to the <strong>Metrics</strong> tab in the Measure section.</li>
+              <li>Ensure you have a satisfactory accuracy percentage for each field.</li>
+            </ol>
+            <div class="admonition admonition--tip" style="margin-top:0.75rem;">
+              <div class="admonition-title">💡 Tip</div>
+              <div class="admonition-body">For high-stakes use cases aim for <strong>90%+ F1</strong>. For workflows with human-in-the-loop validation, <strong>75–80%</strong> is acceptable.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">7</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Publish the Extraction Model</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Navigate to the <strong>Publish</strong> tab.</li>
+              <li>Click <strong>Create Project Version</strong>, choose document type <strong>Invoices</strong>, give it a name, and click <strong>Create</strong>.</li>
+              <li>Toggle the <strong>Deployed</strong> button to make the model live.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+        <div style="background:var(--uipath-orange);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;margin-top:2px;">8</div>
+        <div style="flex:1;">
+          <div class="info-card" style="margin:0;">
+            <h4 style="color:var(--uipath-orange);">Create a Studio Automation</h4>
+            <ol style="margin:0.5rem 0 0;padding-left:1.2rem;">
+              <li>Open <strong>UiPath Studio</strong>.</li>
+              <li>Create a new automation project.</li>
+              <li>Run the Studio Web workflow and test it.</li>
+              <li>Observe the execution logs.</li>
+              <li>Verify extraction results.</li>
+              <li>Confirm that invoice data is extracted successfully.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <nav class="module-nav" aria-label="Module navigation">
