@@ -90,7 +90,7 @@
         .walkthrough-step__list { margin: 0; padding-left: 1.25rem; color: var(--gray-700); font-size: 0.92rem; }
         .walkthrough-step__list li { margin-bottom: 0.35rem; }
         .walkthrough-step__list li:last-child { margin-bottom: 0; }
-        .walkthrough-step__img { margin: 0.85rem 0; border: 1px solid #e5e7eb; border-radius: 6px; width: 100%; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+        .walkthrough-step__img { margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 8px; width: 100%; max-width: 720px; display: block; box-shadow: 0 4px 16px rgba(0,0,0,.10); background: #f8fafc; padding: 8px; }
         .walkthrough-step__tag { display: inline-flex; align-items: center; gap: 0.35rem; background: #fff3f0; color: var(--uipath-orange); border: 1px solid #fdddd6; border-radius: 4px; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; margin-bottom: 0.5rem; }
         .walkthrough-step__sublist { margin: 0.4rem 0 0 0; padding-left: 1.1rem; }
         .walkthrough-step__sublist li { margin-bottom: 0.2rem; font-size: 0.88rem; }
@@ -252,10 +252,14 @@
             <div class="walkthrough-step__tag">Automation</div>
             <div class="walkthrough-step__title">Create a Studio Automation</div>
             <ol class="walkthrough-step__list">
-              <li>Open <strong>UiPath Studio</strong> and create a new automation project.</li>
+              <li>Click on <strong>"Open Studio Web"</strong>.
+                <img src="../assets/images/m04-step8-open-studio-web.png" alt="Open Studio Web button on the Publish page" class="walkthrough-step__img" />
+              </li>
+              <li>This will open the automation in Studio Web in another tab.</li>
               <li>Run the Studio Web workflow and test it.</li>
               <li>Observe the execution logs.</li>
-              <li>Verify that invoice data is extracted successfully.</li>
+              <li>Verify extraction results.</li>
+              <li>Confirm that invoice data is extracted successfully.</li>
             </ol>
           </div>
         </div>
