@@ -78,104 +78,189 @@
     <section class="lesson">
       <h2 class="lesson-title">UiPath Document Understanding (Modern Projects) — Step-by-Step</h2>
 
-      <div class="info-card">
-        <h4>1. Create a New Document Understanding Project</h4>
-        <ol class="steps-list">
-          <li>Open UiPath Document Understanding Service in Automation Cloud.</li>
-          <li>Select <strong>Create Project</strong>.
-            <div style="margin:0.75rem 0;">
-              <img src="../assets/images/m04-step1-create-project.png" alt="Create Project screen" style="width:100%;border:1px solid #e5e7eb;border-radius:4px;" />
+      <style>
+        .walkthrough { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+        .walkthrough-step { display: flex; gap: 0; }
+        .walkthrough-step__spine { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 52px; }
+        .walkthrough-step__badge { background: var(--uipath-orange); color: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; z-index: 1; }
+        .walkthrough-step__line { width: 2px; background: #f3d9d1; flex: 1; min-height: 16px; }
+        .walkthrough-step:last-child .walkthrough-step__line { display: none; }
+        .walkthrough-step__body { flex: 1; padding: 0 0 2rem 0.5rem; }
+        .walkthrough-step__title { font-size: 1rem; font-weight: 700; color: var(--uipath-dark); margin: 0.4rem 0 0.6rem; }
+        .walkthrough-step__list { margin: 0; padding-left: 1.25rem; color: var(--gray-700); font-size: 0.92rem; }
+        .walkthrough-step__list li { margin-bottom: 0.35rem; }
+        .walkthrough-step__list li:last-child { margin-bottom: 0; }
+        .walkthrough-step__img { margin: 0.85rem 0; border: 1px solid #e5e7eb; border-radius: 6px; width: 100%; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+        .walkthrough-step__tag { display: inline-flex; align-items: center; gap: 0.35rem; background: #fff3f0; color: var(--uipath-orange); border: 1px solid #fdddd6; border-radius: 4px; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; margin-bottom: 0.5rem; }
+        .walkthrough-step__sublist { margin: 0.4rem 0 0 0; padding-left: 1.1rem; }
+        .walkthrough-step__sublist li { margin-bottom: 0.2rem; font-size: 0.88rem; }
+        code.field { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 3px; padding: 0.1em 0.35em; font-size: 0.85em; }
+      </style>
+
+      <div class="walkthrough">
+
+        <!-- Step 1 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">1</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Setup</div>
+            <div class="walkthrough-step__title">Create a New Document Understanding Project</div>
+            <ol class="walkthrough-step__list">
+              <li>Open <strong>UiPath Document Understanding</strong> service in Automation Cloud.</li>
+              <li>Select <strong>Create Project</strong>.</li>
+            </ol>
+            <img src="../assets/images/m04-step1-create-project.png" alt="Create Project screen" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="3">
+              <li>Give the project the name <code class="field">Training_Modern</code> and click <strong>Save</strong>.</li>
+              <li>Add the document type — choose <strong>Invoices</strong> and click <strong>Add</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">2</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Configuration</div>
+            <div class="walkthrough-step__title">Configure Extraction Fields</div>
+            <ol class="walkthrough-step__list">
+              <li>Click the <strong>⋮ (3 dots)</strong> menu and select <strong>Document Type Manager</strong>.</li>
+            </ol>
+            <img src="../assets/images/m04-step2-document-type-manager.png" alt="Document Type Manager menu" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="2">
+              <li>Click on the <strong>Extraction Fields</strong> tab. Keep these fields and remove all others.</li>
+            </ol>
+            <img src="../assets/images/m04-step3-extraction-fields.png" alt="Extraction Fields tab" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="3">
+              <li>Add a new extraction field named <code class="field">ShipToPartyPhoneNumber</code> of type <strong>String</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">3</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Data</div>
+            <div class="walkthrough-step__title">Upload Sample Documents</div>
+            <ol class="walkthrough-step__list">
+              <li>Navigate to the <strong>Build</strong> section.</li>
+              <li>Upload your sample invoice documents.</li>
+              <li>Wait for the documents to be processed.</li>
+              <li>Verify all uploaded files appear and are ready for annotation.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">4</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Annotation</div>
+            <div class="walkthrough-step__title">Annotate Documents</div>
+            <ol class="walkthrough-step__list">
+              <li>Open a sample invoice.</li>
+              <li>Select a field from the <strong>Extraction Fields</strong> panel on the right.</li>
+              <li>Highlight the corresponding value on the document.</li>
+              <li>Annotate these fields across all documents:
+                <ul class="walkthrough-step__sublist">
+                  <li><code class="field">ShipToPartyPhoneNumber</code></li>
+                  <li><code class="field">Vendor Name</code></li>
+                  <li><code class="field">Invoice Number</code></li>
+                  <li><code class="field">Total Amount</code></li>
+                </ul>
+              </li>
+              <li>Annotate table columns for line-item extraction if applicable.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">5</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Review</div>
+            <div class="walkthrough-step__title">Validate Annotations</div>
+            <ol class="walkthrough-step__list">
+              <li>Review all highlighted fields across documents.</li>
+              <li>Ensure each field is mapped to the correct region.</li>
+              <li>Check confidence scores and extraction quality.</li>
+              <li>Save the annotations.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">6</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Evaluation</div>
+            <div class="walkthrough-step__title">Check the Measure Section</div>
+            <ol class="walkthrough-step__list">
+              <li>Navigate to the <strong>Measure</strong> tab and open <strong>Metrics</strong>.</li>
+              <li>Ensure you have a satisfactory accuracy percentage for each field.</li>
+            </ol>
+            <div class="admonition admonition--tip" style="margin-top:0.75rem;">
+              <div class="admonition-title">💡 Tip</div>
+              <div class="admonition-body">For high-stakes workflows aim for <strong>90%+ F1</strong>. With human-in-the-loop validation in place, <strong>75–80%</strong> is acceptable.</div>
             </div>
-          </li>
-          <li>Give name as <code>Training_Modern</code> and click <strong>Save</strong>.</li>
-          <li>Add the document type, choose <strong>Invoices</strong> and click <strong>Add</strong>.</li>
-        </ol>
-      </div>
+          </div>
+        </div>
 
-      <div class="info-card">
-        <h4>2. Configure Extraction Fields</h4>
-        <ol class="steps-list">
-          <li>Click on 3 dots and click on <strong>Document Type Manager</strong>.
-            <div style="margin:0.75rem 0;">
-              <img src="../assets/images/m04-step2-document-type-manager.png" alt="Document Type Manager menu" style="width:100%;border:1px solid #e5e7eb;border-radius:4px;" />
-            </div>
-          </li>
-          <li>Click on the <strong>Extraction Fields</strong> tab. Keep these fields and remove all the rest of the fields.
-            <div style="margin:0.75rem 0;">
-              <img src="../assets/images/m04-step3-extraction-fields.png" alt="Extraction Fields tab" style="width:100%;border:1px solid #e5e7eb;border-radius:4px;" />
-            </div>
-          </li>
-          <li>Add a new Extraction field called <strong>ShipToPartyPhoneNumber</strong> of type <strong>String</strong>.</li>
-        </ol>
-      </div>
+        <!-- Step 7 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">7</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Publishing</div>
+            <div class="walkthrough-step__title">Publish the Extraction Model</div>
+            <ol class="walkthrough-step__list">
+              <li>Navigate to the <strong>Publish</strong> tab.</li>
+              <li>Click <strong>Create Project Version</strong>, choose document type <strong>Invoices</strong>, give it a name, and click <strong>Create</strong>.</li>
+              <li>Toggle the <strong>Deployed</strong> button to make the model live.</li>
+            </ol>
+          </div>
+        </div>
 
-      <div class="info-card">
-        <h4>3. Upload Sample Documents</h4>
-        <ol class="steps-list">
-          <li>Navigate to the <strong>Build</strong> section.</li>
-          <li>Upload sample invoice documents.</li>
-          <li>Wait for the documents to be processed.</li>
-          <li>Verify that all uploaded files are available for annotation.</li>
-        </ol>
-      </div>
+        <!-- Step 8 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">8</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Automation</div>
+            <div class="walkthrough-step__title">Create a Studio Automation</div>
+            <ol class="walkthrough-step__list">
+              <li>Open <strong>UiPath Studio</strong> and create a new automation project.</li>
+              <li>Run the Studio Web workflow and test it.</li>
+              <li>Observe the execution logs.</li>
+              <li>Verify that invoice data is extracted successfully.</li>
+            </ol>
+          </div>
+        </div>
 
-      <div class="info-card">
-        <h4>4. Annotate Documents</h4>
-        <ol class="steps-list">
-          <li>Open a sample invoice.</li>
-          <li>Select a field from the Extraction Fields panel.</li>
-          <li>Highlight the corresponding value on the invoice.</li>
-          <li>Map:
-            <ul>
-              <li>ShipToPartyPhoneNumber</li>
-              <li>Vendor Name</li>
-              <li>Invoice Number</li>
-              <li>Total Amount</li>
-            </ul>
-          </li>
-          <li>Annotate table columns for line-item extraction if applicable.</li>
-          <li>Repeat for all required fields.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>5. Validate Annotations</h4>
-        <ol class="steps-list">
-          <li>Review all highlighted fields.</li>
-          <li>Ensure each field is mapped correctly.</li>
-          <li>Check confidence scores and extraction quality.</li>
-          <li>Save the annotations.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>6. Check the Measure Section</h4>
-        <ol class="steps-list">
-          <li>Go to <strong>Metrics</strong>.</li>
-          <li>Ensure you have satisfactory accuracy percentage for each field.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>7. Publish the Extraction Model</h4>
-        <ol class="steps-list">
-          <li>Navigate to <strong>Publish</strong>.</li>
-          <li>Click on <strong>Create Project Version</strong>, choose the document type as <strong>Invoices</strong>, give a name and click on <strong>Create</strong>.</li>
-          <li>Toggle the <strong>deployed</strong> button.</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>8. Create a Studio Automation</h4>
-        <ol class="steps-list">
-          <li>Open UiPath Studio.</li>
-          <li>Create a new automation project.</li>
-          <li>Run the studio web workflow and test it.</li>
-          <li>Observe the execution logs.</li>
-          <li>Verify extraction results.</li>
-          <li>Confirm that invoice data is extracted successfully.</li>
-        </ol>
-      </div>
+      </div><!-- /.walkthrough -->
 
     </section>
 
