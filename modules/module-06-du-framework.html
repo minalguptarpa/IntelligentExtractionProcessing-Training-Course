@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 06 – DU Framework (Attended Robot) | UiPath Course</title>
+  <title>Module 06 – DU Framework | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/course.css" />
 </head>
@@ -27,8 +27,12 @@
         <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
         <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
         <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
-        <li><a href="module-06-du-framework.html" data-module="module-06" class="active">06 · DU Framework (Attended)</a></li>
-        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06" class="active">06 · DU Framework</a></li>
+        <li><a href="module-06-du-framework.html#l1-what-is" class="sidebar-nav__subsub">· What is the DU Process?</a></li>
+        <li><a href="module-06-du-framework.html#l2-access" class="sidebar-nav__subsub">· How to Access the Template</a></li>
+        <li><a href="module-06-du-framework.html#l3-execution-modes" class="sidebar-nav__subsub">· Project Execution Modes</a></li>
+        <li><a href="module-06-du-framework.html#l4-workflow" class="sidebar-nav__subsub">· Workflow Overview</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Important Topics</a></li>
       </ul>
     </nav>
     <div class="sidebar-progress">
@@ -45,218 +49,194 @@
       <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 06 · DU Framework</span>
     </nav>
     <div class="page-header">
-      <h1>DU Framework: End-to-End Attended Automation</h1>
+      <h1>DU Framework: Document Understanding Process Template</h1>
       <div class="page-header__meta">
-        <span>⏱ ~45 minutes</span><span>🔨 DIY + Theory</span><span>🎯 Advanced</span>
+        <span>⏱ ~30 minutes</span><span>📖 Theory + DIY</span><span>🎯 Advanced</span>
       </div>
     </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
       <ul>
-        <li>Describe the RPA Framework for Document Understanding and its key features</li>
-        <li>Identify specific challenges in DU automation projects</li>
-        <li>Describe the end-to-end architectural approach for document processing</li>
-        <li>Configure and run a DU Framework project</li>
-        <li>Implement custom success logic for your business process</li>
-        <li>Implement robust error handling</li>
-        <li>Understand DU licensing and consumption models</li>
+        <li>Understand what the Document Understanding Process template is and why it exists</li>
+        <li>Access and create a project from the template in UiPath Studio</li>
+        <li>Differentiate between the attended and unattended execution modes</li>
+        <li>Navigate the key workflow files and understand their role in the pipeline</li>
       </ul>
     </div>
 
     <!-- Lesson 1 -->
     <section class="lesson">
-      <h2 class="lesson-title">Introduction to the RPA Framework for Document Understanding</h2>
+      <h2 class="lesson-title" id="l1-what-is">🧩 What is the Document Understanding Process?</h2>
 
-      <p>As Document Understanding implementations grew in complexity, UiPath recognized the need for a <strong>dedicated RPA framework</strong> specifically designed for document processing workflows.</p>
+      <p>The <strong>Document Understanding Process</strong> is a ready-made UiPath Studio template that provides a complete, production-ready framework for building document processing automations. Instead of building from scratch, you start from a fully structured project that already implements best practices for the entire DU pipeline — OCR, classification, extraction, human validation, and export.</p>
 
       <div class="info-card">
-        <h4>Why a Dedicated DU Framework?</h4>
-        <p>Document Understanding processes have a unique logical flow and particular requirements that differ from standard RPA automations. The existing REFramework (Robotic Enterprise Framework) was not designed for:</p>
+        <h4>✅ Why Use the Template?</h4>
         <ul>
-          <li>Long-running workflows with human validation pauses</li>
-          <li>Document-level state management (tracking per-document status)</li>
-          <li>Confidence-based branching logic</li>
-          <li>Integration with Action Center for human-in-the-loop processing</li>
-          <li>Classifier and extractor feedback/retraining workflows</li>
+          <li>Saves significant development time — the pipeline structure is already built</li>
+          <li>Built-in <strong>error handling</strong>, logging, and retry logic</li>
+          <li>Supports both <strong>attended</strong> and <strong>unattended</strong> execution with minimal code changes</li>
+          <li>Follows UiPath best practices for long-running workflows and human-in-the-loop validation</li>
+          <li>Compatible with UiPath Studio version <strong>21.4 or higher</strong></li>
         </ul>
       </div>
 
-      <div class="info-card">
-        <h4>Key Features of the DU Framework</h4>
-        <ul>
-          <li>✅ <strong>Production-ready</strong>: Built-in logging, exception handling, and retry mechanisms</li>
-          <li>✅ <strong>Flexible</strong>: Suitable for both attended and unattended (Action Center) implementations</li>
-          <li>✅ <strong>Easy to switch</strong>: Toggle between attended and unattended with minimal code changes</li>
-          <li>✅ <strong>Best practices built-in</strong>: RPA, DU, Orchestration, and long-running workflow patterns</li>
-          <li>✅ <strong>Scalable</strong>: From quick demos to full enterprise implementations</li>
-          <li>✅ <strong>Developer-friendly</strong>: Easier development, testing, deployment, debugging</li>
-        </ul>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📖 Official Documentation</div>
+        <div class="admonition-body">For full reference, refer to the official UiPath docs: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/classic-user-guide/du-process" target="_blank" rel="noopener"><strong>Document Understanding Process — User Guide</strong></a></div>
       </div>
     </section>
 
     <!-- Lesson 2 -->
     <section class="lesson">
-      <h2 class="lesson-title">Generic Document Processing Flow</h2>
+      <h2 class="lesson-title" id="l2-access">🚀 How to Access the Template</h2>
 
-      <p>Understanding the complete logical flow of a DU automation helps you build robust, maintainable workflows. Here's the full pipeline:</p>
+      <style>
+        .walkthrough { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+        .walkthrough-step { display: flex; gap: 0; }
+        .walkthrough-step__spine { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 52px; }
+        .walkthrough-step__badge { background: var(--uipath-orange); color: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; z-index: 1; }
+        .walkthrough-step__line { width: 2px; background: #f3d9d1; flex: 1; min-height: 16px; }
+        .walkthrough-step:last-child .walkthrough-step__line { display: none; }
+        .walkthrough-step__body { flex: 1; padding: 0 0 1.5rem 0.5rem; }
+        .walkthrough-step__title { font-size: 1rem; font-weight: 700; color: var(--uipath-dark); margin: 0.4rem 0 0.6rem; }
+        .walkthrough-step__tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 20px; margin-right: 6px; }
+        .walkthrough-step__tag--setup { background: #fff3e0; color: #e65100; }
+        .walkthrough-step__tag--config { background: #e3f2fd; color: #1565c0; }
+        .walkthrough-step__tag--studio { background: #f3e5f5; color: #6a1b9a; }
+      </style>
 
-      <table class="comparison-table" aria-label="Generic Document Processing Flow">
-        <thead>
-          <tr><th style="width:3rem;">#</th><th style="width:30%;">Step</th><th>Description</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td><strong>Pre-digitization Processing</strong></td><td>Preprocessing before OCR — image enhancement, grayscale, skew correction, noise removal</td></tr>
-          <tr><td>2</td><td><strong>Digitize Document</strong></td><td>Run OCR to convert document to machine-readable text and Document Object Model</td></tr>
-          <tr><td>3</td><td><strong>Classify Document</strong></td><td>Identify document type using configured classifiers</td></tr>
-          <tr><td>4</td><td><strong>Classification Business Rule Validation</strong></td><td>Check if classification confidence meets threshold — determine if human review is needed</td></tr>
-          <tr><td>5</td><td><strong>Human Classification / Validation</strong> <em>(if needed)</em></td><td>Route to Action Center for human to review and correct classification</td></tr>
-          <tr><td>6</td><td><strong>Pre-extraction Processing</strong></td><td>Document splitting, page selection, any required preprocessing before extraction</td></tr>
-          <tr><td>7</td><td><strong>Data Extraction</strong></td><td>Run extractors to pull field values from the classified document</td></tr>
-          <tr><td>8</td><td><strong>Human Validation</strong> <em>(if needed)</em></td><td>Route low-confidence fields to Action Center for human review</td></tr>
-          <tr><td>9</td><td><strong>Extractor Feedback (Learning)</strong></td><td>Send validated corrections back to retrain the model</td></tr>
-          <tr><td>10</td><td><strong>Post-extraction Processing</strong></td><td>Data formatting, business rules application, calculated fields</td></tr>
-          <tr><td>11</td><td><strong>Data Export</strong></td><td>Send extracted data to downstream systems (ERP, SAP, database)</td></tr>
-          <tr><td>12</td><td><strong>Post-export Processing</strong></td><td>Any cleanup, merging exports, notifications</td></tr>
-        </tbody>
-      </table>
+      <div class="walkthrough">
 
-      <div class="admonition admonition--note">
-        <div class="admonition-title">📌 Note</div>
-        <div class="admonition-body">Not all steps are required for every use case. In practice, some steps will be merged or excluded based on your specific process requirements. Design your flow with the minimum necessary steps to avoid unnecessary complexity.</div>
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">1</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__title"><span class="walkthrough-step__tag walkthrough-step__tag--studio">Studio</span> Open UiPath Studio</div>
+            <p style="margin:0;font-size:0.92rem;color:var(--gray-700);">Open <strong>UiPath Studio</strong> (version 21.4 or higher).</p>
+          </div>
+        </div>
+
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">2</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__title"><span class="walkthrough-step__tag walkthrough-step__tag--studio">Studio</span> Go to the Templates Tab</div>
+            <p style="margin:0;font-size:0.92rem;color:var(--gray-700);">Navigate to the <strong>Templates</strong> tab in the Studio Backstage view (the Start screen when no project is open).</p>
+          </div>
+        </div>
+
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">3</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__title"><span class="walkthrough-step__tag walkthrough-step__tag--setup">Search</span> Search for the Template</div>
+            <p style="margin:0;font-size:0.92rem;color:var(--gray-700);">Search for <strong>Document Understanding Process</strong> in the search box.</p>
+          </div>
+        </div>
+
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">4</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__title"><span class="walkthrough-step__tag walkthrough-step__tag--config">Create</span> Create the Project</div>
+            <p style="margin:0;font-size:0.92rem;color:var(--gray-700);">Click <strong>Use Template</strong>, define your file name and directory, then click <strong>Create</strong>. Studio will scaffold the full project structure.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body">You can also find the template in <strong>UiPath Marketplace</strong> or via <strong>Studio Web</strong> if you prefer a cloud-based starting point.</div>
       </div>
     </section>
 
     <!-- Lesson 3 -->
     <section class="lesson">
-      <h2 class="lesson-title">Specific Challenges in DU Automation</h2>
+      <h2 class="lesson-title" id="l3-execution-modes">⚙️ Project Execution Modes</h2>
+
+      <p>A clean project created from this template includes <strong>two main deployment pathways</strong>, each suited to a different execution context:</p>
 
       <div class="info-card">
-        <h4>Challenge 1: Document Quality Variability</h4>
-        <p>Real-world documents vary significantly in quality — scanned at different DPIs, rotated, stained, or with handwriting. Solution: add pre-processing steps (image enhancement) and handle OCR failures gracefully.</p>
-      </div>
-
-      <div class="info-card">
-        <h4>Challenge 2: Confidence Threshold Management</h4>
-        <p>Setting the right confidence thresholds is critical. Too high → too many human validations. Too low → too many errors pass through. Solution: start conservative, monitor production performance, and tune thresholds over time.</p>
-      </div>
-
-      <div class="info-card">
-        <h4>Challenge 3: Long-Running Workflows</h4>
-        <p>When a document needs human validation, the automation must pause and wait — sometimes for hours or days. Solution: use Orchestrator's Long-Running Workflow pattern with Action Center integration.</p>
-      </div>
-
-      <div class="info-card">
-        <h4>Challenge 4: Mixed Document Batches</h4>
-        <p>Many real-world processes receive batches containing multiple document types in a single file or folder. Solution: implement document splitting and per-document type routing logic.</p>
-      </div>
-
-      <div class="info-card">
-        <h4>Challenge 5: Retraining Without Disruption</h4>
-        <p>Models need regular retraining as new document variations emerge. Solution: implement classifier and extractor feedback loops, and use A/B testing when deploying new model versions.</p>
-      </div>
-    </section>
-
-    <!-- Lesson 4: Solution Architecture -->
-    <section class="lesson">
-      <h2 class="lesson-title">Solution Architecture</h2>
-
-      <p>A well-designed DU automation architecture separates concerns into distinct layers:</p>
-
-      <div class="info-card">
-        <h4>Recommended Architecture Layers</h4>
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Layer</th><th>Component</th><th>Responsibility</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Input</strong></td><td>Dispatcher Process</td><td>Scan input folders, create queue items, deduplication</td></tr>
-            <tr><td><strong>Processing</strong></td><td>Performer Process (DU Framework)</td><td>OCR, classify, extract, validate, export</td></tr>
-            <tr><td><strong>Human Loop</strong></td><td>Action Center</td><td>Human validation of low-confidence results</td></tr>
-            <tr><td><strong>Learning</strong></td><td>Feedback Workflows</td><td>Send corrections back to retrain models</td></tr>
-            <tr><td><strong>Monitoring</strong></td><td>Orchestrator + Insights</td><td>Track SLAs, throughput, accuracy metrics</td></tr>
-            <tr><td><strong>Output</strong></td><td>Destination Systems</td><td>ERP, database, SharePoint, email</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="admonition admonition--tip">
-        <div class="admonition-title">💡 Tip</div>
-        <div class="admonition-body"><strong>Attended vs Unattended:</strong> The same DU Framework project can be configured for both attended (human triggers, validates in real-time) and unattended (fully automated with Action Center for async validation). The key difference is how the human validation step is triggered.</div>
-      </div>
-    </section>
-
-    <!-- Lesson 5: Configure & Run -->
-    <section class="lesson">
-      <h2 class="lesson-title">Configure &amp; Run the DU Framework Project</h2>
-
-      <table class="comparison-table" aria-label="Configure and Run the DU Framework Project">
-        <thead>
-          <tr><th style="width:3rem;">#</th><th style="width:30%;">Step</th><th>Details</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td><strong>Download the DU Framework Template</strong></td><td>Download from UiPath Marketplace or use the project template in Studio Web</td></tr>
-          <tr><td>2</td><td><strong>Configure Taxonomy</strong></td><td>Set up the taxonomy in your DU project (Automation Cloud) or locally in the workflow. Reference the taxonomy in your Load Taxonomy activity</td></tr>
-          <tr><td>3</td><td><strong>Configure Models</strong></td><td>In the taxonomy configuration, select the extractors and classifiers for each document type. For Modern Projects, set the project endpoint URL</td></tr>
-          <tr><td>4</td><td><strong>Configure Confidence Thresholds</strong></td><td>Set classification and extraction confidence thresholds in the config file or Orchestrator assets</td></tr>
-          <tr><td>5</td><td><strong>Set Input / Output Paths</strong></td><td>Configure the input document folder and output destination in the config</td></tr>
-          <tr><td>6</td><td><strong>Run &amp; Test</strong></td><td>Process a batch of test documents, review results, and tune as needed</td></tr>
-        </tbody>
-      </table>
-
-      <div class="admonition admonition--success">
-        <div class="admonition-title">✅ Success</div>
-        <div class="admonition-body"><strong>DIY Exercise:</strong> Build an attended DU automation that: (1) reads documents from a folder, (2) processes them through the DU pipeline, (3) presents results to the user for review, (4) exports validated data to Excel. Use a mix of document types covered in previous modules.</div>
-      </div>
-    </section>
-
-    <!-- Lesson 6: Custom Success Logic -->
-    <section class="lesson">
-      <h2 class="lesson-title">Custom Success Logic</h2>
-
-      <p>Real business processes rarely have simple success/failure outcomes. The DU Framework allows you to implement custom success logic based on your business rules.</p>
-
-      <div class="info-card">
-        <h4>Examples of Custom Success Logic</h4>
+        <h4>🖥️ Main_Attended.xaml</h4>
+        <p>Best suited for <strong>local desktop execution</strong> where developers or users validate anomalies directly on their screens in real time.</p>
         <ul>
-          <li><strong>Conditional routing</strong>: If invoice total &gt; $10,000, route to senior approver</li>
-          <li><strong>Multi-field validation</strong>: Accept extraction only if at least 5 out of 7 required fields are populated</li>
-          <li><strong>Cross-field validation</strong>: Line item total must match the invoice total (±2% tolerance)</li>
-          <li><strong>Duplicate detection</strong>: Check if invoice number already exists in the system before processing</li>
-          <li><strong>Date validation</strong>: Reject invoices older than 90 days</li>
+          <li>Human validation happens <strong>inline</strong> — the robot pauses and the user reviews results immediately</li>
+          <li>Uses the <strong>Validation Station</strong> and <strong>Classification Station</strong> activities</li>
+          <li>Ideal for: proof-of-concepts, lower-volume processes, and scenarios where a human is always present</li>
         </ul>
       </div>
 
-      <p>Implement custom success logic <strong>after</strong> the Data Extraction Scope and <strong>before</strong> the Export step. Use an If/Switch activity to branch based on your business rules.</p>
-    </section>
-
-    <!-- Lesson 7: Error Handling -->
-    <section class="lesson">
-      <h2 class="lesson-title">Error Handling in DU Workflows</h2>
+      <div class="info-card">
+        <h4>☁️ Main_ActionCenter.xaml</h4>
+        <p>Optimized for <strong>high-volume, long-running unattended server processes</strong> that push exceptions to the cloud via <strong>UiPath Action Center</strong>.</p>
+        <ul>
+          <li>The robot runs fully unattended and creates <strong>Action Center tasks</strong> for any low-confidence results</li>
+          <li>Human validators review tasks in Action Center at their own pace — <strong>asynchronous</strong> validation</li>
+          <li>Ideal for: production deployments, large document batches, 24/7 processing</li>
+        </ul>
+      </div>
 
       <div class="info-card">
-        <h4>Error Handling Strategy</h4>
+        <h4>📋 Attended vs. Unattended — Quick Comparison</h4>
         <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Error Type</th><th>Handling Approach</th></tr></thead>
+          <thead><tr><th>Aspect</th><th>Main_Attended.xaml</th><th>Main_ActionCenter.xaml</th></tr></thead>
           <tbody>
-            <tr><td>OCR/Digitization failure</td><td>Log error, move to failed folder, continue with next document</td></tr>
-            <tr><td>Classification failure</td><td>Route to human classification or mark as "unclassified"</td></tr>
-            <tr><td>Extraction error (technical)</td><td>Retry logic (max 3 attempts), then escalate to human</td></tr>
-            <tr><td>Low confidence (not an error)</td><td>Route to Action Center for validation — not a failure</td></tr>
-            <tr><td>Downstream system error</td><td>Queue document for retry, alert operations team</td></tr>
-            <tr><td>Timeout (human validation)</td><td>Escalate after SLA breach, notify supervisor</td></tr>
+            <tr><td>Validation style</td><td>Inline, real-time</td><td>Async via Action Center</td></tr>
+            <tr><td>Robot type</td><td>Attended</td><td>Unattended (server)</td></tr>
+            <tr><td>Human interaction</td><td>Immediate, on the same machine</td><td>Cloud-based, anytime</td></tr>
+            <tr><td>Best for</td><td>Low-medium volume, local validation</td><td>High-volume, production</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Lesson 4 -->
+    <section class="lesson">
+      <h2 class="lesson-title" id="l4-workflow">🔄 Workflow Overview</h2>
+
+      <p>Both execution modes share the same core DU pipeline. The template pre-wires the following steps — you configure and extend them for your specific documents:</p>
+
+      <div class="info-card">
+        <h4>🗂️ Key Workflow Files in the Template</h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Main_Attended.xaml</strong></td><td>Entry point for attended execution — triggers inline validation stations</td></tr>
+            <tr><td><strong>Main_ActionCenter.xaml</strong></td><td>Entry point for unattended execution — pushes exceptions to Action Center</td></tr>
+            <tr><td><strong>Framework/</strong></td><td>Core workflow logic: initialize, process document, handle exceptions</td></tr>
+            <tr><td><strong>Config.xlsx</strong></td><td>Central configuration: file paths, confidence thresholds, Orchestrator asset names</td></tr>
+            <tr><td><strong>DocumentProcessing.xaml</strong></td><td>The DU pipeline: digitize → classify → extract → validate → export</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="info-card">
-        <h4>Best Practices for Error Handling</h4>
-        <ul>
-          <li>Always use <code>Try/Catch</code> blocks around extraction activities</li>
-          <li>Log errors with document name, error message, and timestamp</li>
-          <li>Never silently swallow exceptions — always log at minimum</li>
-          <li>Separate technical errors from business exceptions</li>
-          <li>Implement dead-letter queues for persistently failing documents</li>
-          <li>Use Orchestrator queue item statuses to track document processing state</li>
-        </ul>
+        <h4>🔄 Core Pipeline Steps (Shared by Both Modes)</h4>
+        <ol>
+          <li><strong>Load Taxonomy</strong> — load document types and fields from your DU project or local taxonomy file</li>
+          <li><strong>Digitize Document</strong> — run OCR to convert the document to machine-readable text</li>
+          <li><strong>Classify Document Scope</strong> — identify the document type</li>
+          <li><strong>Data Extraction Scope</strong> — extract field values using configured extractors</li>
+          <li><strong>Validation</strong> — human review of low-confidence results (inline or via Action Center)</li>
+          <li><strong>Train Classifiers / Extractors Scope</strong> — send validated corrections back as feedback</li>
+          <li><strong>Export</strong> — write validated data to Excel, database, or downstream system</li>
+        </ol>
+      </div>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📖 Deep Dive</div>
+        <div class="admonition-body">For detailed configuration steps, troubleshooting, and extractor setup within the template, refer to the official guide: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/classic-user-guide/du-process" target="_blank" rel="noopener"><strong>Document Understanding Process — User Guide</strong></a></div>
       </div>
     </section>
 
@@ -264,35 +244,24 @@
     <section class="quiz-section" id="quiz-06">
       <h3>✅ Knowledge Check</h3>
 
-      <div class="quiz-question" data-correct="c" data-explanation="The DU Framework is purpose-built for document processing workflows, which have unique requirements like long-running workflows, per-document state management, and confidence-based branching.">
-        <p>1. Why is a dedicated DU Framework needed instead of using the standard REFramework?</p>
+      <div class="quiz-question" data-correct="b" data-explanation="Main_ActionCenter.xaml is designed for high-volume unattended server processes — it pushes low-confidence documents to Action Center for asynchronous human review rather than pausing inline.">
+        <p>1. Which execution mode is best suited for a high-volume, 24/7 unattended document processing scenario?</p>
         <ul class="quiz-options">
-          <li><label data-value="a"><input type="radio" name="q1" value="a" /> REFramework doesn't support Excel output</label></li>
-          <li><label data-value="b"><input type="radio" name="q1" value="b" /> DU Framework has a better UI</label></li>
-          <li><label data-value="c"><input type="radio" name="q1" value="c" /> DU workflows need long-running workflow support, per-document state management, and confidence-based branching that REFramework wasn't designed for</label></li>
-          <li><label data-value="d"><input type="radio" name="q1" value="d" /> REFramework is deprecated</label></li>
+          <li><label data-value="a"><input type="radio" name="q1" value="a" /> Main_Attended.xaml — because it has real-time validation</label></li>
+          <li><label data-value="b"><input type="radio" name="q1" value="b" /> Main_ActionCenter.xaml — it pushes exceptions to Action Center for async validation</label></li>
+          <li><label data-value="c"><input type="radio" name="q1" value="c" /> Both are identical — execution mode doesn't matter</label></li>
+          <li><label data-value="d"><input type="radio" name="q1" value="d" /> Neither — you need to build from scratch for unattended scenarios</label></li>
         </ul>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-question" data-correct="b" data-explanation="Custom success logic is implemented after extraction and before export, using If/Switch activities to branch based on business rules like total amounts, date validation, or field completeness.">
-        <p>2. Where in the DU workflow should custom success logic (e.g., "reject invoices older than 90 days") be implemented?</p>
+      <div class="quiz-question" data-correct="c" data-explanation="The template is found in the Templates tab in UiPath Studio's Backstage view. Search for 'Document Understanding Process', click Use Template, then define a name and directory before clicking Create.">
+        <p>2. Where do you find the Document Understanding Process template in UiPath Studio?</p>
         <ul class="quiz-options">
-          <li><label data-value="a"><input type="radio" name="q2" value="a" /> Before the Digitize Document activity</label></li>
-          <li><label data-value="b"><input type="radio" name="q2" value="b" /> After Data Extraction Scope and before the Export step</label></li>
-          <li><label data-value="c"><input type="radio" name="q2" value="c" /> Inside the Load Taxonomy activity</label></li>
-          <li><label data-value="d"><input type="radio" name="q2" value="d" /> In the Orchestrator queue configuration</label></li>
-        </ul>
-        <div class="quiz-feedback"></div>
-      </div>
-
-      <div class="quiz-question" data-correct="d" data-explanation="Low confidence is not a technical error — it's expected behavior. The correct approach is to route the document to Action Center for human validation, not to treat it as a failure.">
-        <p>3. How should a workflow handle an extraction result with low confidence scores?</p>
-        <ul class="quiz-options">
-          <li><label data-value="a"><input type="radio" name="q3" value="a" /> Log the error and skip the document</label></li>
-          <li><label data-value="b"><input type="radio" name="q3" value="b" /> Retry the extraction 3 times</label></li>
-          <li><label data-value="c"><input type="radio" name="q3" value="c" /> Raise a Business Rule Exception and halt</label></li>
-          <li><label data-value="d"><input type="radio" name="q3" value="d" /> Route to Action Center for human validation — it's expected behavior, not an error</label></li>
+          <li><label data-value="a"><input type="radio" name="q2" value="a" /> Under the Activities panel → Document Understanding</label></li>
+          <li><label data-value="b"><input type="radio" name="q2" value="b" /> In Orchestrator → Packages</label></li>
+          <li><label data-value="c"><input type="radio" name="q2" value="c" /> In the Templates tab of the Studio Backstage view</label></li>
+          <li><label data-value="d"><input type="radio" name="q2" value="d" /> In Manage Packages → search for DU Framework</label></li>
         </ul>
         <div class="quiz-feedback"></div>
       </div>
@@ -306,7 +275,7 @@
       <div class="module-nav__complete">
         <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
       </div>
-      <a href="module-07-miscellaneous.html" class="btn btn-primary">Next: Miscellaneous Topics →</a>
+      <a href="module-07-miscellaneous.html" class="btn btn-primary">Next: Important Topics →</a>
     </nav>
 
   </main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 07 – Miscellaneous Topics | UiPath Course</title>
+  <title>Module 07 – Important Topics: Resources &amp; Documentation | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/course.css" />
 </head>
@@ -27,8 +27,11 @@
         <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
         <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
         <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
-        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
-        <li><a href="module-07-miscellaneous.html" data-module="module-07" class="active">07 · Miscellaneous Topics</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07" class="active">07 · Important Topics</a></li>
+        <li><a href="module-07-miscellaneous.html#l2-monitor" class="sidebar-nav__sub">📊 Monitor</a></li>
+        <li><a href="module-07-miscellaneous.html#l3-processed-docs" class="sidebar-nav__sub">📋 Processed Documents</a></li>
+        <li><a href="module-07-miscellaneous.html#l4-resources" class="sidebar-nav__sub">📚 Resources &amp; Further Learning</a></li>
       </ul>
     </nav>
     <div class="sidebar-progress">
@@ -42,185 +45,124 @@
   <main class="course-content" id="main-content">
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 07 · Miscellaneous Topics</span>
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 07 · Important Topics</span>
     </nav>
     <div class="page-header">
-      <h1>Miscellaneous Topics: Licensing, Use Cases &amp; Resources</h1>
+      <h1>Important Topics: Resources &amp; Documentation</h1>
       <div class="page-header__meta">
-        <span>⏱ ~10 minutes</span><span>📖 Reference</span><span>🎯 All Levels</span>
+        <span>⏱ ~5 minutes</span><span>📖 Reference</span><span>🎯 All Levels</span>
       </div>
     </div>
 
     <div class="objectives-box">
       <h3>🎯 Learning Objectives</h3>
       <ul>
-        <li>Understand DU/IXP licensing models and how consumption is measured</li>
-        <li>Identify typical DU use cases across industries</li>
-        <li>Know supported document limits and data constraints</li>
-        <li>Find the right documentation and resources for deeper learning</li>
+        <li>Find the right official documentation for Document Understanding and IXP</li>
+        <li>Know where to go for deeper learning and troubleshooting</li>
+        <li>Understand the Monitor section and how to track document processing performance</li>
+        <li>Use the Processed Documents tab to search and review extraction results</li>
       </ul>
     </div>
 
-    <!-- Lesson 1: Licensing -->
+    <!-- Lesson: Monitor -->
     <section class="lesson">
-      <h2 class="lesson-title">Licensing Overview</h2>
+      <h2 class="lesson-title" id="l2-monitor">📊 Monitor</h2>
 
-      <p>Understanding how Document Understanding and IXP are licensed helps you plan your automation projects and avoid unexpected costs.</p>
+      <p>The <strong>Monitor</strong> section in Document Understanding gives you a centralised view of how your automations are performing — tracking document volumes, extraction accuracy, AI unit consumption, and human validation activity.</p>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📖 Reference</div>
+        <div class="admonition-body">Full documentation: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/monitor" target="_blank" rel="noopener"><strong>Monitor — UiPath Document Understanding User Guide</strong></a></div>
+      </div>
 
       <div class="info-card">
-        <h4>DU Licensing Models</h4>
+        <h4>🗂️ Main Areas of Monitor</h4>
         <table class="comparison-table" style="margin:0">
-          <thead><tr><th>License Type</th><th>Unit</th><th>Key Limits</th></tr></thead>
+          <thead><tr><th>Area</th><th>What it shows</th></tr></thead>
           <tbody>
-            <tr><td><strong>Community Edition</strong></td><td>No unit display on Licenses page</td><td>2 pages/4MB per doc, 50 requests/hour, data stored for QA</td></tr>
-            <tr><td><strong>Enterprise Edition</strong></td><td>Pages (shown on Licenses page)</td><td>20 megapixels/page, 10MB per doc (JSON-Base64), data NOT stored</td></tr>
-            <tr><td><strong>Public Endpoints (all)</strong></td><td>Pages</td><td>Max 30 pages per document via public endpoint; deploy as ML Skill for more</td></tr>
+            <tr><td><strong>Project Performance</strong> <em>(Preview)</em></td><td>Processed document counts, time saved, and extraction duration. Requires <strong>Insights</strong> to be enabled in Tenant Profile settings.</td></tr>
+            <tr><td><strong>Processed Documents</strong></td><td>A searchable list of all documents processed via API or UiPath.DocumentUnderstanding.Activities. Documents are retained for <strong>6 months</strong>.</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="info-card">
-        <h4>What Consumes Licenses?</h4>
+        <h4>📈 Key Metrics Available</h4>
         <ul>
-          <li><strong>Page-based consumption</strong>: Each page processed through DU extraction consumes license units</li>
-          <li><strong>Modern Projects</strong>: Do NOT consume AI units for training or model serving — infrastructure is managed by UiPath</li>
-          <li><strong>Classic Projects / AI Center</strong>: Consume AI units for model training pipelines and ML Skill serving</li>
-          <li><strong>IXP Complex Documents</strong>: Uses a separate consumption model — check your license agreement</li>
-        </ul>
-      </div>
-
-      <div class="admonition admonition--tip">
-        <div class="admonition-title">💡 Tip</div>
-        <div class="admonition-body"><strong>Cost Optimization Tip:</strong> For high-volume workflows, pre-filter documents before OCR to avoid processing pages you don't need. For example, if you only need page 1 of a 50-page document, split it first.</div>
-      </div>
-    </section>
-
-    <!-- Lesson 2: Use Cases -->
-    <section class="lesson">
-      <h2 class="lesson-title">DU Use Case Examples</h2>
-
-      <div class="info-card">
-        <h4>Finance &amp; Accounts Payable</h4>
-        <ul>
-          <li><strong>Invoice Processing</strong>: Extract vendor, amount, line items from invoices; post to ERP (SAP, Oracle)</li>
-          <li><strong>Purchase Order Matching</strong>: Match POs against invoices for 3-way matching</li>
-          <li><strong>Expense Report Processing</strong>: Extract receipt data for reimbursement workflows</li>
+          <li><strong>Estimated time saved</strong> — calculated as: processed documents × manual processing time − validation time</li>
+          <li><strong>AI Unit consumption</strong> — overview and breakdown by consumer (API vs RPA)</li>
+          <li><strong>Straight-through processing rate</strong> — documents processed without human intervention vs. total</li>
+          <li><strong>Validation time per validator</strong> — tracks how long human reviewers spend per document</li>
+          <li><strong>Extraction &amp; classification accuracy</strong> — field correction trends and classification confusion matrix</li>
+          <li><strong>Top exceptions</strong> — most frequently encountered processing errors</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h4>Human Resources</h4>
+        <h4>⚙️ System Requirements</h4>
         <ul>
-          <li><strong>Resume Screening</strong>: Extract candidate info from CVs for ATS upload</li>
-          <li><strong>Onboarding Document Processing</strong>: Extract data from employment forms, ID documents</li>
-          <li><strong>Offer Letter Generation</strong>: Extract from templates to generate personalized letters</li>
+          <li><code>UiPath.DocumentUnderstanding.Activities</code> v2.7.0 or newer</li>
+          <li><code>UiPath.IntelligentOCR.Activities</code> v6.20 or newer (for IntelligentOCR support)</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h4>Legal &amp; Compliance</h4>
+        <h4>📤 Schedule Delivery</h4>
+        <p>You can automate dashboard exports on a recurring schedule. Configure:</p>
         <ul>
-          <li><strong>Contract Analysis</strong>: Extract key clauses, dates, parties from contracts</li>
-          <li><strong>Due Diligence</strong>: Process large volumes of legal documents for M&amp;A</li>
-          <li><strong>Regulatory Submissions</strong>: Extract and validate data from regulatory forms</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>Healthcare</h4>
-        <ul>
-          <li><strong>Claims Processing</strong>: Extract claim data from insurance forms</li>
-          <li><strong>Patient Record Digitization</strong>: Extract structured data from medical records</li>
-          <li><strong>Prescription Processing</strong>: Extract medication details from prescription forms</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>Banking &amp; Insurance</h4>
-        <ul>
-          <li><strong>Loan Application Processing</strong>: Extract applicant data from loan applications</li>
-          <li><strong>KYC Document Processing</strong>: Extract ID, address verification from identity documents</li>
-          <li><strong>Insurance Policy Intake</strong>: Extract coverage details from policy documents</li>
+          <li><strong>Schedule</strong> — name, recurrence, time, and destination</li>
+          <li><strong>Recipients</strong> — email addresses to receive the report</li>
+          <li><strong>Format</strong> — PDF, CSV, or PNG</li>
         </ul>
       </div>
     </section>
 
-    <!-- Lesson 3: Supported Models & Limits -->
+    <!-- Lesson: Processed Documents -->
     <section class="lesson">
-      <h2 class="lesson-title">Supported Models &amp; Data Limits Summary</h2>
+      <h2 class="lesson-title" id="l3-processed-docs">📋 Processed Documents</h2>
+
+      <p>The <strong>Processed Documents</strong> tab within Monitor lists every document that has been processed through Document Understanding — whether via API or the <code>UiPath.DocumentUnderstanding.Activities</code> package.</p>
 
       <div class="info-card">
-        <h4>Document Understanding: Activity Packages</h4>
+        <h4>🔍 What You Can See</h4>
         <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Package</th><th>Best For</th><th>Deployment</th></tr></thead>
+          <thead><tr><th>Column</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>UiPath.DocumentUnderstanding.Activities</code></td><td>Modern Projects (Active Learning)</td><td>Automation Cloud only</td></tr>
-            <tr><td><code>UiPath.IntelligentOCR.Activities</code></td><td>Classic Projects, AI Center, on-prem</td><td>Cloud, Suite, Standalone</td></tr>
-            <tr><td><code>UiPath.DocumentUnderstanding.ML.Activities</code></td><td>ML Extractors, AI Center integration</td><td>Cloud, Suite, Standalone</td></tr>
+            <tr><td><strong>File Name</strong></td><td>Name of the processed document — click to open Document Details</td></tr>
+            <tr><td><strong>Document Type</strong></td><td>The document type it was classified as</td></tr>
+            <tr><td><strong>Consumer</strong></td><td>Whether it was processed via API or an RPA workflow</td></tr>
+            <tr><td><strong>Modified Date</strong></td><td>When the document was last processed or updated</td></tr>
+            <tr><td><strong>Validator</strong></td><td>The human reviewer who validated the extraction, if applicable</td></tr>
+            <tr><td><strong>AI Units Consumed</strong></td><td>Number of AI units used to process this document</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="info-card">
-        <h4>Model Version Reference</h4>
+        <h4>💡 Key Facts</h4>
         <ul>
-          <li><strong>Modern Projects</strong>: Always uses the latest model version (currently 24.4+)</li>
-          <li><strong>Classic Projects</strong>: Supports model version 24.4 and all older versions</li>
-          <li><strong>AI Center-based</strong>: Supports 24.4+ and all older versions; exports supported</li>
+          <li>Documents are searchable by <strong>file name</strong></li>
+          <li>Records are retained for <strong>6 months</strong> from the processing date</li>
+          <li>Click any file name to open <strong>Document Details</strong> — a deeper view covering extraction results, validation actions, and accuracy per field</li>
         </ul>
       </div>
 
-      <div class="info-card">
-        <h4>IXP Complex Documents: Key Limits</h4>
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Max document pages</td><td>150 pages</td></tr>
-            <tr><td>Supported formats</td><td>PDF, PNG, JPG/JPEG, TIF/TIFF</td></tr>
-            <tr><td>Deployment</td><td>Automation Cloud (Automation Suite/Standalone: check roadmap)</td></tr>
-            <tr><td>LLM Backend</td><td>Specialized UiPath models + Azure OpenAI (data residency per region)</td></tr>
-          </tbody>
-        </table>
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📖 Reference</div>
+        <div class="admonition-body">Full documentation: <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/monitor" target="_blank" rel="noopener"><strong>Monitor — UiPath Document Understanding User Guide</strong></a></div>
       </div>
     </section>
 
-    <!-- Lesson 4: Resources -->
+    <!-- Lesson: Resources -->
     <section class="lesson">
-      <h2 class="lesson-title">Resources &amp; Further Learning</h2>
+      <h2 class="lesson-title" id="l4-resources">📚 Resources &amp; Further Learning</h2>
 
       <div class="info-card">
-        <h4>Official Documentation</h4>
+        <h4>📄 Official Documentation</h4>
         <ul>
           <li>📄 <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Document Understanding Docs</a> — Main documentation hub</li>
           <li>📄 <a href="https://docs.uipath.com/document-understanding/automation-cloud/latest/user-guide/migrating-existing-modern-projects" target="_blank" rel="noopener">Migrating Classic to Modern Projects</a></li>
           <li>📄 <a href="https://docs.uipath.com/intelligent-extraction-processing" target="_blank" rel="noopener">IXP Documentation</a> — IXP platform docs</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>UiPath Academy</h4>
-        <ul>
-          <li>🎓 Document Understanding Specialist course (Automation Developer track)</li>
-          <li>🎓 UiPath AI Center Deep Dive</li>
-          <li>🎓 Document Understanding Foundation course for business users</li>
-        </ul>
-        <p><a href="https://academy.uipath.com" target="_blank" rel="noopener">academy.uipath.com →</a></p>
-      </div>
-
-      <div class="info-card">
-        <h4>UiPath Marketplace</h4>
-        <ul>
-          <li>DU Framework template (production-ready starting point)</li>
-          <li>Pre-built workflows for common use cases (invoice processing, PO matching)</li>
-        </ul>
-        <p><a href="https://marketplace.uipath.com" target="_blank" rel="noopener">marketplace.uipath.com →</a></p>
-      </div>
-
-      <div class="info-card">
-        <h4>Community &amp; Support</h4>
-        <ul>
-          <li>💬 <a href="https://community.uipath.com" target="_blank" rel="noopener">UiPath Community Forum</a></li>
-          <li>🐛 <a href="https://support.uipath.com" target="_blank" rel="noopener">UiPath Support Portal</a></li>
         </ul>
       </div>
     </section>
@@ -240,7 +182,7 @@
           <li>✅ <strong>Module 04</strong>: Semi-structured docs — Active Learning, OOTB models, Build/Measure/Publish</li>
           <li>✅ <strong>Module 05</strong>: Unstructured/Complex — Generative AI extraction, IXP taxonomy, model lifecycle</li>
           <li>✅ <strong>Module 06</strong>: DU Framework — architecture, error handling, custom success logic</li>
-          <li>✅ <strong>Module 07</strong>: Licensing, use cases, and resources</li>
+          <li>✅ <strong>Module 07</strong>: Important Topics — official documentation and further learning resources</li>
         </ul>
       </div>
 

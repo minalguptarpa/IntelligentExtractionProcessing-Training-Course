@@ -33,10 +33,17 @@
         <li><a href="module-05-part1-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
         <li><a href="module-05-part2.html" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
         <li><a href="module-05-part2.html#part2-theory" class="sidebar-nav__subsub">· Theory</a></li>
+        <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
+        <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
+        <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
         <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
         <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
-        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
-        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+        <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Important Topics</a></li>
       </ul>
     </nav>
     <div class="sidebar-progress">
@@ -80,7 +87,7 @@
     </div>
 
     <section class="lesson">
-      <h2 class="lesson-title">What is IXP Generative Extraction?</h2>
+      <h2 class="lesson-title" id="p2-what-is">What is IXP Generative Extraction?</h2>
 
       <p>The <strong>Unstructured and Complex Documents</strong> capability in UiPath IXP uses <strong>Generative Extraction</strong> to process documents that are too complex or variable for traditional rule-based or template-based methods. It is an inference-first experience that provides zero-shot and few-shot extraction — meaning it can extract data from documents it has never seen before, guided purely by natural language prompts.</p>
 
@@ -98,7 +105,7 @@
     </section>
 
     <section class="lesson">
-      <h2 class="lesson-title">When to Use IXP Generative Extraction</h2>
+      <h2 class="lesson-title" id="p2-when-to-use">When to Use IXP Generative Extraction</h2>
 
       <p>This capability is ideal for advanced document processing scenarios where data is not consistently formatted. Use it when one or more of the following apply:</p>
 
@@ -135,7 +142,7 @@
     </section>
 
     <section class="lesson">
-      <h2 class="lesson-title">User Roles in Generative Extraction</h2>
+      <h2 class="lesson-title" id="p2-user-roles">User Roles in Generative Extraction</h2>
       <div class="info-card">
         <table class="comparison-table" style="margin:0">
           <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
@@ -157,7 +164,7 @@
     </div>
 
     <section class="lesson">
-      <h2 class="lesson-title">Building the Generative Extraction Project</h2>
+      <h2 class="lesson-title" id="p2-building">Building the Generative Extraction Project</h2>
 
       <p>Building a Generative Extraction project follows the same <strong>Build → Measure → Publish</strong> lifecycle as Modern DU projects, but uses generative AI prompts instead of annotated ML training.</p>
 
@@ -210,7 +217,7 @@
     </section>
 
     <section class="lesson">
-      <h2 class="lesson-title">Evaluating the Project (Measure Phase)</h2>
+      <h2 class="lesson-title" id="p2-evaluating">Evaluating the Project (Measure Phase)</h2>
 
       <p>The <strong>Measure</strong> phase evaluates how well your model is performing before you deploy it to production. It uses your validated annotations as the ground truth.</p>
 
@@ -254,7 +261,7 @@
     </section>
 
     <section class="lesson">
-      <h2 class="lesson-title">Consuming the Generative Extraction Project in Studio</h2>
+      <h2 class="lesson-title" id="p2-consuming">Consuming the Generative Extraction Project in Studio</h2>
 
       <p>Once your model meets performance criteria, publish it and integrate it into a UiPath Studio workflow.</p>
 
@@ -306,7 +313,7 @@
     </div>
 
     <section class="lesson">
-      <h2 class="lesson-title">Generative Extraction Prompting Best Practices</h2>
+      <h2 class="lesson-title" id="p2-prompting">Generative Extraction Prompting Best Practices</h2>
 
       <p>The quality of your prompts directly determines extraction accuracy. Well-written instructions unlock the full potential of the generative model.</p>
 

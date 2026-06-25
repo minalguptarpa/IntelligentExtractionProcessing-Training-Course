@@ -30,10 +30,23 @@
         <li><a href="module-04-practical.html" class="sidebar-nav__sub">↳ Practical Exercise</a></li>
         <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
         <li><a href="module-05-part1.html" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
+        <li><a href="module-05-part1.html#l1-generative-classifier" class="sidebar-nav__subsub">· Generative Classifier</a></li>
+        <li><a href="module-05-part1.html#l2-generative-extractor" class="sidebar-nav__subsub">· Generative Extractor</a></li>
+        <li><a href="module-05-part1.html#l3-best-practices" class="sidebar-nav__subsub">· Best Practices</a></li>
         <li><a href="module-05-part1-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
         <li><a href="module-05-part2.html" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
-        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
-        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
+        <li><a href="module-05-part2.html#part2-theory" class="sidebar-nav__subsub">· Theory</a></li>
+        <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
+        <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
+        <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
+        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
+        <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
+        <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Important Topics</a></li>
       </ul>
     </nav>
     <div class="sidebar-progress">
@@ -69,28 +82,28 @@
       </ul>
     </div>
 
-    <p style="margin-bottom:1.5rem;">In UiPath Document Understanding, <strong>generative</strong> refers to the use of Large Language Models (LLMs) and Generative AI (like GPT-4) to process, classify, and extract data from documents. Instead of rigid templates or extensive training, it uses plain-language prompts to understand unstructured information — making it possible to handle a wide variety of document types with minimal setup.</p>
+    <p style="margin-bottom:1.5rem;">In UiPath Document Understanding, <strong>generative</strong> refers to the use of <strong>Large Language Models (LLMs)</strong> and Generative AI (like GPT-4) to process, classify, and extract data from documents. Instead of rigid templates or extensive training, it uses <strong>plain-language prompts</strong> to understand unstructured information — making it possible to handle a wide variety of document types with minimal setup.</p>
 
     <!-- Generative Classifier -->
     <section class="lesson">
-      <h2 class="lesson-title">Generative Classifier</h2>
+      <h2 class="lesson-title" id="l1-generative-classifier">🧠 Generative Classifier</h2>
 
       <p>The <strong>Generative Classifier</strong> is a classification tool that leverages generative AI to categorize documents using description-driven document type definitions. Instead of training on labeled examples, it classifies documents based on natural language descriptions you provide for each document type.</p>
 
       <div class="info-card">
-        <h4>How to Configure the Generative Classifier</h4>
+        <h4>⚙️ How to Configure the Generative Classifier</h4>
         <ol>
-          <li>Insert a <strong>Classify Document Scope</strong> activity into your workflow</li>
-          <li>Place the <strong>Generative Classifier</strong> activity within that scope</li>
-          <li>Click <strong>Manage Prompts</strong> and enter clear natural language descriptions for each document type</li>
+          <li>📥 Insert a <strong>Classify Document Scope</strong> activity into your workflow</li>
+          <li>🔗 Place the <strong>Generative Classifier</strong> activity within that scope</li>
+          <li>✍️ Click <strong>Manage Prompts</strong> and enter <strong>clear natural language descriptions</strong> for each document type</li>
         </ol>
       </div>
 
       <div class="info-card">
-        <h4>When to Use the Generative Classifier</h4>
+        <h4>🎯 When to Use the Generative Classifier</h4>
         <ul>
-          <li>Documents are unstructured with varied content</li>
-          <li>You can describe the document types in natural language in a way that allows generative AI to distinguish between them</li>
+          <li>📄 Documents are <strong>unstructured with varied content</strong></li>
+          <li>💬 You can describe the document types in <strong>natural language</strong> in a way that allows generative AI to distinguish between them</li>
         </ul>
       </div>
 
@@ -102,24 +115,24 @@
 
     <!-- Generative Extractor Activity -->
     <section class="lesson">
-      <h2 class="lesson-title">Generative Extractor Activity</h2>
+      <h2 class="lesson-title" id="l2-generative-extractor">⚡ Generative Extractor</h2>
 
-      <p>The <strong>Generative Extractor</strong> activity enables data extraction from documents using generative machine learning models through UiPath's Document Understanding platform. It uses a prompt-based wizard where you define field names and descriptions to guide the model.</p>
+      <p>The <strong>Generative Extractor</strong> activity enables data extraction from documents using generative machine learning models through UiPath's Document Understanding platform. It uses a <strong>prompt-based wizard</strong> where you define <strong>field names and descriptions</strong> to guide the model.</p>
 
       <div class="info-card">
-        <h4>Key Capabilities</h4>
+        <h4>✨ Key Capabilities</h4>
         <ul>
-          <li>Extracts document data using generative models</li>
-          <li>Supports multiple document types with customizable extractor types</li>
-          <li>Three extractor types available:
+          <li>🔍 Extracts document data using generative models</li>
+          <li>📑 Supports multiple document types with customizable extractor types</li>
+          <li>🗂️ Three extractor types available:
             <ul>
-              <li><strong>Long Document Simple Layout Extractor</strong> — for long documents with a straightforward layout</li>
-              <li><strong>Long Document Complex Layout Extractor</strong> <em>(preview)</em> — optimized for long-form documents with complex layouts</li>
-              <li><strong>Short Document Complex Layout Extractor</strong> <em>(preview)</em> — for short documents with complex layouts (maximum 10 pages)</li>
+              <li>📃 <strong>Long Document Simple Layout Extractor</strong> — for long documents with a straightforward layout</li>
+              <li>📰 <strong>Long Document Complex Layout Extractor</strong> <em>(preview)</em> — optimized for long-form documents with complex layouts</li>
+              <li>📄 <strong>Short Document Complex Layout Extractor</strong> <em>(preview)</em> — for short documents with complex layouts (maximum 10 pages)</li>
             </ul>
           </li>
-          <li>Field descriptions directly influence model extraction accuracy (max 1,000 characters per description)</li>
-          <li>Compatible with Windows Legacy and Windows platforms</li>
+          <li>🎛️ Field descriptions directly influence model extraction accuracy <strong>(max 1,000 characters per description)</strong></li>
+          <li>🖥️ Compatible with Windows Legacy and Windows platforms</li>
         </ul>
       </div>
 
@@ -136,13 +149,13 @@
 
     <!-- Good Practices -->
     <section class="lesson">
-      <h2 class="lesson-title">Generative Extractor — Good Practices</h2>
+      <h2 class="lesson-title" id="l3-best-practices">🏆 Generative Extractor — Best Practices</h2>
 
       <div class="info-card">
-        <h4>Key Limits to Keep in Mind</h4>
+        <h4>⚠️ Key Limits to Keep in Mind</h4>
         <ul>
-          <li>Maximum <strong>50 prompts</strong> per extractor</li>
-          <li>Extraction result (Completion) has a maximum word limit of <strong>700 words</strong></li>
+          <li>🔢 Maximum <strong>50 prompts</strong> per extractor</li>
+          <li>📏 Extraction result (Completion) has a maximum word limit of <strong>700 words</strong></li>
         </ul>
       </div>
 
@@ -152,31 +165,31 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Use Precise Language</strong></td>
+            <td><strong>🎯 Use Precise Language</strong></td>
             <td>Use clear, unambiguous phrasing. Imagine multiple people answering your question — if responses would differ significantly, refine the language.</td>
           </tr>
           <tr>
-            <td><strong>Standardize Output Format</strong></td>
+            <td><strong>📋 Standardize Output Format</strong></td>
             <td>Specify the desired output structure explicitly — e.g. "return date in yyyy-mm-dd format" or "return numbers in ##,###.## format".</td>
           </tr>
           <tr>
-            <td><strong>List Expected Options</strong></td>
+            <td><strong>📝 List Expected Options</strong></td>
             <td>When answers are limited to known choices, list them explicitly — e.g. "Possible answers: Married, Unmarried, Separated, Divorced, Widowed, Other."</td>
           </tr>
           <tr>
-            <td><strong>Use a Step-by-Step Approach</strong></td>
+            <td><strong>🔢 Use a Step-by-Step Approach</strong></td>
             <td>Break complex queries into sequential steps. Programming-style formatting (JSON or XML) improves accuracy by leveraging the model's code-interpretation capabilities.</td>
           </tr>
           <tr>
-            <td><strong>Avoid Arithmetic &amp; Logic Operations</strong></td>
+            <td><strong>🚫 Avoid Arithmetic &amp; Logic Operations</strong></td>
             <td>Do not ask the extractor to perform sums, multiplication, subtraction, or comparisons — handle these in your workflow with standard activities instead.</td>
           </tr>
           <tr>
-            <td><strong>Avoid Complex Table Extraction</strong></td>
+            <td><strong>🗃️ Avoid Complex Table Extraction</strong></td>
             <td>The Generative Extractor struggles with two-dimensional table data. Use the IXP capability for complex table extraction.</td>
           </tr>
           <tr>
-            <td><strong>Assess Confidence Carefully</strong></td>
+            <td><strong>🔎 Assess Confidence Carefully</strong></td>
             <td>Rather than relying solely on confidence scores, pose the same question multiple ways. Convergent answers indicate reliability; divergent responses suggest human review is needed.</td>
           </tr>
         </tbody>

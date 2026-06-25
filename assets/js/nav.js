@@ -122,6 +122,7 @@ function initSidebarToggle() {
       subItems.forEach(si => { si.style.display = 'none'; });
     }
 
+    // Each module toggles independently — multiple can be open at once
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -134,9 +135,51 @@ function initSidebarToggle() {
   }
 }
 
+/* ---- Nested sub-group collapse/expand (e.g. Theory within Part 1) ---- */
+function initSubGroupToggle() {
+  const list = document.querySelector('.sidebar-nav__list');
+  if (!list) return;
+
+  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+
+  list.querySelectorAll('a[data-group]').forEach(groupLink => {
+    const groupId = groupLink.getAttribute('data-group');
+    const childItems = Array.from(
+      list.querySelectorAll(`li a[data-child-of="${groupId}"]`)
+    ).map(a => a.closest('li'));
+
+    if (childItems.length === 0) return;
+
+    // Expand if current page is one of the child pages or the group page itself
+    const isActive = childItems.some(li => {
+      const f = li.querySelector('a').getAttribute('href').split('#')[0].split('/').pop();
+      return f && f === currentFile;
+    }) || groupLink.getAttribute('href').split('#')[0].split('/').pop() === currentFile;
+
+    const toggle = document.createElement('span');
+    toggle.className = 'sidebar-toggle';
+    toggle.setAttribute('aria-hidden', 'true');
+    toggle.textContent = isActive ? ' ▼' : ' ▶';
+    groupLink.appendChild(toggle);
+
+    if (!isActive) {
+      childItems.forEach(li => { li.style.display = 'none'; });
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isHidden = childItems[0].style.display === 'none';
+      childItems.forEach(li => { li.style.display = isHidden ? '' : 'none'; });
+      toggle.textContent = isHidden ? ' ▼' : ' ▶';
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initActiveSidebarLink();
   initSidebarToggle();
+  initSubGroupToggle();
   // auto-init any quizzes on the page
   document.querySelectorAll('[id^="quiz-"]').forEach(q => initQuiz(q.id));
 });

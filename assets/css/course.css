@@ -69,6 +69,13 @@
   border-left-color: transparent;
 }
 .sidebar-nav__list li a.sidebar-nav__subsub:hover { color: var(--uipath-orange); border-left-color: var(--uipath-orange); }
+.sidebar-nav__list li a.sidebar-nav__subsubsub {
+  padding-left: 4rem;
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  border-left-color: transparent;
+}
+.sidebar-nav__list li a.sidebar-nav__subsubsub:hover { color: var(--uipath-orange); border-left-color: var(--uipath-orange); }
 
 /* Collapse/expand toggle arrow */
 .sidebar-toggle {
