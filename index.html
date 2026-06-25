@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IXP Self-Learning Course | UiPath</title>
   <link rel="stylesheet" href="./assets/css/main.css" />
-  <style>
-    .prereq-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem; }
-    .prereq-box h3 { margin-bottom: 0.75rem; }
-    .overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-    .overview-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem; text-align: center; }
-    .overview-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
-    .overview-card h4 { margin-bottom: 0.35rem; font-size: 1rem; }
-    .overview-card p { font-size: 0.8rem; color: var(--gray-600); margin: 0; }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  </style>
 </head>
 <body>
 
@@ -25,24 +15,24 @@
   </a>
   <nav aria-label="Site navigation">
     <a href="./index.html">Home</a>
-    <a href="./modules/module-01-introduction.html">Modules</a>
+    <a href="#modules">Modules</a>
+    <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Docs ↗</a>
   </nav>
 </header>
 
 <!-- Hero -->
 <section class="hero" role="banner">
-  <h1>UiPath Intelligent Extraction Processing</h1>
-  <p>A self-paced, hands-on training course covering Document Understanding, IXP for complex unstructured documents, and automation best practices.</p>
+  <h1>UiPath <span>Intelligent Extraction</span><br/>Processing</h1>
+  <p>A self-paced training course covering Document Understanding, IXP for complex unstructured documents, and automation best practices.</p>
   <div class="hero-badges" aria-label="Course details">
     <span class="badge">⏱ ~9 Hours Total</span>
     <span class="badge">📚 7 Modules</span>
     <span class="badge">🎯 Self-Paced</span>
     <span class="badge">🏆 Includes Exercises</span>
   </div>
-  <br/>
   <div class="hero-cta">
     <a href="./modules/module-01-introduction.html" class="btn btn-primary">▶ Start Learning</a>
-    <a href="#modules" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5);">Browse Modules</a>
+    <a href="#modules" class="btn btn-outline">Browse Modules</a>
   </div>
 </section>
 
@@ -51,9 +41,12 @@
   <!-- Progress Summary -->
   <section class="section" aria-label="Your progress">
     <div class="progress-summary">
-      <h3>Your Progress</h3>
-      <div class="progress-bar-wrap" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar-fill" style="width:0%"></div>
+      <div class="progress-summary-text">
+        <h3>Your Progress</h3>
+        <p>Keep going — complete each module to track your journey.</p>
+        <div class="progress-bar-wrap" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar-fill" style="width:0%"></div>
+        </div>
       </div>
       <div class="progress-numbers">
         <div class="stat"><div class="num" id="completed-count">0</div><div class="label">Completed</div></div>
@@ -63,38 +56,38 @@
     </div>
   </section>
 
-  <!-- What is IXP Overview -->
+  <!-- What is IXP -->
   <section class="section">
     <h2 class="section-title">What is <span>UiPath IXP</span>?</h2>
-    <p>UiPath <strong>Intelligent Extraction Processing (IXP)</strong> is UiPath's unified platform for intelligent document processing. It brings together three powerful capabilities under one roof:</p>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:1.5rem;">
-      <div class="overview-card">
-        <div class="icon">✉️</div>
-        <h4>Communications Mining</h4>
-        <p>Extract intent, sentiment &amp; context from emails, tickets, and messages at enterprise scale.</p>
-      </div>
-      <div class="overview-card">
-        <div class="icon">🧠</div>
-        <h4>IXP for Complex Docs</h4>
-        <p>Generative AI extraction for unstructured &amp; complex documents — contracts, reports, lease agreements.</p>
-      </div>
-      <div class="overview-card">
-        <div class="icon">📄</div>
+    <p class="section-subtitle">UiPath <strong>Intelligent Extraction Processing (IXP)</strong> is UiPath's unified platform for intelligent document processing — bringing three powerful capabilities under one roof.</p>
+    <div class="feature-grid">
+      <div class="feature-card feature-card--orange">
+        <div class="icon-wrap">📄</div>
         <h4>Document Understanding</h4>
         <p>Extract data from structured &amp; semi-structured documents — forms, invoices, receipts, purchase orders.</p>
       </div>
+      <div class="feature-card feature-card--teal">
+        <div class="icon-wrap">🧠</div>
+        <h4>IXP for Complex Docs</h4>
+        <p>Generative AI extraction for unstructured &amp; complex documents — contracts, reports, lease agreements.</p>
+      </div>
+      <div class="feature-card feature-card--blue">
+        <div class="icon-wrap">✉️</div>
+        <h4>Communications Mining</h4>
+        <p>Extract intent, sentiment &amp; context from emails, tickets, and messages at enterprise scale.</p>
+      </div>
     </div>
-
     <div style="margin-top:2rem;">
       <img src="./assets/images/ixp-capabilities.png"
-           alt="UiPath IXP Product Capabilities diagram showing Communications Mining, Document Understanding, and Generative Extraction for Unstructured and Complex Documents"
-           style="width:100%; max-width:960px; display:block; margin:0 auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.10);" />
+           alt="UiPath IXP Product Capabilities diagram"
+           style="width:100%; max-width:960px; display:block; margin:0 auto; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.12);" />
     </div>
   </section>
 
   <!-- Prerequisites -->
   <section class="section">
     <h2 class="section-title">Before You <span>Begin</span></h2>
+    <p class="section-subtitle">Make sure you have the following before starting the course.</p>
     <div class="prereq-box">
       <h3>Prerequisites</h3>
       <ul>
@@ -105,102 +98,131 @@
         <li>Familiarity with basic document types (invoices, forms, contracts)</li>
       </ul>
       <br/>
-      <p><strong>How to connect Studio to Assistant:</strong> Open UiPath Studio → Sign In → enter your Automation Cloud tenant URL. Your orchestrator connection will activate your license automatically.</p>
+      <p><strong>How to connect Studio to Automation Cloud:</strong> Open UiPath Studio → Sign In → enter your Automation Cloud tenant URL. Your orchestrator connection will activate your license automatically.</p>
     </div>
   </section>
 
   <!-- Modules -->
   <section class="section" id="modules">
     <h2 class="section-title">Course <span>Modules</span></h2>
+    <p class="section-subtitle">Seven modules taking you from IXP fundamentals to hands-on document automation.</p>
     <div class="modules-grid">
 
       <article class="module-card" data-module="module-01">
-        <div class="module-card__number">Module 01 · 30 mins</div>
-        <div class="module-card__title">Introduction to IXP</div>
-        <div class="module-card__desc">What is IXP? Overview of Document Understanding, generative extraction for complex docs, and Communications Mining. Demos and key concepts.</div>
-        <div class="module-card__meta">
-          <span>⏱ 30 mins</span><span>📖 Theory</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag">📖 Theory</span>
+          <div class="module-card__number">Module 01</div>
+          <div class="module-card__title">Introduction to IXP</div>
+          <div class="module-card__desc">What is IXP? Overview of Document Understanding, generative extraction for complex docs, and Communications Mining. Demos and key concepts.</div>
+          <div class="module-card__meta">
+            <span>⏱ 30 mins</span><span>🎯 All Levels</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-01-introduction.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-02">
-        <div class="module-card__number">Module 02 · 30 mins</div>
-        <div class="module-card__title">What is Document Understanding?</div>
-        <div class="module-card__desc">UiPath Document Understanding overview — document types, processing methodologies, taxonomy, classification, extraction, validation, and confidence scores.</div>
-        <div class="module-card__meta">
-          <span>⏱ 30 mins</span><span>📖 Theory</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag">📖 Theory</span>
+          <div class="module-card__number">Module 02</div>
+          <div class="module-card__title">What is Document Understanding?</div>
+          <div class="module-card__desc">UiPath Document Understanding overview — document types, processing methodologies, taxonomy, classification, extraction, validation, and confidence scores.</div>
+          <div class="module-card__meta">
+            <span>⏱ 30 mins</span><span>🎯 All Levels</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-02-document-understanding.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-03">
-        <div class="module-card__number">Module 03 · 3 hrs (DIY)</div>
-        <div class="module-card__title">Exercise 1: Structured Documents</div>
-        <div class="module-card__desc">Hands-on exercise: extract data from structured documents using Form Extractor (Form 1040X) and Regex Extractor (Vehicle Damage Report) using Intelligent OCR activities.</div>
-        <div class="module-card__meta">
-          <span>⏱ 3 hrs</span><span>🔨 Hands-on DIY</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag module-card__tag--teal">🔨 Hands-on DIY</span>
+          <div class="module-card__number">Module 03</div>
+          <div class="module-card__title">Exercise 1: Structured Documents</div>
+          <div class="module-card__desc">Hands-on exercise: extract data from structured documents using Form Extractor (Form 1040X) and Regex Extractor (Vehicle Damage Report) using Intelligent OCR activities.</div>
+          <div class="module-card__meta">
+            <span>⏱ 3 hrs</span><span>🛠 Studio Required</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-03-structured-docs.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-04">
-        <div class="module-card__number">Module 04 · 1 hr theory + ILT</div>
-        <div class="module-card__title">Semi-Structured Documents (Invoices)</div>
-        <div class="module-card__desc">DU service platform, Modern vs Classic projects, annotation, out-of-the-box ML extractors, Build–Measure–Publish workflow. Consuming in Studio.</div>
-        <div class="module-card__meta">
-          <span>⏱ 1 hr</span><span>📖 Theory + ILT</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag">📖 Theory + ILT</span>
+          <div class="module-card__number">Module 04</div>
+          <div class="module-card__title">Semi-Structured Documents (Invoices)</div>
+          <div class="module-card__desc">DU service platform, Modern vs Classic projects, annotation, out-of-the-box ML extractors, Build–Measure–Publish workflow, and consuming models in Studio.</div>
+          <div class="module-card__meta">
+            <span>⏱ 1 hr</span><span>🎯 Intermediate</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-04-semistructured-docs.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-05">
-        <div class="module-card__number">Module 05 · 45 mins</div>
-        <div class="module-card__title">Unstructured &amp; Complex Documents</div>
-        <div class="module-card__desc">Generative Extractor for unstructured docs, IXP for complex documents — taxonomy, field groups, model building, validation (Measure), and deployment (Publish).</div>
-        <div class="module-card__meta">
-          <span>⏱ 45 mins</span><span>📖 Theory + ILT</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag">📖 Theory + ILT</span>
+          <div class="module-card__number">Module 05</div>
+          <div class="module-card__title">Unstructured &amp; Complex Documents</div>
+          <div class="module-card__desc">Generative Extractor for unstructured docs, IXP for complex documents — taxonomy, field groups, model building, validation (Measure), and deployment (Publish).</div>
+          <div class="module-card__meta">
+            <span>⏱ 45 mins</span><span>🎯 Intermediate</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-05-unstructured-complex.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-06">
-        <div class="module-card__number">Module 06 · 45 mins (DIY)</div>
-        <div class="module-card__title">DU Framework (Attended Robot)</div>
-        <div class="module-card__desc">RPA framework for Document Understanding — solution architecture, configure models, custom success logic, error handling. End-to-end attended automation exercise.</div>
-        <div class="module-card__meta">
-          <span>⏱ 45 mins</span><span>🔨 DIY</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag module-card__tag--teal">🔨 DIY</span>
+          <div class="module-card__number">Module 06</div>
+          <div class="module-card__title">DU Framework</div>
+          <div class="module-card__desc">RPA framework for Document Understanding — solution architecture, project execution modes, workflow overview, and end-to-end automation using the DU Process template.</div>
+          <div class="module-card__meta">
+            <span>⏱ 45 mins</span><span>🛠 Studio Required</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-06-du-framework.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
 
       <article class="module-card" data-module="module-07">
-        <div class="module-card__number">Module 07 · 10 mins</div>
-        <div class="module-card__title">Important Topics</div>
-        <div class="module-card__desc">Licensing overview, DU use cases, supported models &amp; data limits, migration from Dev to Production, and helpful resources.</div>
-        <div class="module-card__meta">
-          <span>⏱ 10 mins</span><span>📖 Reference</span>
+        <div class="module-card__band"></div>
+        <div class="module-card__body">
+          <span class="module-card__tag module-card__tag--gray">📋 Reference</span>
+          <div class="module-card__number">Module 07</div>
+          <div class="module-card__title">Important Topics</div>
+          <div class="module-card__desc">Monitor document processing performance, review extraction results in Processed Documents, and access official UiPath documentation &amp; further learning resources.</div>
+          <div class="module-card__meta">
+            <span>⏱ 10 mins</span><span>🎯 All Levels</span>
+          </div>
         </div>
         <div class="module-card__footer">
-          <span class="module-card__status module-card__status--not-started">Not started</span>
+          <span class="module-card__status module-card__status--not-started">● Not started</span>
           <a href="./modules/module-07-miscellaneous.html" class="btn btn-primary btn-sm">Start →</a>
         </div>
       </article>
@@ -211,7 +233,7 @@
 </main>
 
 <footer class="site-footer" role="contentinfo">
-  <p>© 2025 UiPath. All rights reserved. · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · Built for internal training use.</p>
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · <a href="https://academy.uipath.com" target="_blank" rel="noopener">UiPath Academy</a> · Built for internal training use</p>
 </footer>
 
 <script src="./assets/js/progress.js"></script>
