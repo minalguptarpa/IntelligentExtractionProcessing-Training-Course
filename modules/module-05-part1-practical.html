@@ -66,8 +66,10 @@
     <div class="objectives-box">
       <h3>🎯 What You Will Do</h3>
       <ul>
-        <li>Watch the end-to-end walkthrough of the Generative Classifier and Extractor in action</li>
-        <li>Follow along in your own UiPath Studio environment</li>
+        <li>Reuse a Studio workflow to configure a Generative Classifier and Extractor</li>
+        <li>Set up Taxonomy with document types and extraction fields</li>
+        <li>Configure and run the end-to-end generative extraction workflow</li>
+        <li>Validate extracted results using Validation Station</li>
       </ul>
     </div>
 
@@ -77,6 +79,194 @@
       <div style="margin:1.5rem 0;">
         <iframe src="https://watchclueso.com/embed/pohwqgdj7icic53w" style="width:100%;aspect-ratio:16/9;border:none" allow="fullscreen; autoplay; picture-in-picture"></iframe>
       </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title">UiPath Generative Extractor Workflow — Step-by-Step</h2>
+
+      <style>
+        .walkthrough { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+        .walkthrough-step { display: flex; gap: 0; }
+        .walkthrough-step__spine { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 52px; }
+        .walkthrough-step__badge { background: var(--uipath-orange); color: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; flex-shrink: 0; z-index: 1; }
+        .walkthrough-step__line { width: 2px; background: #f3d9d1; flex: 1; min-height: 16px; }
+        .walkthrough-step:last-child .walkthrough-step__line { display: none; }
+        .walkthrough-step__body { flex: 1; padding: 0 0 2rem 0.5rem; }
+        .walkthrough-step__title { font-size: 1rem; font-weight: 700; color: var(--uipath-dark); margin: 0.4rem 0 0.6rem; }
+        .walkthrough-step__list { margin: 0; padding-left: 1.25rem; color: var(--gray-700); font-size: 0.92rem; }
+        .walkthrough-step__list li { margin-bottom: 0.35rem; }
+        .walkthrough-step__img { margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 8px; width: 100%; max-width: 720px; display: block; box-shadow: 0 4px 16px rgba(0,0,0,.10); background: #f8fafc; padding: 8px; }
+        .walkthrough-step__tag { display: inline-flex; align-items: center; gap: 0.35rem; background: #fff3f0; color: var(--uipath-orange); border: 1px solid #fdddd6; border-radius: 4px; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; margin-bottom: 0.5rem; }
+        .walkthrough-step__sublist { margin: 0.4rem 0 0 0; padding-left: 1.1rem; }
+        .walkthrough-step__sublist li { margin-bottom: 0.2rem; font-size: 0.88rem; }
+        code.field { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 3px; padding: 0.1em 0.35em; font-size: 0.85em; }
+      </style>
+
+      <div class="walkthrough">
+
+        <!-- Step 1 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">1</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Setup</div>
+            <div class="walkthrough-step__title">Reuse the Earlier UiPath Studio Workflow</div>
+            <ol class="walkthrough-step__list">
+              <li>Use the UiPath Studio Workflow from the <strong>"Structured Documents"</strong> module.</li>
+              <li>Open the <strong>Main</strong> workflow.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">2</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Data</div>
+            <div class="walkthrough-step__title">Configure Document Inputs</div>
+            <ol class="walkthrough-step__list">
+              <li>Place sample documents in the <code class="field">Data → Input</code> folder.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">3</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Configuration</div>
+            <div class="walkthrough-step__title">Configure the Taxonomy</div>
+            <ol class="walkthrough-step__list">
+              <li>Open <strong>Taxonomy Manager</strong>.</li>
+              <li>Create the required document types:
+                <ul class="walkthrough-step__sublist">
+                  <li>Group: <code class="field">Certificates</code></li>
+                  <li>Category: <code class="field">Forms</code></li>
+                  <li>Document Type: <code class="field">Degree_Cert</code></li>
+                </ul>
+              </li>
+              <li>Create 3 extraction fields:
+                <ul class="walkthrough-step__sublist">
+                  <li><code class="field">UniversityName</code> (type: Text)</li>
+                  <li><code class="field">AwardeeName</code> (type: Text)</li>
+                  <li><code class="field">DateofDegree</code> (type: Date)</li>
+                </ul>
+              </li>
+            </ol>
+            <img src="../assets/images/m05p1-step01.png" alt="Taxonomy Manager configuration" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="4">
+              <li>Save the taxonomy.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">4</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Classifier</div>
+            <div class="walkthrough-step__title">Add a Generative Classifier</div>
+            <ol class="walkthrough-step__list">
+              <li>Under the <strong>Classify Document Scope</strong> in the workflow, add a <strong>Generative Classifier</strong>.</li>
+              <li>Click <strong>Manage Field Details</strong> on the Generative Classifier.</li>
+              <li>For the <code class="field">Degree_Cert</code> document type, provide a natural-language description and Save.
+                <div class="admonition admonition--tip" style="margin:0.6rem 0;">
+                  <div class="admonition-title">💡 Example</div>
+                  <div class="admonition-body"><code class="field">Degree_Cert</code> → <em>"Is this a Degree Certificate?"</em></div>
+                </div>
+              </li>
+            </ol>
+            <img src="../assets/images/m05p1-step02.png" alt="Generative Classifier field details" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="4">
+              <li>Click <strong>Configure Classifier</strong> and save the below configuration.</li>
+            </ol>
+            <img src="../assets/images/m05p1-step03.png" alt="Generative Classifier configuration" class="walkthrough-step__img" />
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">5</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Extractor</div>
+            <div class="walkthrough-step__title">Configure a Generative Extractor</div>
+            <ol class="walkthrough-step__list">
+              <li>Under the <strong>Data Extraction Scope</strong> in the workflow, add a <strong>Generative Extractor</strong>.</li>
+              <li>Click <strong>Manage Field Details</strong> on the Generative Extractor.</li>
+              <li>Set prompts for each field:
+                <ul class="walkthrough-step__sublist">
+                  <li><code class="field">UniversityName</code>: <em>What is the name of the institute awarding the Degree?</em></li>
+                  <li><code class="field">AwardeeName</code>: <em>Name of the person to which degree is awarded?</em></li>
+                  <li><code class="field">DateofDegree</code>: <em>Date of Issue of degree</em></li>
+                </ul>
+              </li>
+            </ol>
+            <img src="../assets/images/m05p1-step04.png" alt="Generative Extractor field prompts" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="4">
+              <li>Save.</li>
+              <li>Click <strong>Configure Extractor</strong>, apply the below configuration and Save.</li>
+            </ol>
+            <img src="../assets/images/m05p1-step05.png" alt="Configure Extractor settings" class="walkthrough-step__img" />
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">6</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Execution</div>
+            <div class="walkthrough-step__title">Execute Extraction</div>
+            <ol class="walkthrough-step__list">
+              <li>Run the workflow.</li>
+              <li>Observe the output logs and verify:
+                <ul class="walkthrough-step__sublist">
+                  <li>Taxonomy loaded successfully</li>
+                  <li>Classification completed</li>
+                  <li>Extraction completed</li>
+                  <li>Extracted fields are returned</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="walkthrough-step">
+          <div class="walkthrough-step__spine">
+            <div class="walkthrough-step__badge">7</div>
+            <div class="walkthrough-step__line"></div>
+          </div>
+          <div class="walkthrough-step__body">
+            <div class="walkthrough-step__tag">Validation</div>
+            <div class="walkthrough-step__title">Validate Extraction Results</div>
+            <ol class="walkthrough-step__list">
+              <li>Add <strong>Present Validation Station</strong> after the extraction step.</li>
+              <li>Review extracted values.</li>
+              <li>Correct any incorrectly extracted fields.</li>
+              <li>Submit validation results.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div><!-- /.walkthrough -->
+
     </section>
 
     <nav class="module-nav" aria-label="Module navigation">
