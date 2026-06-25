@@ -161,7 +161,7 @@
                 </ul>
               </li>
             </ol>
-            <img src="../assets/images/m05p1-step01.png" alt="Taxonomy Manager configuration" class="walkthrough-step__img" />
+            <img src="../assets/images/m05p1-step04.png" alt="Taxonomy Manager with document types and fields" class="walkthrough-step__img" />
             <ol class="walkthrough-step__list" start="4">
               <li>Save the taxonomy.</li>
             </ol>
@@ -180,18 +180,14 @@
             <ol class="walkthrough-step__list">
               <li>Under the <strong>Classify Document Scope</strong> in the workflow, add a <strong>Generative Classifier</strong>.</li>
               <li>Click <strong>Manage Field Details</strong> on the Generative Classifier.</li>
-              <li>For the <code class="field">Degree_Cert</code> document type, provide a natural-language description and Save.
-                <div class="admonition admonition--tip" style="margin:0.6rem 0;">
-                  <div class="admonition-title">💡 Example</div>
-                  <div class="admonition-body"><code class="field">Degree_Cert</code> → <em>"Is this a Degree Certificate?"</em></div>
-                </div>
-              </li>
+              <li>For the <code class="field">Degree_Cert</code> document type, provide a natural-language description and Save.</li>
             </ol>
-            <img src="../assets/images/m05p1-step02.png" alt="Generative Classifier field details" class="walkthrough-step__img" />
+            <img src="../assets/images/m05p1-step03.png" alt="Generative Classifier — Manage Field Details" class="walkthrough-step__img" />
             <ol class="walkthrough-step__list" start="4">
+              <li>Example: <code class="field">Degree_Cert</code> → <em>"Is this a Degree Certificate?"</em></li>
               <li>Click <strong>Configure Classifier</strong> and save the below configuration.</li>
             </ol>
-            <img src="../assets/images/m05p1-step03.png" alt="Generative Classifier configuration" class="walkthrough-step__img" />
+            <img src="../assets/images/m05p1-step02.png" alt="Generative Classifier configuration settings" class="walkthrough-step__img" />
           </div>
         </div>
 
@@ -207,6 +203,9 @@
             <ol class="walkthrough-step__list">
               <li>Under the <strong>Data Extraction Scope</strong> in the workflow, add a <strong>Generative Extractor</strong>.</li>
               <li>Click <strong>Manage Field Details</strong> on the Generative Extractor.</li>
+            </ol>
+            <img src="../assets/images/m05p1-step01.png" alt="Generative Extractor — Manage Field Details" class="walkthrough-step__img" />
+            <ol class="walkthrough-step__list" start="3">
               <li>Set prompts for each field:
                 <ul class="walkthrough-step__sublist">
                   <li><code class="field">UniversityName</code>: <em>What is the name of the institute awarding the Degree?</em></li>
@@ -214,11 +213,8 @@
                   <li><code class="field">DateofDegree</code>: <em>Date of Issue of degree</em></li>
                 </ul>
               </li>
-            </ol>
-            <img src="../assets/images/m05p1-step04.png" alt="Generative Extractor field prompts" class="walkthrough-step__img" />
-            <ol class="walkthrough-step__list" start="4">
               <li>Save.</li>
-              <li>Click <strong>Configure Extractor</strong>, apply the below configuration and Save.</li>
+              <li>Click <strong>Configure Extractor</strong>. Do the below configuration and Save.</li>
             </ol>
             <img src="../assets/images/m05p1-step05.png" alt="Configure Extractor settings" class="walkthrough-step__img" />
           </div>
