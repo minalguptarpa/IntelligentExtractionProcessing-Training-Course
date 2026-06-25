@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 05 – Unstructured &amp; Complex Docs | UiPath Course</title>
+  <title>Module 05 Part 1 – Practical Exercise | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/course.css" />
 </head>
@@ -26,10 +26,15 @@
         <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
         <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
         <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
-        <li><a href="module-05-unstructured-complex.html" data-module="module-05" class="active">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-04-semistructured-docs.html" class="sidebar-nav__sub">↳ Theory</a></li>
+        <li><a href="module-04-practical.html" class="sidebar-nav__sub">↳ Practical Exercise</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
         <li><a href="module-05-part1.html" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
         <li><a href="module-05-part1-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
         <li><a href="module-05-part2.html" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
+        <li><a href="module-05-part2.html#part2-theory" class="sidebar-nav__subsub">· Theory</a></li>
+        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
         <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework (Attended)</a></li>
         <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Miscellaneous Topics</a></li>
       </ul>
@@ -45,47 +50,41 @@
   <main class="course-content" id="main-content">
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span>Module 05 · Unstructured &amp; Complex Docs</span>
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span>
+      <a href="module-05-unstructured-complex.html">Module 05 · Unstructured &amp; Complex Docs</a> <span aria-hidden="true">›</span>
+      <a href="module-05-part1.html">Part 1</a> <span aria-hidden="true">›</span>
+      <span>Practical Exercise</span>
     </nav>
+
     <div class="page-header">
-      <h1>Generative Extraction — Technical Deep Dive</h1>
+      <h1>Part 1 : Practical Exercise</h1>
       <div class="page-header__meta">
-        <span>⏱ ~1 hr 25 min</span><span>📖 Theory + Hands-On</span><span>🎯 Expert</span>
+        <span>⏱ ~20 min</span><span>📖 Hands-On</span><span>🎯 Intermediate</span>
       </div>
     </div>
 
     <div class="objectives-box">
-      <h3>📋 Module Overview</h3>
+      <h3>🎯 What You Will Do</h3>
       <ul>
-        <li><strong>Part 1: Generative Classifier and Extractor</strong> — Covers the Generative Classifier, Generative Extractor activity, and prompting best practices</li>
-        <li><strong>Part 2: Generative Extractor in IXP</strong> — Deep dive into building, evaluating, and consuming a Generative Extraction project in IXP</li>
+        <li>Watch the end-to-end walkthrough of the Generative Classifier and Extractor in action</li>
+        <li>Follow along in your own UiPath Studio environment</li>
       </ul>
     </div>
 
-    <!-- Part cards -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;">
-      <a href="module-05-part1.html" style="text-decoration:none;">
-        <div class="info-card" style="border-left:4px solid var(--uipath-orange);cursor:pointer;transition:box-shadow .15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow=''">
-          <h4 style="color:var(--uipath-orange);">Part 1 →</h4>
-          <p style="font-weight:600;margin-bottom:.4rem;">Generative Classifier and Extractor</p>
-          <p style="font-size:0.85rem;color:var(--gray-600);margin:0;">Generative Classifier, Generative Extractor activity, and good practices for prompt-based extraction in Studio.</p>
-        </div>
-      </a>
-      <a href="module-05-part2.html" style="text-decoration:none;">
-        <div class="info-card" style="border-left:4px solid var(--uipath-orange);cursor:pointer;transition:box-shadow .15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.1)'" onmouseout="this.style.boxShadow=''">
-          <h4 style="color:var(--uipath-orange);">Part 2 →</h4>
-          <p style="font-weight:600;margin-bottom:.4rem;">Generative Extractor in IXP</p>
-          <p style="font-size:0.85rem;color:var(--gray-600);margin:0;">Theory, Practical (Build → Measure → Publish), and Best Practices for the IXP Generative Extraction service.</p>
-        </div>
-      </a>
-    </div>
+    <section class="lesson">
+      <h2 class="lesson-title">Walkthrough Video</h2>
+      <p>Watch the full practical walkthrough below. Follow along in your own UiPath environment to see the Generative Classifier and Extractor configured step by step.</p>
+      <div style="margin:1.5rem 0;">
+        <iframe src="https://watchclueso.com/embed/pohwqgdj7icic53w" style="width:100%;aspect-ratio:16/9;border:none" allow="fullscreen; autoplay; picture-in-picture"></iframe>
+      </div>
+    </section>
 
     <nav class="module-nav" aria-label="Module navigation">
-      <a href="module-04-semistructured-docs.html" class="btn btn-outline">← Previous: Semi-Structured Docs</a>
+      <a href="module-05-part1.html" class="btn btn-outline">← Theory</a>
       <div class="module-nav__complete">
         <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
       </div>
-      <a href="module-05-part1.html" class="btn btn-primary">Start Part 1 →</a>
+      <a href="module-05-part2.html" class="btn btn-primary">Part 2: Generative Extractor in IXP →</a>
     </nav>
 
   </main>
