@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module 02 – What is Document Understanding? | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/course.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
 </head>
 <body>
 
@@ -228,18 +228,48 @@
 
       <p>A complete Document Understanding automation follows this logical flow:</p>
 
-      <ol class="steps-list">
-        <li><strong>Pre-digitization Processing</strong>: Any processing before OCR — grayscale conversion, skew correction, noise removal</li>
-        <li><strong>Digitize Document</strong>: Convert document to machine-readable text using the configured OCR engine</li>
-        <li><strong>Classify Document</strong>: Identify the document type using a classifier</li>
-        <li><strong>Classification Validation</strong>: Check if classification confidence meets threshold; send to human if not</li>
-        <li><strong>Pre-extraction Processing</strong>: Document splitting (multi-document PDFs), page selection</li>
-        <li><strong>Data Extraction</strong>: Run configured extractors to pull field values</li>
-        <li><strong>Human Validation</strong>: Route low-confidence extractions to Action Center for review</li>
-        <li><strong>Extractor Feedback (Learning)</strong>: Use corrections to retrain the model</li>
-        <li><strong>Post-extraction Processing</strong>: Data formatting, business rule application</li>
-        <li><strong>Data Export</strong>: Send extracted data to downstream systems (ERP, database, API)</li>
-      </ol>
+      <div style="display:flex;flex-direction:column;gap:.6rem;margin:1.25rem 0;">
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">1</span>
+          <div><strong style="color:#1a1a2e;">Pre-digitization Processing</strong><br><span style="font-size:.875rem;color:#4b5563;">Any processing before OCR — grayscale conversion, skew correction, noise removal</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">2</span>
+          <div><strong style="color:#1a1a2e;">Digitize Document</strong><br><span style="font-size:.875rem;color:#4b5563;">Convert document to machine-readable text using the configured OCR engine</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">3</span>
+          <div><strong style="color:#1a1a2e;">Classify Document</strong><br><span style="font-size:.875rem;color:#4b5563;">Identify the document type using a classifier</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">4</span>
+          <div><strong style="color:#1a1a2e;">Classification Validation</strong><br><span style="font-size:.875rem;color:#4b5563;">Check if classification confidence meets threshold; send to human if not</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">5</span>
+          <div><strong style="color:#1a1a2e;">Pre-extraction Processing</strong><br><span style="font-size:.875rem;color:#4b5563;">Document splitting (multi-document PDFs), page selection</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">6</span>
+          <div><strong style="color:#1a1a2e;">Data Extraction</strong><br><span style="font-size:.875rem;color:#4b5563;">Run configured extractors to pull field values</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">7</span>
+          <div><strong style="color:#1a1a2e;">Human Validation</strong><br><span style="font-size:.875rem;color:#4b5563;">Route low-confidence extractions to Action Center for review</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">8</span>
+          <div><strong style="color:#1a1a2e;">Extractor Feedback (Learning)</strong><br><span style="font-size:.875rem;color:#4b5563;">Use corrections to retrain the model</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">9</span>
+          <div><strong style="color:#1a1a2e;">Post-extraction Processing</strong><br><span style="font-size:.875rem;color:#4b5563;">Data formatting, business rule application</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;background:#f9fafb;border-radius:8px;border:1px solid #e5e7eb;">
+          <span style="background:#FA4616;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;">10</span>
+          <div><strong style="color:#1a1a2e;">Data Export</strong><br><span style="font-size:.875rem;color:#4b5563;">Send extracted data to downstream systems (ERP, database, API)</span></div>
+        </div>
+      </div>
 
       <div class="admonition admonition--note">
         <div class="admonition-title">📌 Note</div>
@@ -303,8 +333,8 @@
   <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
 </footer>
 
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
 <script>initModulePage('module-02');</script>
 </body>
 </html>

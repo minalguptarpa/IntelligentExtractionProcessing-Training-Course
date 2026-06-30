@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module 05 – Unstructured &amp; Complex Docs | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/course.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
 </head>
 <body>
 
@@ -37,10 +37,10 @@
         <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
         <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
         <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
-        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
-        <li><a href="module-05-part2.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
-        <li><a href="module-05-part2.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
-        <li><a href="module-05-part2.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
+        <li><a href="module-05-part2-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2-practical.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2-practical.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2-practical.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
         <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
         <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
         <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
@@ -93,6 +93,54 @@
       </a>
     </div>
 
+    <!-- Comparison Table -->
+    <div class="lesson" style="margin-top:2rem;">
+      <h2 class="lesson-title">🔀 Generative Classifier &amp; Extractor vs IXP Generative Extraction — When to Use Which?</h2>
+      <p>UiPath offers two distinct approaches to generative extraction. Choosing the right one depends on your document complexity, table requirements, and project setup.</p>
+
+      <table class="comparison-table" style="margin:1.25rem 0;">
+        <thead>
+          <tr>
+            <th style="width:30%;">Criteria</th>
+            <th style="width:35%;">Generative Classifier &amp; Extractor<br><span style="font-weight:400;font-size:.78rem;opacity:.85;">(DU Activities — Studio)</span></th>
+            <th style="width:35%;">Generative Extraction<br><span style="font-weight:400;font-size:.78rem;opacity:.85;">(IXP Project)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Table / column field extraction</strong></td>
+            <td>❌ Not supported — column fields are unsupported; workarounds are unreliable for large tables</td>
+            <td>✅ Supported — handles complex, multi-column tables</td>
+          </tr>
+          <tr>
+            <td><strong>Confidence scores</strong></td>
+            <td>❌ Generative AI does not produce confidence scores</td>
+            <td>✅ Provides field-level confidence for human-in-the-loop routing</td>
+          </tr>
+          <tr>
+            <td><strong>Max prompts per document</strong></td>
+            <td>50 prompts maximum per extraction call</td>
+            <td>No strict per-call prompt limit; managed at project level</td>
+          </tr>
+          <tr>
+            <td><strong>Response word limit</strong></td>
+            <td>700 words per field response</td>
+            <td>Handles longer, unstructured responses natively</td>
+          </tr>
+          <tr>
+            <td><strong>Best for</strong></td>
+            <td>Teams already building DU workflows in Studio who need quick generative field extraction without a separate IXP project</td>
+            <td>Teams handling complex, high-volume documents needing confidence scoring, table extraction, and full monitoring</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Rule of Thumb</div>
+        <div class="admonition-body">Use <strong>Generative Classifier &amp; Extractor (DU Activities)</strong> for quick, activity-based extraction in existing Studio workflows with simple fields. Switch to <strong>IXP Generative Extraction</strong> when you need table support, confidence-based routing, project-level management, or a full Build → Measure → Publish lifecycle.</div>
+      </div>
+    </div>
+
     <nav class="module-nav" aria-label="Module navigation">
       <a href="module-04-semistructured-docs.html" class="btn btn-outline">← Previous: Semi-Structured Docs</a>
       <div class="module-nav__complete">
@@ -108,8 +156,8 @@
   <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
 </footer>
 
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
 <script>initModulePage('module-05');</script>
 </body>
 </html>

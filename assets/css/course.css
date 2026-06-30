@@ -9,6 +9,11 @@
   grid-template-columns: 260px 1fr;
   max-width: 1260px;
   margin: 0 auto;
+  transition: grid-template-columns 0.3s ease;
+}
+
+.course-layout.sidebar-collapsed {
+  grid-template-columns: 0px 1fr;
 }
 
 /* ---- Sidebar ---- */
@@ -17,9 +22,51 @@
   top: 56px;
   height: calc(100vh - 56px);
   overflow-y: auto;
+  overflow-x: hidden;
   background: var(--gray-50);
   border-right: 1px solid var(--gray-200);
   padding: 1.25rem 0;
+  transition: padding 0.3s ease, opacity 0.3s ease;
+}
+
+.course-layout.sidebar-collapsed .course-sidebar {
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-right: none;
+}
+
+/* ---- Sidebar toggle button ---- */
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 68px;
+  left: 248px;
+  z-index: 200;
+  width: 24px;
+  height: 24px;
+  background: var(--uipath-orange, #FA4616);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: left 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #d93d10;
+}
+
+.sidebar-collapsed .sidebar-toggle-btn,
+.course-layout.sidebar-collapsed ~ * .sidebar-toggle-btn {
+  left: 8px;
+}
+
+.sidebar-toggle-btn svg {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .sidebar-nav__title {

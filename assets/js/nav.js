@@ -3,6 +3,63 @@
    Quiz logic + general navigation helpers
    ============================================= */
 
+/* ---- Quiz Submission Tracking ---- */
+const QUIZ_KEY = 'ixp-quiz-submitted';
+
+function getQuizSubmissions() {
+  try { return JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}'); } catch(e) { return {}; }
+}
+
+function isQuizSubmitted(quizId) {
+  return !!getQuizSubmissions()[quizId];
+}
+
+function markQuizSubmitted(quizId) {
+  const data = getQuizSubmissions();
+  data[quizId] = true;
+  localStorage.setItem(QUIZ_KEY, JSON.stringify(data));
+  document.dispatchEvent(new CustomEvent('quizSubmitted', { detail: { quizId } }));
+}
+
+/* ---- Next Button Gate ---- */
+function initNextGate(quizId) {
+  const nextBtn = document.querySelector('.module-nav a.btn-primary');
+  if (!nextBtn) return;
+
+  function unlock() {
+    nextBtn.removeAttribute('aria-disabled');
+    nextBtn.style.opacity = '';
+    nextBtn.style.pointerEvents = '';
+    nextBtn.style.cursor = '';
+    const hint = document.getElementById('quiz-gate-hint');
+    if (hint) hint.remove();
+  }
+
+  function lock() {
+    nextBtn.setAttribute('aria-disabled', 'true');
+    nextBtn.style.opacity = '0.4';
+    nextBtn.style.pointerEvents = 'none';
+    nextBtn.style.cursor = 'not-allowed';
+
+    if (!document.getElementById('quiz-gate-hint')) {
+      const hint = document.createElement('p');
+      hint.id = 'quiz-gate-hint';
+      hint.style.cssText = 'text-align:center;font-size:.8rem;color:#9ca3af;margin-top:.5rem;';
+      hint.textContent = '📝 Complete the Knowledge Check above to unlock the next section.';
+      nextBtn.parentElement.insertAdjacentElement('afterend', hint);
+    }
+  }
+
+  if (isQuizSubmitted(quizId)) {
+    unlock();
+  } else {
+    lock();
+    document.addEventListener('quizSubmitted', (e) => {
+      if (e.detail.quizId === quizId) unlock();
+    });
+  }
+}
+
 /* ---- Quiz Engine ---- */
 function initQuiz(quizId) {
   const quiz = document.getElementById(quizId);
@@ -66,6 +123,46 @@ function initQuiz(quizId) {
       resultEl.innerHTML = `You scored <strong>${correct}/${total}</strong> (${pct}%). ` +
         (pct >= 70 ? '🎉 Great job! You can proceed to the next module.' : '📚 Review the lesson content and try again.');
     }
+
+    markQuizSubmitted(quizId);
+  });
+}
+
+/* ---- Sidebar Collapse Toggle ---- */
+const SIDEBAR_KEY = 'ixp-sidebar-collapsed';
+
+function initSidebarCollapse() {
+  const layout = document.querySelector('.course-layout');
+  if (!layout) return;
+
+  // Create toggle button
+  const btn = document.createElement('button');
+  btn.className = 'sidebar-toggle-btn';
+  btn.setAttribute('aria-label', 'Toggle sidebar');
+  btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+  document.body.appendChild(btn);
+
+  function applyState(collapsed, animate) {
+    if (collapsed) {
+      layout.classList.add('sidebar-collapsed');
+      btn.style.left = '8px';
+      btn.querySelector('svg').style.transform = 'rotate(180deg)';
+    } else {
+      layout.classList.remove('sidebar-collapsed');
+      btn.style.left = '248px';
+      btn.querySelector('svg').style.transform = 'rotate(0deg)';
+    }
+    btn.setAttribute('aria-expanded', String(!collapsed));
+  }
+
+  // Restore saved state
+  const saved = localStorage.getItem(SIDEBAR_KEY) === 'true';
+  applyState(saved, false);
+
+  btn.addEventListener('click', () => {
+    const isCollapsed = layout.classList.contains('sidebar-collapsed');
+    localStorage.setItem(SIDEBAR_KEY, String(!isCollapsed));
+    applyState(!isCollapsed, true);
   });
 }
 
@@ -176,10 +273,36 @@ function initSubGroupToggle() {
   });
 }
 
+/* ---- Sidebar Gate ---- */
+function initSidebarGate(quizId) {
+  const currentFile = window.location.pathname.split('/').pop() || '';
+
+  document.querySelectorAll('.sidebar-nav__list a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const targetFile = href.split('#')[0].split('/').pop();
+
+    // Skip: same page links, empty hrefs, or index page
+    if (!targetFile || targetFile === currentFile || targetFile === 'index.html') return;
+
+    a.addEventListener('click', (e) => {
+      if (!isQuizSubmitted(quizId)) {
+        e.preventDefault();
+        e.stopPropagation();
+        showToast('📝 Please complete the Knowledge Check on this page before moving on.');
+      }
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initSidebarCollapse();
   initActiveSidebarLink();
   initSidebarToggle();
   initSubGroupToggle();
-  // auto-init any quizzes on the page
-  document.querySelectorAll('[id^="quiz-"]').forEach(q => initQuiz(q.id));
+  // auto-init any quizzes on the page and gate Next + Sidebar
+  document.querySelectorAll('[id^="quiz-"]').forEach(q => {
+    initQuiz(q.id);
+    initNextGate(q.id);
+    initSidebarGate(q.id);
+  });
 });

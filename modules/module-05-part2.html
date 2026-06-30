@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module 05 Part 2 – Generative Extractor in IXP | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/course.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
 </head>
 <body>
 
@@ -36,10 +36,10 @@
         <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
         <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
         <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
-        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
-        <li><a href="module-05-part2.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
-        <li><a href="module-05-part2.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
-        <li><a href="module-05-part2.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
+        <li><a href="module-05-part2-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2-practical.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2-practical.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2-practical.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
         <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
         <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
         <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
@@ -109,201 +109,159 @@
 
       <p>This capability is ideal for advanced document processing scenarios where data is not consistently formatted. Use it when one or more of the following apply:</p>
 
-      <div class="info-card">
-        <h4>Complex Document Elements</h4>
-        <p>Documents contain paragraphs of free-form text or complex elements such as:</p>
-        <ul>
-          <li><strong>Complex tables</strong> — nested, merged cells, multi-level headers</li>
-          <li><strong>Graphics and Charts</strong> — bar charts, pie charts, embedded images with data</li>
-          <li><strong>Checkboxes and Call-out boxes</strong> — form-style elements with contextual values</li>
-          <li><strong>Signatures, Stamps, and Handwriting</strong> — non-digital content that varies per document</li>
-        </ul>
-      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1rem;">
 
-      <div class="info-card">
-        <h4>Inferred Values</h4>
-        <p>You need to extract <strong>inferred values</strong> — information that is not stated directly in the document but must be <em>derived from context</em>. For example, calculating net pay from gross pay and deductions, or determining account type from surrounding text.</p>
-      </div>
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e5e7eb;">
+          <div style="background:#FA4616;padding:.75rem 1rem;display:flex;align-items:center;gap:.6rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <h4 style="margin:0;color:#fff;font-size:.95rem;font-weight:600;">Complex Document Elements</h4>
+          </div>
+          <div style="padding:1rem;">
+            <p style="margin:0 0 .6rem;font-size:.88rem;color:#4b5563;">Documents contain paragraphs of free-form text or complex elements such as:</p>
+            <ul style="margin:0;padding-left:1.2rem;font-size:.88rem;color:#374151;">
+              <li><strong>Complex tables</strong> — nested, merged cells, multi-level headers</li>
+              <li><strong>Graphics and Charts</strong> — bar charts, pie charts, embedded images with data</li>
+              <li><strong>Checkboxes and Call-out boxes</strong> — form-style elements with contextual values</li>
+              <li><strong>Signatures, Stamps, and Handwriting</strong> — non-digital content that varies per document</li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="info-card">
-        <h4>High Layout Variation</h4>
-        <p>There is <strong>high variation in layout or structure</strong> between documents, or within the fields to be extracted. Different employers, vendors, or agencies may use entirely different formats for the same document type.</p>
-      </div>
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e5e7eb;">
+          <div style="background:#1a56a0;padding:.75rem 1rem;display:flex;align-items:center;gap:.6rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h4 style="margin:0;color:#fff;font-size:.95rem;font-weight:600;">Inferred Values</h4>
+          </div>
+          <div style="padding:1rem;">
+            <p style="margin:0;font-size:.88rem;color:#374151;">You need to extract <strong>inferred values</strong> — information that is not stated directly in the document but must be <em>derived from context</em>. For example, calculating net pay from gross pay and deductions, or determining account type from surrounding text.</p>
+          </div>
+        </div>
 
-      <div class="info-card">
-        <h4>Packet Documents</h4>
-        <p>You are dealing with <strong>stacks of multiple document types combined as one file</strong> and need to extract data without splitting them up first. IXP can process these packet documents in a single request.</p>
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e5e7eb;">
+          <div style="background:#0e7490;padding:.75rem 1rem;display:flex;align-items:center;gap:.6rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <h4 style="margin:0;color:#fff;font-size:.95rem;font-weight:600;">High Layout Variation</h4>
+          </div>
+          <div style="padding:1rem;">
+            <p style="margin:0;font-size:.88rem;color:#374151;">There is <strong>high variation in layout or structure</strong> between documents, or within the fields to be extracted. Different employers, vendors, or agencies may use entirely different formats for the same document type.</p>
+          </div>
+        </div>
+
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e5e7eb;">
+          <div style="background:#6d28d9;padding:.75rem 1rem;display:flex;align-items:center;gap:.6rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="4" rx="1"/><rect x="2" y="11" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
+            <h4 style="margin:0;color:#fff;font-size:.95rem;font-weight:600;">Packet Documents</h4>
+          </div>
+          <div style="padding:1rem;">
+            <p style="margin:0;font-size:.88rem;color:#374151;">You are dealing with <strong>stacks of multiple document types combined as one file</strong> and need to extract data without splitting them up first. IXP can process these packet documents in a single request.</p>
+          </div>
+        </div>
+
       </div>
 
       <div class="admonition admonition--tip">
         <div class="admonition-title">💡 Zero-shot vs. Few-shot Extraction</div>
         <div class="admonition-body"><strong>Zero-shot</strong> extraction uses only your field instructions — no annotated examples needed. <strong>Few-shot</strong> adds validated annotation examples alongside instructions to improve accuracy on complex or ambiguous fields.</div>
       </div>
+
+      <div class="info-card" style="margin-top:1rem;">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Supported File Formats
+        </h4>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;">
+          <span style="background:#FEE9E3;color:#FA4616;font-weight:700;font-size:.82rem;padding:.3rem .75rem;border-radius:6px;border:1px solid #fca58a;">PDF</span>
+          <span style="background:#FEE9E3;color:#FA4616;font-weight:700;font-size:.82rem;padding:.3rem .75rem;border-radius:6px;border:1px solid #fca58a;">PNG</span>
+          <span style="background:#FEE9E3;color:#FA4616;font-weight:700;font-size:.82rem;padding:.3rem .75rem;border-radius:6px;border:1px solid #fca58a;">JPG / JPEG</span>
+          <span style="background:#FEE9E3;color:#FA4616;font-weight:700;font-size:.82rem;padding:.3rem .75rem;border-radius:6px;border:1px solid #fca58a;">TIF / TIFF</span>
+          <span style="background:#FEE9E3;color:#FA4616;font-weight:700;font-size:.82rem;padding:.3rem .75rem;border-radius:6px;border:1px solid #fca58a;">GIF</span>
+        </div>
+      </div>
     </section>
 
     <section class="lesson">
       <h2 class="lesson-title" id="p2-user-roles">User Roles in Generative Extraction</h2>
-      <div class="info-card">
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
-          <tbody>
-            <tr><td><strong>IXP Service Admin</strong></td><td>Manage service settings, create projects, assign all roles</td></tr>
-            <tr><td><strong>IXP Project Admin</strong></td><td>Manage specific project, assign project-level roles</td></tr>
-            <tr><td><strong>IXP Developer</strong></td><td>Build, annotate, train, and publish models</td></tr>
-            <tr><td><strong>IXP Model Trainer</strong></td><td>Annotate documents and validate predictions</td></tr>
-            <tr><td><strong>IXP Analyst</strong></td><td>View project stats and performance metrics</td></tr>
-            <tr><td><strong>IXP Viewer</strong></td><td>View-only access to projects and results</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
 
-    <!-- ── PRACTICAL ── -->
-    <div class="subpart-header" id="part2-practical">
-      <h3 class="subpart-header__title"><span class="subpart-header__label">Practical :</span> Building, Evaluating &amp; Consuming</h3>
-    </div>
-
-    <section class="lesson">
-      <h2 class="lesson-title" id="p2-building">Building the Generative Extraction Project</h2>
-
-      <p>Building a Generative Extraction project follows the same <strong>Build → Measure → Publish</strong> lifecycle as Modern DU projects, but uses generative AI prompts instead of annotated ML training.</p>
-
-      <div class="info-card">
-        <h4>Step 1: Create a New Generative Extraction Project</h4>
-        <ol>
-          <li>Log into <strong>cloud.uipath.com</strong> and navigate to the <strong>Generative Extraction</strong> service</li>
-          <li>Click <strong>New Project</strong> — choose <strong>Blank Project</strong> or a <strong>Template</strong></li>
-          <li>Give the project a name (e.g., <em>Paystubs Extraction</em>) and description</li>
-          <li>Projects can only be created by an <strong>IXP Service Admin</strong></li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 2: Upload Sample Documents</h4>
-        <ul>
-          <li>Upload a representative sample of documents covering all layout variations</li>
-          <li>Supported formats: <strong>PDF, PNG, JPG/JPEG, TIF/TIFF</strong></li>
-          <li>You can filter documents by annotated/unannotated status and search by document name</li>
-          <li>No minimum number of documents required to start — predictions appear immediately</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 3: Define the Extraction Schema (Taxonomy)</h4>
-        <ol>
-          <li>Go to <strong>Manage Taxonomy</strong></li>
-          <li>Write a <strong>project-level instruction</strong> — describe the document type and industry context</li>
-          <li>Click <strong>New Field Group</strong> — give it a name and instruction (e.g., "Employee Information")</li>
-          <li>Add individual <strong>Fields</strong> within each group — specify name, data type, and instruction</li>
-          <li>For hierarchical data, use <code>&gt;</code> in field group names (e.g., <em>Paystub &gt; Deductions</em>)</li>
-        </ol>
-        <div class="admonition admonition--tip">
-          <div class="admonition-title">💡 Tip</div>
-          <div class="admonition-body">Configure your extraction schema upfront before reviewing predictions — this allows you to immediately assess AI-generated output across all your fields.</div>
+        <!-- header row -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;background:#1e293b;padding:.6rem 1.2rem;gap:1rem;">
+          <span style="color:#94a3b8;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Role</span>
+          <span style="color:#94a3b8;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Permissions</span>
+          <span style="color:#94a3b8;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Access</span>
         </div>
-      </div>
 
-      <div class="info-card">
-        <h4>Step 4: Review and Validate Predictions</h4>
-        <ol>
-          <li>Once schema is defined, the AI immediately generates predictions for all uploaded documents</li>
-          <li>Review each document — check if predictions are correct</li>
-          <li>Modify prompt instructions and observe the impact on prediction quality</li>
-          <li><strong>Accept</strong> correct predictions or <strong>correct</strong> wrong ones to build ground truth</li>
-          <li>Validated documents become the basis for performance evaluation in the Measure phase</li>
-        </ol>
-      </div>
+        <!-- IXP Service Admin -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #FA4616;background:#fff;border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#FEE9E3;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Service Admin</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">Manage service settings, create projects, assign all roles</span>
+          <span style="background:#FEE9E3;color:#FA4616;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">Full Access</span>
+        </div>
 
-    </section>
+        <!-- IXP Project Admin -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #1a56a0;background:#f8faff;border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a56a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Project Admin</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">Manage specific project, assign project-level roles</span>
+          <span style="background:#dbeafe;color:#1a56a0;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">Project-level</span>
+        </div>
 
-    <section class="lesson">
-      <h2 class="lesson-title" id="p2-evaluating">Evaluating the Project (Measure Phase)</h2>
+        <!-- IXP Developer -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #0e7490;background:#fff;border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#cffafe;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0e7490" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Developer</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">Build, annotate, train, and publish models</span>
+          <span style="background:#cffafe;color:#0e7490;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">Build &amp; Publish</span>
+        </div>
 
-      <p>The <strong>Measure</strong> phase evaluates how well your model is performing before you deploy it to production. It uses your validated annotations as the ground truth.</p>
+        <!-- IXP Model Trainer -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #6d28d9;background:#f8faff;border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#ede9fe;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Model Trainer</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">Annotate documents and validate predictions</span>
+          <span style="background:#ede9fe;color:#6d28d9;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">Annotate</span>
+        </div>
 
-      <div class="info-card">
-        <h4>Key Performance Metrics</h4>
-        <ul>
-          <li><strong>Project Score</strong> — overall model performance across all fields</li>
-          <li><strong>Precision</strong> — of all values the model extracted, how many were correct</li>
-          <li><strong>Recall</strong> — of all values that should have been extracted, how many did the model find</li>
-          <li><strong>F1 Score</strong> — harmonic mean of precision and recall; best single measure of performance</li>
-          <li><strong>Per-field performance</strong> — identify which specific fields need improvement</li>
-        </ul>
-      </div>
+        <!-- IXP Analyst -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #065f46;background:#fff;border-bottom:1px solid #f1f5f9;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#d1fae5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Analyst</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">View project stats and performance metrics</span>
+          <span style="background:#d1fae5;color:#065f46;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">View Stats</span>
+        </div>
 
-      <div class="info-card">
-        <h4>Comparing Model Versions</h4>
-        <p>Every time you change the extraction schema or validate more documents, Generative Extraction creates a new model version. In the Measure phase you can:</p>
-        <ul>
-          <li>Compare model versions side by side</li>
-          <li>See field-level performance differences between versions</li>
-          <li>Identify which fields need more annotation or better prompt instructions</li>
-          <li>Decide which version is best suited for production deployment</li>
-        </ul>
-      </div>
+        <!-- IXP Viewer -->
+        <div style="display:grid;grid-template-columns:2fr 3fr auto;align-items:center;padding:.85rem 1.2rem;gap:1rem;border-left:4px solid #4b5563;background:#f8faff;">
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span style="font-weight:700;font-size:.88rem;color:#111827;">IXP Viewer</span>
+          </div>
+          <span style="font-size:.86rem;color:#374151;">View-only access to projects and results</span>
+          <span style="background:#f3f4f6;color:#4b5563;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px;white-space:nowrap;">View Only</span>
+        </div>
 
-      <div class="info-card">
-        <h4>How to Improve Performance</h4>
-        <ul>
-          <li>Refine field instructions — be more specific about expected format and edge cases</li>
-          <li>Add more validated annotation examples (few-shot)</li>
-          <li>Review low-scoring fields and adjust prompt wording</li>
-          <li>Ensure the project-level instruction accurately describes the document type</li>
-          <li>Annotate more diverse document samples to cover edge cases</li>
-        </ul>
-      </div>
-
-      <div class="admonition admonition--tip">
-        <div class="admonition-title">💡 Tip</div>
-        <div class="admonition-body"><strong>Performance Benchmarks:</strong> There is no universal threshold — align targets with business requirements. For high-stakes use cases (legal, financial), aim for <strong>90%+</strong> F1. For lower-stakes automation with human-in-the-loop, <strong>75–80%</strong> may be acceptable.</div>
-      </div>
-    </section>
-
-    <section class="lesson">
-      <h2 class="lesson-title" id="p2-consuming">Consuming the Generative Extraction Project in Studio</h2>
-
-      <p>Once your model meets performance criteria, publish it and integrate it into a UiPath Studio workflow.</p>
-
-      <div class="info-card">
-        <h4>Step 1: Publish the Model</h4>
-        <ol>
-          <li>Go to the <strong>Publish</strong> tab in your Generative Extraction project</li>
-          <li>Select the <strong>model version</strong> to deploy (based on your Measure results)</li>
-          <li>Add <strong>deployment tags</strong> to identify the version (e.g., <em>v1.0-production</em>)</li>
-          <li>Click <strong>Publish</strong> — the model becomes available as an API endpoint</li>
-          <li>Copy the <strong>project ID / endpoint details</strong> for use in Studio</li>
-          <li>To roll back, simply publish a previous model version</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Step 2: Integrate in Studio Workflow</h4>
-        <ol>
-          <li>Install <code>UiPath.DocumentUnderstanding.Activities</code> package in Studio</li>
-          <li>Add a <strong>Document Understanding Scope</strong> activity and connect to your Generative Extraction project</li>
-          <li>Add <strong>Extract Document Data</strong> — pass the file path of each document</li>
-          <li>Access extracted fields from the returned <code>DocumentData</code> object</li>
-          <li>Add <strong>Present Validation Station</strong> for human-in-the-loop review if confidence is below threshold</li>
-          <li>Export validated results to Excel, database, or downstream system</li>
-        </ol>
-      </div>
-
-      <div class="info-card">
-        <h4>Supported Document Limits</h4>
-        <table class="comparison-table" style="margin:0">
-          <thead><tr><th>Parameter</th><th>Limit</th></tr></thead>
-          <tbody>
-            <tr><td>Maximum document length</td><td>150 pages (use DU with RAG for longer documents)</td></tr>
-            <tr><td>Supported file formats</td><td>PDF, PNG, JPG/JPEG, TIF/TIFF</td></tr>
-            <tr><td>AI infrastructure</td><td>Specialized UiPath models + Azure OpenAI LLMs (data residency maintained per region)</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="admonition admonition--note">
-        <div class="admonition-title">📌 Note</div>
-        <div class="admonition-body"><strong>Model Governance:</strong> Generative Extraction maintains full version history. You can roll back to any previous version if a newer model underperforms in production. Always test new versions on a representative validation set before replacing production.</div>
       </div>
     </section>
 
@@ -318,7 +276,10 @@
       <p>The quality of your prompts directly determines extraction accuracy. Well-written instructions unlock the full potential of the generative model.</p>
 
       <div class="info-card">
-        <h4>Project-Level Instructions</h4>
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          Project-Level Instructions
+        </h4>
         <ul>
           <li>Briefly describe the <strong>industry</strong> and <strong>document type</strong> (e.g., "This is a US payroll paystub from the HR/Finance industry")</li>
           <li>Mention any special characteristics of the document (multi-page, scanned, handwritten sections)</li>
@@ -327,7 +288,10 @@
       </div>
 
       <div class="info-card">
-        <h4>Field Group-Level Instructions</h4>
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg>
+          Field Group-Level Instructions
+        </h4>
         <ul>
           <li>Choose <strong>clear, recognizable names</strong> — use the same terminology as in the documents</li>
           <li>Group <strong>related data points</strong> together logically</li>
@@ -339,7 +303,10 @@
       </div>
 
       <div class="info-card">
-        <h4>Field-Level Instructions</h4>
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Field-Level Instructions
+        </h4>
         <ul>
           <li>Start every instruction with <strong>"Extract…"</strong></li>
           <li>Specify the exact <strong>format and structure</strong> of the expected output (e.g., "Extract as DD/MM/YYYY")</li>
@@ -351,7 +318,10 @@
       </div>
 
       <div class="info-card">
-        <h4>General Prompting Rules</h4>
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          General Prompting Rules
+        </h4>
         <table class="comparison-table" style="margin:0">
           <thead><tr><th>Rule</th><th>Guidance</th></tr></thead>
           <tbody>
@@ -370,6 +340,11 @@
       <div class="admonition admonition--important">
         <div class="admonition-title">⚠️ Important</div>
         <div class="admonition-body"><strong>Exact vs Inferred Fields:</strong> Generative Extraction can extract both <em>exact</em> fields (values explicitly stated in the document) and <em>inferred</em> fields (values derived or calculated from document content). Always be explicit in your field instruction about which type each field is.</div>
+      </div>
+
+      <div class="admonition admonition--note" style="margin-top:1rem;">
+        <div class="admonition-title">📖 Official Documentation</div>
+        <div class="admonition-body">For the full best practices reference, see: <a href="https://docs.uipath.com/ixp/automation-cloud/latest/user-guide/best-practices" target="_blank" rel="noopener"><strong>Best Practices · IXP User Guide →</strong></a></div>
       </div>
     </section>
 
@@ -419,7 +394,7 @@
       <div class="module-nav__complete">
         <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
       </div>
-      <a href="module-06-du-framework.html" class="btn btn-primary">Next: DU Framework →</a>
+      <a href="module-05-part2-practical.html" class="btn btn-primary">Next: Practical →</a>
     </nav>
 
   </main>
@@ -429,8 +404,8 @@
   <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
 </footer>
 
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
 <script>initModulePage('module-05');</script>
 </body>
 </html>

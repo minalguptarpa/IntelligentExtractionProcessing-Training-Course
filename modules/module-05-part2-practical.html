@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 05 Part 2 – Practical: Building, Evaluating &amp; Consuming | UiPath Course</title>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <a href="../index.html" class="logo" aria-label="IXP Course Home">
+    <div class="logo-icon" aria-hidden="true">U</div>
+    <span class="logo-text"><span>UiPath</span> IXP Course</span>
+  </a>
+  <nav aria-label="Site navigation"><a href="../index.html">← All Modules</a></nav>
+</header>
+
+<div class="course-layout">
+  <aside class="course-sidebar" aria-label="Course navigation">
+    <nav class="sidebar-nav" aria-label="Module list">
+      <div class="sidebar-nav__title">IXP Training Course</div>
+      <ul class="sidebar-nav__list">
+        <li><a href="module-01-introduction.html" data-module="module-01">01 · Introduction to IXP</a></li>
+        <li><a href="module-02-document-understanding.html" data-module="module-02">02 · What is Document Understanding?</a></li>
+        <li><a href="module-03-structured-docs.html" data-module="module-03">03 · Structured Documents (DIY)</a></li>
+        <li><a href="module-04-semistructured-docs.html" data-module="module-04">04 · Semi-Structured Docs (Invoices)</a></li>
+        <li><a href="module-04-semistructured-docs.html" class="sidebar-nav__sub">↳ Theory</a></li>
+        <li><a href="module-04-practical.html" class="sidebar-nav__sub">↳ Practical Exercise</a></li>
+        <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
+        <li><a href="module-05-part1.html" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
+        <li><a href="module-05-part1-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2.html" class="sidebar-nav__sub">↳ Part 2: Generative Extractor in IXP</a></li>
+        <li><a href="module-05-part2.html#part2-theory" class="sidebar-nav__subsub">· Theory</a></li>
+        <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
+        <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
+        <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
+        <li><a href="module-05-part2-practical.html" class="sidebar-nav__subsub active">· Practical</a></li>
+        <li><a href="module-05-part2-practical.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2-practical.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2-practical.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
+        <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
+        <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
+        <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
+        <li><a href="module-07-miscellaneous.html" data-module="module-07">07 · Important Topics</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="label">Overall Progress</div>
+      <div class="progress-bar-wrap" style="margin-top:6px;" role="progressbar">
+        <div class="progress-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="course-content" id="main-content">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a> <span aria-hidden="true">›</span>
+      <a href="module-05-unstructured-complex.html">Module 05 · Unstructured &amp; Complex Docs</a> <span aria-hidden="true">›</span>
+      <a href="module-05-part2.html">Part 2: Generative Extractor in IXP</a> <span aria-hidden="true">›</span>
+      <span>Practical</span>
+    </nav>
+
+    <div class="page-header">
+      <h1>Part 2 – Practical: Building, Evaluating &amp; Consuming</h1>
+      <div class="page-header__meta">
+        <span>⏱ ~45 min</span><span>📖 Hands-On</span><span>🎯 Expert</span>
+      </div>
+    </div>
+
+    <div class="admonition admonition--tip" style="margin-bottom:1.5rem;">
+      <div class="admonition-title">🎓 Instructor-Led Training</div>
+      <div class="admonition-body"><strong>To be done with the Instructor in ILT (Instructor-Led Training).</strong> Follow along during your live session.</div>
+    </div>
+
+    <div class="admonition admonition--important" style="margin-bottom:1.5rem;">
+      <div class="admonition-title">📎 Exercise Files</div>
+      <div class="admonition-body">
+        Download the sample paystub documents needed for this practical exercise:
+        <div style="margin-top:.75rem;">
+          <a href="../files/samples_paystubfiles.zip" download style="display:inline-flex;align-items:center;gap:.5rem;background:#FA4616;color:#fff;padding:.5rem 1.1rem;border-radius:6px;font-weight:700;font-size:.875rem;text-decoration:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download samples_paystubfiles.zip
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="admonition admonition--note" style="margin-bottom:1.5rem;">
+      <div class="admonition-title">🎬 Video Reference</div>
+      <div class="admonition-body">Watch the full walkthrough on YouTube: <a href="https://youtu.be/5xCefm_1m5k?si=27af7Pie2pJLj_ed" target="_blank" rel="noopener"><strong>Generative Extraction in IXP — Practical Demo →</strong></a></div>
+    </div>
+
+    <section class="lesson">
+      <h2 class="lesson-title" id="p2-building">Building the Generative Extraction Project</h2>
+
+      <p>Building a Generative Extraction project follows the same <strong>Build → Measure → Publish</strong> lifecycle as Modern DU projects, but uses generative AI prompts instead of annotated ML training.</p>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Step 1: Create a New Generative Extraction Project
+        </h4>
+        <ol>
+          <li>Log into <strong>cloud.uipath.com</strong> and navigate to the <strong>Generative Extraction</strong> service</li>
+          <li>Click <strong>New Project</strong> — choose <strong>Blank Project</strong> or a <strong>Template</strong></li>
+          <li>Give the project a name (e.g., <em>Paystubs Extraction</em>) and description</li>
+          <li>Projects can only be created by an <strong>IXP Service Admin</strong></li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          Step 2: Upload Sample Documents
+        </h4>
+        <ul>
+          <li>Upload a representative sample of documents covering all layout variations</li>
+          <li>Supported formats: <strong>PDF, PNG, JPG/JPEG, TIF/TIFF</strong></li>
+          <li>You can filter documents by annotated/unannotated status and search by document name</li>
+          <li>No minimum number of documents required to start — predictions appear immediately</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Step 3: Define the Extraction Schema (Taxonomy)
+        </h4>
+        <ol>
+          <li>Go to <strong>Manage Taxonomy</strong></li>
+          <li>Write a <strong>project-level instruction</strong> — describe the document type and industry context</li>
+          <li>Click <strong>New Field Group</strong> — give it a name and instruction (e.g., "Employee Information")</li>
+          <li>Add individual <strong>Fields</strong> within each group — specify name, data type, and instruction</li>
+          <li>For hierarchical data, use <code>&gt;</code> in field group names (e.g., <em>Paystub &gt; Deductions</em>)</li>
+        </ol>
+        <div class="admonition admonition--tip">
+          <div class="admonition-title">💡 Tip</div>
+          <div class="admonition-body">Configure your extraction schema upfront before reviewing predictions — this allows you to immediately assess AI-generated output across all your fields.</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Step 4: Review and Validate Predictions
+        </h4>
+        <ol>
+          <li>Once schema is defined, the AI immediately generates predictions for all uploaded documents</li>
+          <li>Review each document — check if predictions are correct</li>
+          <li>Modify prompt instructions and observe the impact on prediction quality</li>
+          <li><strong>Accept</strong> correct predictions or <strong>correct</strong> wrong ones to build ground truth</li>
+          <li>Validated documents become the basis for performance evaluation in the Measure phase</li>
+        </ol>
+      </div>
+
+      <div class="admonition admonition--note" style="margin-top:1rem;">
+        <div class="admonition-title">📖 Official Documentation</div>
+        <div class="admonition-body">For the full Build phase reference, see: <a href="https://docs.uipath.com/ixp/automation-cloud/latest/user-guide/overview-build" target="_blank" rel="noopener"><strong>Overview – Build · IXP User Guide →</strong></a></div>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title" id="p2-evaluating">Evaluating the Project (Measure Phase)</h2>
+
+      <p>The <strong>Measure</strong> phase evaluates how well your model is performing before you deploy it to production. It uses your validated annotations as the ground truth.</p>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Key Performance Metrics
+        </h4>
+        <ul>
+          <li><strong>Project Score</strong> — overall model performance across all fields</li>
+          <li><strong>Precision</strong> — of all values the model extracted, how many were correct</li>
+          <li><strong>Recall</strong> — of all values that should have been extracted, how many did the model find</li>
+          <li><strong>F1 Score</strong> — harmonic mean of precision and recall; best single measure of performance</li>
+          <li><strong>Per-field performance</strong> — identify which specific fields need improvement</li>
+        </ul>
+        <div style="margin-top:1rem;">
+          <img src="../assets/images/ixp-measure-project-score.webp" alt="Example of Project score display showing performance levels and scores" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+          <p style="font-size:0.78rem;color:#9ca3af;margin:.4rem 0 0;">Project score display — shows performance levels and thresholds</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/><path d="M18 9l-6 6-6-6" transform="translate(0,6)"/></svg>
+          Comparing Model Versions
+        </h4>
+        <p>Every time you change the extraction schema or validate more documents, Generative Extraction creates a new model version. In the Measure phase you can:</p>
+        <ul>
+          <li>Compare model versions side by side</li>
+          <li>See field-level performance differences between versions</li>
+          <li>Identify which fields need more annotation or better prompt instructions</li>
+          <li>Decide which version is best suited for production deployment</li>
+        </ul>
+        <div style="margin-top:1rem;">
+          <img src="../assets/images/ixp-measure-project-summary.webp" alt="Project summary in Measure tab" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+          <p style="font-size:0.78rem;color:#9ca3af;margin:.4rem 0 0;">Measure tab — project summary with version selection and high-level metrics</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          How to Improve Performance
+        </h4>
+        <ul>
+          <li>Refine field instructions — be more specific about expected format and edge cases</li>
+          <li>Add more validated annotation examples (few-shot)</li>
+          <li>Review low-scoring fields and adjust prompt wording</li>
+          <li>Ensure the project-level instruction accurately describes the document type</li>
+          <li>Annotate more diverse document samples to cover edge cases</li>
+        </ul>
+        <div style="margin-top:1rem;">
+          <img src="../assets/images/ixp-measure-field-performance-table.webp" alt="Field performance table in Measure showing precision, recall and F1 per field" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+          <p style="font-size:0.78rem;color:#9ca3af;margin:.4rem 0 0;">Field performance table — precision, recall and F1 score per field</p>
+        </div>
+        <div style="margin-top:.75rem;">
+          <img src="../assets/images/ixp-measure-filter.webp" alt="Field performance table before and after applying a quick filter" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+          <p style="font-size:0.78rem;color:#9ca3af;margin:.4rem 0 0;">Quick filter — narrow down fields to identify underperforming areas</p>
+        </div>
+      </div>
+
+      <div class="admonition admonition--tip">
+        <div class="admonition-title">💡 Tip</div>
+        <div class="admonition-body"><strong>Performance Benchmarks:</strong> There is no universal threshold — align targets with business requirements. For high-stakes use cases (legal, financial), aim for <strong>90%+</strong> F1. For lower-stakes automation with human-in-the-loop, <strong>75–80%</strong> may be acceptable.</div>
+      </div>
+
+      <div class="admonition admonition--note" style="margin-top:1rem;">
+        <div class="admonition-title">📖 Official Documentation</div>
+        <div class="admonition-body">For the full Validation reference, see: <a href="https://docs.uipath.com/ixp/automation-cloud/latest/user-guide/overview-validation" target="_blank" rel="noopener"><strong>Overview – Validation · IXP User Guide →</strong></a></div>
+      </div>
+    </section>
+
+    <section class="lesson">
+      <h2 class="lesson-title" id="p2-consuming">Consuming the Generative Extraction Project in Studio</h2>
+
+      <p>Once your model meets performance criteria, publish it and integrate it into a UiPath Studio workflow.</p>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Step 1: Publish the Model
+        </h4>
+        <ol>
+          <li>Go to the <strong>Publish</strong> tab in your Generative Extraction project</li>
+          <li>Select the <strong>model version</strong> to deploy (based on your Measure results)</li>
+          <li>Add <strong>deployment tags</strong> to identify the version (e.g., <em>v1.0-production</em>)</li>
+          <li>Click <strong>Publish</strong> — the model becomes available as an API endpoint</li>
+          <li>Copy the <strong>project ID / endpoint details</strong> for use in Studio</li>
+          <li>To roll back, simply publish a previous model version</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Step 2: Integrate in Studio Workflow
+        </h4>
+        <ol>
+          <li>Install <code>UiPath.DocumentUnderstanding.Activities</code> package in Studio</li>
+          <li>Add a <strong>Document Understanding Scope</strong> activity and connect to your Generative Extraction project</li>
+          <li>Add <strong>Extract Document Data</strong> — pass the file path of each document</li>
+          <li>Access extracted fields from the returned <code>DocumentData</code> object</li>
+          <li>Add <strong>Present Validation Station</strong> for human-in-the-loop review if confidence is below threshold</li>
+          <li>Export validated results to Excel, database, or downstream system</li>
+        </ol>
+      </div>
+
+      <div class="info-card">
+        <h4 style="display:flex;align-items:center;gap:.5rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FA4616" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Supported Document Limits
+        </h4>
+        <table class="comparison-table" style="margin:0">
+          <thead><tr><th>Parameter</th><th>Limit</th></tr></thead>
+          <tbody>
+            <tr><td>Maximum document length</td><td>150 pages (use DU with RAG for longer documents)</td></tr>
+            <tr><td>Supported file formats</td><td>PDF, PNG, JPG/JPEG, TIF/TIFF</td></tr>
+            <tr><td>AI infrastructure</td><td>Specialized UiPath models + Azure OpenAI LLMs (data residency maintained per region)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admonition admonition--note">
+        <div class="admonition-title">📌 Note</div>
+        <div class="admonition-body"><strong>Model Governance:</strong> Generative Extraction maintains full version history. You can roll back to any previous version if a newer model underperforms in production. Always test new versions on a representative validation set before replacing production.</div>
+      </div>
+    </section>
+
+    <nav class="module-nav" aria-label="Module navigation">
+      <a href="module-05-part2.html" class="btn btn-outline">← Part 2: Theory</a>
+      <div class="module-nav__complete">
+        <button id="mark-complete-btn" class="mark-complete-btn">Mark as Complete</button>
+      </div>
+      <a href="module-05-part2.html#part2-bestpractices" class="btn btn-primary">Next: Best Practices →</a>
+    </nav>
+
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
+</footer>
+
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
+<script>initModulePage('module-05');</script>
+</body>
+</html>

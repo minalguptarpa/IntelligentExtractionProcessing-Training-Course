@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module 07 – Important Topics: Resources &amp; Documentation | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/course.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
 </head>
 <body>
 
@@ -96,6 +96,39 @@
           <li><strong>Extraction &amp; classification accuracy</strong> — field correction trends and classification confusion matrix</li>
           <li><strong>Top exceptions</strong> — most frequently encountered processing errors</li>
         </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>📊 Project Performance <em style="font-weight:400;font-size:.9em;">(Preview)</em></h4>
+        <p>The <strong>Project performance</strong> tab shows key metrics including the number of processed documents, time saved processing documents, and time spent extracting data from documents.</p>
+        <div style="margin:.75rem 0;">
+          <img src="../assets/images/du-monitor-project-performance.webp" alt="Screenshot of the Project performance dashboard" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+          <p style="font-size:0.78rem;color:#9ca3af;margin:.4rem 0 0;">Project Performance dashboard</p>
+        </div>
+        <div class="admonition admonition--note" style="margin-top:.75rem;">
+          <div class="admonition-title">ℹ️ Note</div>
+          <div class="admonition-body">The <strong>Project performance</strong> dashboard does not currently include validation data from the <strong>IntelligentOCR</strong> activity package.</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h4>🔓 Enabling the Dashboard</h4>
+        <p>To access the Project Performance dashboard, you must first enable <strong>Insights</strong> on your tenant:</p>
+        <ol>
+          <li>Click the <strong>three-dot menu</strong> in the top right corner and select <strong>Tenant Profile</strong>.
+            <div style="margin:.6rem 0;">
+              <img src="../assets/images/du-monitor-tenant-profile.webp" alt="Screenshot of the Tenant profile button" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+              <p style="font-size:0.78rem;color:#9ca3af;margin:.3rem 0 0;">Tenant Profile button location</p>
+            </div>
+          </li>
+          <li>Locate and enable the <strong>Insights Dashboard URL</strong> toggle button to activate the Insights feature.
+            <div style="margin:.6rem 0;">
+              <img src="../assets/images/du-monitor-insights-toggle.webp" alt="Screenshot of the Insights dashboard toggle button" style="width:100%;border-radius:6px;border:1px solid #e5e7eb;" />
+              <p style="font-size:0.78rem;color:#9ca3af;margin:.3rem 0 0;">Insights Dashboard URL toggle</p>
+            </div>
+          </li>
+        </ol>
+        <p style="margin-top:.5rem;">Once enabled, performance metrics become available after publishing a project.</p>
       </div>
 
       <div class="info-card">
@@ -216,8 +249,8 @@
   <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
 </footer>
 
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
 <script>initModulePage('module-07');</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module 04 – Semi-Structured Documents (Invoices) | UiPath Course</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/course.css" />
+  <link rel="stylesheet" href="../assets/css/course.css?v=2" />
 </head>
 <body>
 
@@ -34,6 +34,7 @@
         <li><a href="module-04-semistructured-docs.html#l5-annotation" class="sidebar-nav__subsub">· Annotation in Modern Experience</a></li>
         <li><a href="module-04-semistructured-docs.html#l6-migration" class="sidebar-nav__subsub">· Migrating Dev to Production</a></li>
         <li><a href="module-04-semistructured-docs.html#l7-studio" class="sidebar-nav__subsub">· Consuming in Studio</a></li>
+        <li><a href="module-04-semistructured-docs.html#l-best-practices" class="sidebar-nav__subsub">· Best Practices – Modern Projects</a></li>
         <li><a href="module-04-practical.html" class="sidebar-nav__sub">↳ Practical Exercise</a></li>
         <li><a href="module-05-unstructured-complex.html" data-module="module-05">05 · Unstructured &amp; Complex Docs</a></li>
         <li><a href="module-05-part1.html" class="sidebar-nav__sub">↳ Part 1: Generative Classifier and Extractor</a></li>
@@ -46,10 +47,10 @@
         <li><a href="module-05-part2.html#p2-what-is" class="sidebar-nav__subsubsub">· What is IXP Generative Extraction?</a></li>
         <li><a href="module-05-part2.html#p2-when-to-use" class="sidebar-nav__subsubsub">· When to Use</a></li>
         <li><a href="module-05-part2.html#p2-user-roles" class="sidebar-nav__subsubsub">· User Roles</a></li>
-        <li><a href="module-05-part2.html#part2-practical" class="sidebar-nav__subsub">· Practical</a></li>
-        <li><a href="module-05-part2.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
-        <li><a href="module-05-part2.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
-        <li><a href="module-05-part2.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
+        <li><a href="module-05-part2-practical.html" class="sidebar-nav__subsub">· Practical</a></li>
+        <li><a href="module-05-part2-practical.html#p2-building" class="sidebar-nav__subsubsub">· Building the Project</a></li>
+        <li><a href="module-05-part2-practical.html#p2-evaluating" class="sidebar-nav__subsubsub">· Evaluating (Measure Phase)</a></li>
+        <li><a href="module-05-part2-practical.html#p2-consuming" class="sidebar-nav__subsubsub">· Consuming in Studio</a></li>
         <li><a href="module-05-part2.html#part2-bestpractices" class="sidebar-nav__subsub">· Best Practices</a></li>
         <li><a href="module-05-part2.html#p2-prompting" class="sidebar-nav__subsubsub">· Prompting Best Practices</a></li>
         <li><a href="module-06-du-framework.html" data-module="module-06">06 · DU Framework</a></li>
@@ -372,6 +373,60 @@
 
     </section>
 
+    <!-- Best Practices -->
+    <section class="lesson" id="l-best-practices">
+      <h2 class="lesson-title">Best Practices – Modern Projects</h2>
+
+      <div class="info-card" style="margin-bottom:1.25rem;">
+        <h4>🏗️ Build: Best Practices</h4>
+        <ul class="checklist">
+          <li>Upload at least <strong>30 documents</strong> for each document type — ensure these are a representative sample of all documents</li>
+          <li>Uploaded documents are automatically processed (uploaded, digitized, classified and annotated) — ensure you <strong>validate all classifications &amp; pre-annotations</strong> and correct any mistakes</li>
+          <li>Mark the fields that are not present in a document as <strong>'missing'</strong></li>
+          <li>Do not attempt to modify the incorrectly digitized fields — <strong>OCR outputs cannot be edited</strong> in Active Learning UI</li>
+          <li>Use the <strong>default UiPath Document OCR</strong> for Latin script languages, Hebrew or Arabic</li>
+          <li>Use the <strong>Extended Languages OCR</strong> for Chinese, Japanese, Korean or other languages that the default OCR doesn't support</li>
+        </ul>
+      </div>
+
+      <div class="info-card" style="margin-bottom:1.25rem;">
+        <h4>📊 Measure: Best Practices</h4>
+        <ul class="checklist">
+          <li>You need to upload at least <strong>10 documents</strong> to get a project score</li>
+          <li>You need to upload at least <strong>10 documents within the same document type</strong> to get a document type score</li>
+          <li>You should <strong>stop training your model</strong> when it reaches your desired performance — this will vary per each use case and your business objectives</li>
+          <li>Follow the <strong>recommended actions</strong> to fine-tune model's performance</li>
+        </ul>
+      </div>
+
+      <div class="info-card" style="margin-bottom:1.25rem;">
+        <h4>🚀 Publish: Best Practices</h4>
+        <ul class="checklist">
+          <li>Each published version is <strong>referenced in your automations</strong> which consume the respective document types or classifier — if you wish to update the version used, make sure to update your automations</li>
+          <li>Make sure to <strong>select the required resources</strong> (classifier or document types) when creating a project version</li>
+          <li>Follow the <strong>recommended actions</strong> to build a good performing model</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>🖥️ Monitor: Best Practices</h4>
+        <ul class="checklist">
+          <li>Orchestrator data is ingested approximately every <strong>20 minutes</strong></li>
+          <li>Robot logs are ingested every <strong>10–15 minutes</strong>, but due to latency, this can take up to <strong>2 hours</strong> to be displayed in Insights</li>
+          <li><strong>All robot logs</strong> are ingested (not only the last records and errors)</li>
+          <li>Metrics in the <strong>Project Performance dashboard</strong> may change — especially the Consumption metrics, as they will be made available on a platform level</li>
+          <li>To <strong>disable the monitoring of data</strong>, switch the corresponding setting in the Tenant Profile</li>
+          <li>Data is displayed as per the following <strong>RBAC policies</strong>:
+            <ul style="margin-top:.5rem; padding-left:1.25rem;">
+              <li><strong>Document Understanding Administrator, Document Understanding Contributor</strong> — full access</li>
+              <li><strong>Document Understanding Viewer</strong> — access to the Project Performance dashboard only</li>
+              <li><strong>Document Understanding Data Labeler</strong> — no access to Monitor</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Knowledge Check -->
     <section class="quiz-section" id="quiz-04">
       <h3>✅ Knowledge Check</h3>
@@ -428,8 +483,8 @@
   <p>© 2025 UiPath · <a href="https://docs.uipath.com/document-understanding" target="_blank" rel="noopener">Official Docs</a> · IXP Self-Learning Course</p>
 </footer>
 
-<script src="../assets/js/progress.js"></script>
-<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/progress.js?v=2"></script>
+<script src="../assets/js/nav.js?v=4"></script>
 <script>initModulePage('module-04');</script>
 </body>
 </html>

@@ -1,0 +1,767 @@
+﻿{
+  "DataContractVersion": "1.2",
+  "DocumentTypes": [
+    {
+      "DocumentTypeId": "IRS.Forms.Form1040X",
+      "Group": "IRS",
+      "Category": "Forms",
+      "Name": "Form1040X",
+      "OptionalUniqueIdentifier": "",
+      "TypeField": {
+        "FieldId": "IRS.Forms.Form1040X.DocumentType",
+        "FieldName": "Document Type"
+      },
+      "Fields": [
+        {
+          "FieldId": "IRS.Forms.Form1040X.FirstName",
+          "FieldName": "FirstName",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#038a18"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "r"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.LastName",
+          "FieldName": "LastName",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#fa6616"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "l"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.SocialSecurityNumber",
+          "FieldName": "SocialSecurityNumber",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#8a97a0"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "c"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.AddressLine1",
+          "FieldName": "Address Line 1",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#6eb84a"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "1"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.ApartmentNumber",
+          "FieldName": "Apartment Number",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#d246cf"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "a"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.CityTownZip",
+          "FieldName": "City Town Zip",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#a1da5f"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "y"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Return_2019",
+          "FieldName": "Return_2019",
+          "IsMultiValue": false,
+          "Type": "Boolean",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#b538ff"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "e"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Return_2018",
+          "FieldName": "Return_2018",
+          "IsMultiValue": false,
+          "Type": "Boolean",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#973d22"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "2"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Return_2017",
+          "FieldName": "Return_2017",
+          "IsMultiValue": false,
+          "Type": "Boolean",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#277f81"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "7"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Return_2016",
+          "FieldName": "Return_2016",
+          "IsMultiValue": false,
+          "Type": "Boolean",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#cf6090"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "6"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Dependents",
+          "FieldName": "Dependents",
+          "IsMultiValue": false,
+          "Type": "Table",
+          "DeriveFieldsFormat": "",
+          "Components": [
+            {
+              "FieldId": "IRS.Forms.Form1040X.Dependents.F_Name",
+              "FieldName": "F_Name",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "ExtractionConfidenceThreshold",
+                  "Value": "0.9"
+                }
+              ],
+              "RuleSet": null,
+              "DefaultValue": "",
+              "DataSource": null
+            },
+            {
+              "FieldId": "IRS.Forms.Form1040X.Dependents.SSN_Number",
+              "FieldName": "SSN_Number",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": [],
+              "Metadata": [
+                {
+                  "Key": "ExtractionConfidenceThreshold",
+                  "Value": "0.9"
+                }
+              ],
+              "RuleSet": null,
+              "DefaultValue": "",
+              "DataSource": null
+            }
+          ],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#3596ee"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "q"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Signature",
+          "FieldName": "Signature",
+          "IsMultiValue": false,
+          "Type": "Boolean",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#c374ea"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "g"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "IRS.Forms.Form1040X.Date",
+          "FieldName": "Date",
+          "IsMultiValue": false,
+          "Type": "Date",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#92cd7c"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "w"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        }
+      ],
+      "Metadata": []
+    },
+    {
+      "DocumentTypeId": "Automobiles.Forms.VehicleRegisterationForm",
+      "Group": "Automobiles",
+      "Category": "Forms",
+      "Name": "VehicleRegisterationForm",
+      "OptionalUniqueIdentifier": "",
+      "TypeField": {
+        "FieldId": "Automobiles.Forms.VehicleRegisterationForm.DocumentType",
+        "FieldName": "Document Type"
+      },
+      "Fields": [
+        {
+          "FieldId": "Automobiles.Forms.VehicleRegisterationForm.RegisterationNumber",
+          "FieldName": "Registeration Number",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#038a18"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "r"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Automobiles.Forms.VehicleRegisterationForm.InspectorName",
+          "FieldName": "Inspector Name",
+          "IsMultiValue": false,
+          "Type": "Name",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#fa6616"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "e"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Automobiles.Forms.VehicleRegisterationForm.VehicleLicenseNumber",
+          "FieldName": "Vehicle License Number",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#8a97a0"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "v"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Automobiles.Forms.VehicleRegisterationForm.DrivingLicenseNumber",
+          "FieldName": "Driving License Number",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#6eb84a"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "g"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Automobiles.Forms.VehicleRegisterationForm.CostOfDamage",
+          "FieldName": "Cost Of Damage",
+          "IsMultiValue": false,
+          "Type": "Number",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#c8ca6d"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "c"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        }
+      ],
+      "Metadata": []
+    },
+    {
+      "DocumentTypeId": "Certificates.Forms.Degree_Cert",
+      "Group": "Certificates",
+      "Category": "Forms",
+      "Name": "Degree_Cert",
+      "OptionalUniqueIdentifier": "",
+      "TypeField": {
+        "FieldId": "Certificates.Forms.Degree_Cert.DocumentType",
+        "FieldName": "Document Type"
+      },
+      "Fields": [
+        {
+          "FieldId": "Certificates.Forms.Degree_Cert.UniversityName",
+          "FieldName": "UniversityName",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#038a18"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "v"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Certificates.Forms.Degree_Cert.AwardeeName",
+          "FieldName": "AwardeeName",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#fa6616"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "a"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "Certificates.Forms.Degree_Cert.DateofDegree",
+          "FieldName": "DateofDegree",
+          "IsMultiValue": false,
+          "Type": "Date",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#8a97a0"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "e"
+            },
+            {
+              "Key": "ExtractionConfidenceThreshold",
+              "Value": "0.9"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        }
+      ],
+      "Metadata": []
+    }
+  ],
+  "Groups": [
+    {
+      "Name": "IRS",
+      "Categories": [
+        "Forms"
+      ]
+    },
+    {
+      "Name": "Automobiles",
+      "Categories": [
+        "Forms"
+      ]
+    },
+    {
+      "Name": "Certificates",
+      "Categories": [
+        "Forms"
+      ]
+    }
+  ],
+  "SupportedLanguages": [
+    {
+      "Name": "Undetermined Language",
+      "Code": "und"
+    },
+    {
+      "Name": "Bulgarian",
+      "Code": "bul"
+    },
+    {
+      "Name": "Cantonese",
+      "Code": "yue"
+    },
+    {
+      "Name": "Danish",
+      "Code": "dan"
+    },
+    {
+      "Name": "Dutch",
+      "Code": "nld"
+    },
+    {
+      "Name": "English",
+      "Code": "eng"
+    },
+    {
+      "Name": "French",
+      "Code": "fra"
+    },
+    {
+      "Name": "Georgian",
+      "Code": "kat"
+    },
+    {
+      "Name": "German",
+      "Code": "deu"
+    },
+    {
+      "Name": "Greek",
+      "Code": "ell"
+    },
+    {
+      "Name": "Hebrew",
+      "Code": "heb"
+    },
+    {
+      "Name": "Hindi",
+      "Code": "hin"
+    },
+    {
+      "Name": "Italian",
+      "Code": "ita"
+    },
+    {
+      "Name": "Japanese",
+      "Code": "jpn"
+    },
+    {
+      "Name": "Korean",
+      "Code": "kor"
+    },
+    {
+      "Name": "Macedonian",
+      "Code": "mkd"
+    },
+    {
+      "Name": "Mandarin",
+      "Code": "zho"
+    },
+    {
+      "Name": "Marathi",
+      "Code": "mar"
+    },
+    {
+      "Name": "Norwegian",
+      "Code": "nor"
+    },
+    {
+      "Name": "Polish",
+      "Code": "pol"
+    },
+    {
+      "Name": "Portuguese",
+      "Code": "por"
+    },
+    {
+      "Name": "Romanian",
+      "Code": "ron"
+    },
+    {
+      "Name": "Russian",
+      "Code": "rus"
+    },
+    {
+      "Name": "Serbian",
+      "Code": "srp"
+    },
+    {
+      "Name": "Spanish",
+      "Code": "spa"
+    },
+    {
+      "Name": "Swedish",
+      "Code": "swe"
+    },
+    {
+      "Name": "Telugu",
+      "Code": "tel"
+    },
+    {
+      "Name": "Turkish",
+      "Code": "tur"
+    }
+  ],
+  "ReportAsExceptionSettings": {
+    "ExceptionReasonOptions": []
+  }
+}
